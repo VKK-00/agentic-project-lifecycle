@@ -1,0 +1,20 @@
+{
+  "name": "vkk-00-agent-plugins",
+  "interface": {
+    "displayName": "VKK-00 Agent Plugins"
+  },
+  "plugins": [
+    {
+      "name": "agentic-project-lifecycle",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agentic-project-lifecycle"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

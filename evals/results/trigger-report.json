@@ -1,0 +1,745 @@
+{
+  "kind": "deterministic-routing-proxy",
+  "warning": "This does not replace provider-observed model activation.",
+  "router_sha256": "3499a50a6d9378e265ad8df33f13c76cbc793e2418dd3ab2f17b8a3d722079ff",
+  "development": {
+    "cases": [
+      {
+        "id": "DEV-001",
+        "prompt": "Build a B2B SaaS from idea through closed beta with subscriptions and tenant roles.",
+        "expected": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-002",
+        "prompt": "Design plan entitlements, tenant export, deletion, and recurring billing.",
+        "expected": [
+          "building-saas-products"
+        ],
+        "observed": [
+          "building-saas-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-003",
+        "prompt": "Create an LLM product with RAG, prompt contracts, offline evals and fallback.",
+        "expected": [
+          "building-ai-products",
+          "orchestrating-large-projects"
+        ],
+        "observed": [
+          "building-ai-products"
+        ],
+        "pass": false
+      },
+      {
+        "id": "DEV-004",
+        "prompt": "Threat-model prompt injection and unsafe tool calls.",
+        "expected": [
+          "building-ai-products"
+        ],
+        "observed": [
+          "building-ai-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-005",
+        "prompt": "Migrate a legacy monolith using characterization tests and strangler slices.",
+        "expected": [
+          "modernizing-existing-projects"
+        ],
+        "observed": [
+          "modernizing-existing-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-006",
+        "prompt": "The project is late, CI is red, scope grows, and blockers have no owners.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-007",
+        "prompt": "Prepare closed beta with feature flags, SLOs, support, rollback and restore.",
+        "expected": [
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-008",
+        "prompt": "Audit requirement-to-test-to-evidence traceability before release readiness.",
+        "expected": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-009",
+        "prompt": "Plan a multi-team platform from discovery through several releases.",
+        "expected": [
+          "orchestrating-large-projects"
+        ],
+        "observed": [
+          "orchestrating-large-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-010",
+        "prompt": "Fix one off-by-one bug in a function.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "DEV-011",
+        "prompt": "What is SaaS?",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "DEV-012",
+        "prompt": "Explain RAG.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "DEV-013",
+        "prompt": "Rename one button.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "DEV-014",
+        "prompt": "Review this small five-line diff.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "DEV-015",
+        "prompt": "Спроектируй SaaS для школ от идеи до закрытой беты: тарифы, роли и биллинг.",
+        "expected": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-016",
+        "prompt": "Нужны evals для LLM, golden dataset и model rollback.",
+        "expected": [
+          "building-ai-products",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-ai-products",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-017",
+        "prompt": "Мигрируем старый монолит без поломки клиентов.",
+        "expected": [
+          "modernizing-existing-projects"
+        ],
+        "observed": [
+          "modernizing-existing-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-018",
+        "prompt": "Проект опоздал, сборка падает, scope растёт, владельцев нет.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "DEV-019",
+        "prompt": "Перед GA проверь SLO, runbook, restore и rollback.",
+        "expected": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "releasing-and-operating-products"
+        ],
+        "pass": false
+      },
+      {
+        "id": "DEV-020",
+        "prompt": "Разложи многомесячную платформу с четырьмя командами на независимые outcomes.",
+        "expected": [
+          "orchestrating-large-projects"
+        ],
+        "observed": [
+          "orchestrating-large-projects"
+        ],
+        "pass": true
+      }
+    ],
+    "exact_accuracy": 0.9,
+    "precision": 1.0,
+    "recall": 0.9130434782608695,
+    "false_positive_rate": 0.0,
+    "tp": 21,
+    "fp": 0,
+    "fn": 2,
+    "tn": 117
+  },
+  "heldout": {
+    "cases": [
+      {
+        "id": "HOLD-001",
+        "prompt": "Design a hosted subscription service for clinics with organizations, annual billing, seat limits, and renewal risk.",
+        "expected": [
+          "building-saas-products"
+        ],
+        "observed": [
+          "building-saas-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-002",
+        "prompt": "Take an AI SaaS from problem interviews to public beta, with RAG evals, plans, billing, and support.",
+        "expected": [
+          "building-ai-products",
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-ai-products",
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-003",
+        "prompt": "Prepare a 2% canary with pause thresholds, dashboard, support owner, rollback, and verified restore.",
+        "expected": [
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-004",
+        "prompt": "Replace a legacy SOAP integration behind an adapter while preserving its contract.",
+        "expected": [
+          "modernizing-existing-projects"
+        ],
+        "observed": [
+          "modernizing-existing-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-005",
+        "prompt": "We missed three delivery dates, CI is broken, scope is uncontrolled, and blockers are ownerless.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-006",
+        "prompt": "Check project-state, requirement links, fresh test logs, and whether the release gate can advance.",
+        "expected": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-007",
+        "prompt": "Version prompts and models; compare held-out retrieval cases with a baseline and cost guardrails.",
+        "expected": [
+          "building-ai-products"
+        ],
+        "observed": [
+          "building-ai-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-008",
+        "prompt": "Define workspace membership, RBAC, entitlements, quotas, export, retention, and deletion.",
+        "expected": [
+          "building-saas-products"
+        ],
+        "observed": [
+          "building-saas-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-009",
+        "prompt": "Plan a restore drill, incident escalation, status communication, and rollback before GA.",
+        "expected": [
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-010",
+        "prompt": "Is this bounded feature ready for implementation? Verify spec, design approval, tests, paths, and owner.",
+        "expected": [
+          "auditing-project-readiness"
+        ],
+        "observed": [
+          "auditing-project-readiness"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-011",
+        "prompt": "Plan a year-long platform program across four teams and three release trains.",
+        "expected": [
+          "orchestrating-large-projects"
+        ],
+        "observed": [
+          "orchestrating-large-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-012",
+        "prompt": "Project recovery: freeze scope, restore reproducible deployment, assign blockers, and cut to one milestone.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-013",
+        "prompt": "Migrate a database with expand-contract, dual writes, reconciliation, staged cutover, and decommissioning.",
+        "expected": [
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-014",
+        "prompt": "Test AI output for groundedness, omissions, unsafe tool calls, fallback, and model rollback.",
+        "expected": [
+          "building-ai-products",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-ai-products",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-015",
+        "prompt": "Audit GA readiness for metrics, support, rollout, rollback, restore, and evidence.",
+        "expected": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-016",
+        "prompt": "Create a multi-year AI marketplace with subscriptions, tenants, several workstreams, beta cohorts, and support.",
+        "expected": [
+          "building-ai-products",
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-ai-products",
+          "building-saas-products",
+          "orchestrating-large-projects"
+        ],
+        "pass": false
+      },
+      {
+        "id": "HOLD-017",
+        "prompt": "Add webhook idempotency and failed-payment reconciliation to an existing SaaS.",
+        "expected": [
+          "building-saas-products"
+        ],
+        "observed": [
+          "building-saas-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-018",
+        "prompt": "Review migration readiness for a public API: compatibility, characterization, canary, and rollback.",
+        "expected": [
+          "auditing-project-readiness",
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "auditing-project-readiness",
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-019",
+        "prompt": "Build a minimal context packet with approved decisions, allowed paths, and verification commands.",
+        "expected": [
+          "auditing-project-readiness"
+        ],
+        "observed": [
+          "auditing-project-readiness"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-020",
+        "prompt": "The recovery release is running; define daily evidence and the roadmap re-baseline condition.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-021",
+        "prompt": "Создай SaaS для агентств от интервью до закрытой беты: workspace, роли, тарифы, billing и support owner.",
+        "expected": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "building-saas-products",
+          "orchestrating-large-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-022",
+        "prompt": "Спроектируй LLM-помощника с RAG, JSON schema, golden dataset, human approval и fallback.",
+        "expected": [
+          "building-ai-products"
+        ],
+        "observed": [
+          "building-ai-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-023",
+        "prompt": "Модернизируй старую систему через characterization tests, adapter и strangler slices.",
+        "expected": [
+          "modernizing-existing-projects"
+        ],
+        "observed": [
+          "modernizing-existing-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-024",
+        "prompt": "Сроки сорваны, деплой не воспроизводится, объём работ растёт, блокеры без владельцев.",
+        "expected": [
+          "rescuing-software-projects"
+        ],
+        "observed": [
+          "rescuing-software-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-025",
+        "prompt": "Перед публичной бетой подготовь feature flag, SLO, алерты, runbook, restore и rollback.",
+        "expected": [
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-026",
+        "prompt": "Проведи readiness audit: traceability, owner, свежие логи, rollout и rollback.",
+        "expected": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "auditing-project-readiness",
+          "releasing-and-operating-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-027",
+        "prompt": "Разложи многомесячный продукт с четырьмя командами на независимые подсистемы.",
+        "expected": [
+          "orchestrating-large-projects"
+        ],
+        "observed": [
+          "orchestrating-large-projects"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-028",
+        "prompt": "Определи tenant isolation, RBAC, entitlements, export и deletion.",
+        "expected": [
+          "building-saas-products"
+        ],
+        "observed": [
+          "building-saas-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-029",
+        "prompt": "Добавь regression evals и kill switch к AI workflow.",
+        "expected": [
+          "building-ai-products"
+        ],
+        "observed": [
+          "building-ai-products"
+        ],
+        "pass": true
+      },
+      {
+        "id": "HOLD-030",
+        "prompt": "Проверь migration cutover и decommission gate.",
+        "expected": [
+          "auditing-project-readiness",
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "observed": [
+          "modernizing-existing-projects",
+          "releasing-and-operating-products"
+        ],
+        "pass": false
+      },
+      {
+        "id": "HOLD-031",
+        "prompt": "Fix one exception message in a bounded ticket.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-032",
+        "prompt": "Explain annual recurring revenue.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-033",
+        "prompt": "What is tenant isolation?",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-034",
+        "prompt": "Explain canary deployment.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-035",
+        "prompt": "Change one CSS margin.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-036",
+        "prompt": "Add one unit test.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-037",
+        "prompt": "Summarize this helper.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-038",
+        "prompt": "Update one patch dependency.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-039",
+        "prompt": "Tell me what a runbook is.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-040",
+        "prompt": "Что такое RAG?",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-041",
+        "prompt": "Что значит MRR?",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-042",
+        "prompt": "Переименуй одну переменную.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-043",
+        "prompt": "Проверь пять строк CSS на стиль.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-044",
+        "prompt": "Исправь один flaky test, причина известна.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-045",
+        "prompt": "Напиши простую функцию сложения.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-046",
+        "prompt": "Explain the difference between alpha and beta.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-047",
+        "prompt": "Create a one-file calculator.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-048",
+        "prompt": "Add one null check.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-049",
+        "prompt": "Format this JSON.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      },
+      {
+        "id": "HOLD-050",
+        "prompt": "Review this small PR for naming only.",
+        "expected": [],
+        "observed": [],
+        "pass": true
+      }
+    ],
+    "exact_accuracy": 0.96,
+    "precision": 1.0,
+    "recall": 0.9574468085106383,
+    "false_positive_rate": 0.0,
+    "tp": 45,
+    "fp": 0,
+    "fn": 2,
+    "tn": 303
+  }
+}

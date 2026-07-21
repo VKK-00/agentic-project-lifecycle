@@ -1,0 +1,60 @@
+{
+  "skill_name": "rescuing-software-projects",
+  "evals": [
+    {
+      "id": "RULE-RESCUE-01",
+      "prompt": "A late project has red builds, flaky deployments, and changing scope. Stakeholders keep adding features. State first recovery actions.",
+      "expected_output": "The response must apply RULE-RESCUE-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-RESCUE-02",
+      "prompt": "The recovery team has dozens of commitments, dependencies, blockers, and unclear ownership. Define the inventory.",
+      "expected_output": "The response must apply RULE-RESCUE-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-RESCUE-03",
+      "prompt": "There are 40 blockers and no credible milestone. Classify blockers and choose the recovery release.",
+      "expected_output": "The response must apply RULE-RESCUE-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-RESCUE-04",
+      "prompt": "Because delivery is failing, an architect proposes a six-month platform rewrite. Decide whether it belongs in recovery.",
+      "expected_output": "The response must apply RULE-RESCUE-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-RESCUE-05",
+      "prompt": "The recovery release has started. Define daily evidence and the condition for re-baselining roadmap.",
+      "expected_output": "The response must apply RULE-RESCUE-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-005-rescuing-software-projects-positive",
+      "prompt": "We missed three delivery dates, CI is broken, scope is uncontrolled, and blockers are ownerless.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-012-rescuing-software-projects-positive",
+      "prompt": "Project recovery: freeze scope, restore reproducible deployment, assign blockers, and cut to one milestone.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-020-rescuing-software-projects-positive",
+      "prompt": "The recovery release is running; define daily evidence and the roadmap re-baseline condition.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-rescuing-software-projects-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-rescuing-software-projects-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-rescuing-software-projects-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

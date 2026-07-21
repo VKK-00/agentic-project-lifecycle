@@ -1,0 +1,58 @@
+project_id: open-webui-open-webui
+repository: open-webui/open-webui
+commit_sha: ecd48e2f718220a6400ecf49eafd4867a38feb10
+mode: ai
+skills:
+- building-ai-products
+- releasing-and-operating-products
+- auditing-project-readiness
+trial_goal: Assess one bounded AI-production expansion gate from pinned public evidence.
+sources:
+- path: README.md
+  sha: bc504ce641157310b558bd0ae49035d21598d7f9
+  observations:
+  - The project documents multiple LLM providers, RAG, tools, RBAC, model evaluation dashboards, and OpenTelemetry.
+- path: pyproject.toml
+  sha: 468543e71c3e4d83ecbde346269f0bc2c5440ec2
+  observations:
+  - The backend pins multiple provider and retrieval libraries and declares test tooling.
+gate:
+  name: GATE-AI-MODEL-CHANGE-EVIDENCE
+  decision: blocked
+  reason: The inspected files do not establish a versioned contract, held-out regression corpus, thresholded baseline,
+    failure taxonomy, fallback rehearsal, and rollback evidence for one bounded workflow.
+facts:
+- The pinned project exposes multi-provider AI, RAG, tools, analytics, RBAC, and observability surfaces.
+- Backend dependency and test tooling declarations exist.
+assumptions_not_promoted_to_facts:
+- No claim is made that prompt contracts or golden datasets are absent from the entire repository.
+residual_risks:
+- A specific AI workflow and prohibited behaviors are not bounded.
+- Quality, latency, and cost thresholds are not established by the inspected slice.
+next_bounded_action: Select one high-risk RAG or tool-calling workflow and create a versioned contract, held-out
+  baseline, failure taxonomy, latency/cost guardrails, and rollback evidence.
+trial_status: pass
+trace:
+- name: pin repository commit
+  necessary: true
+  evidence: 40-character commit SHA
+- name: inspect product overview
+  necessary: true
+  evidence: pinned README blob
+- name: inspect build and test contract
+  necessary: true
+  evidence: pinned package manifest
+- name: load only matching specialist skills
+  necessary: true
+  evidence: building-ai-products, releasing-and-operating-products, auditing-project-readiness
+- name: separate facts from unverified assumptions
+  necessary: true
+  evidence: facts and assumptions sections
+- name: issue a bounded gate decision
+  necessary: true
+  evidence: GATE-AI-MODEL-CHANGE-EVIDENCE
+- name: define one next bounded action
+  necessary: true
+  evidence: Select one high-risk RAG or tool-calling workflow and create a versioned contract, held-out baseline,
+    failure taxonomy, latency/cost guardrails, and rollback evidence.
+reviewed_at: '2026-07-21'

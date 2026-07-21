@@ -1,0 +1,65 @@
+{
+  "skill_name": "building-saas-products",
+  "evals": [
+    {
+      "id": "RULE-SAAS-01",
+      "prompt": "A founder says small companies need the SaaS and asks for a roadmap, but buyer, admin, acquisition, willingness to pay, and activation are undefined.",
+      "expected_output": "The response must apply RULE-SAAS-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-SAAS-02",
+      "prompt": "Design account boundaries for users in multiple workspaces with roles, plan limits, export, and deletion.",
+      "expected_output": "The response must apply RULE-SAAS-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-SAAS-03",
+      "prompt": "Checkout exists and the team calls billing complete. Specify missing lifecycle and correctness controls before beta.",
+      "expected_output": "The response must apply RULE-SAAS-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-SAAS-04",
+      "prompt": "Turn activation into a proper SaaS metric contract and list all required fields.",
+      "expected_output": "The response must apply RULE-SAAS-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-SAAS-05",
+      "prompt": "Pricing is being chosen before knowing storage, vendor, support, infrastructure, and model cost per active customer. Define the analysis.",
+      "expected_output": "The response must apply RULE-SAAS-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-SAAS-06",
+      "prompt": "Marketing wants public beta tomorrow. Export/deletion are untested, payment recovery is manual, support has no owner, and rollback is unrehearsed.",
+      "expected_output": "The response must apply RULE-SAAS-06 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-001-building-saas-products-positive",
+      "prompt": "Design a hosted subscription service for clinics with organizations, annual billing, seat limits, and renewal risk.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-002-building-saas-products-positive",
+      "prompt": "Take an AI SaaS from problem interviews to public beta, with RAG evals, plans, billing, and support.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-008-building-saas-products-positive",
+      "prompt": "Define workspace membership, RBAC, entitlements, quotas, export, retention, and deletion.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-building-saas-products-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-building-saas-products-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-building-saas-products-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

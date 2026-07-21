@@ -1,0 +1,6 @@
+interface:
+  display_name: Building Ai Products
+  short_description: Use when product behavior depends on LLMs or other models, prompts,
+    retrieval, tool calling, AI evaluation, mo
+  default_prompt: Use $building-ai-products to handle this request with explicit gates
+    and evidence.

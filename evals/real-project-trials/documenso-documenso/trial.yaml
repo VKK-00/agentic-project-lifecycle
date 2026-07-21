@@ -1,0 +1,64 @@
+project_id: documenso-documenso
+repository: documenso/documenso
+commit_sha: cc5ef3df160f6f6da4550e7255f11127cc91cbba
+mode: saas
+skills:
+- building-saas-products
+- releasing-and-operating-products
+- auditing-project-readiness
+trial_goal: Assess one bounded SaaS billing-recovery gate without claiming repository-wide readiness.
+sources:
+- path: README.md
+  sha: 642a285ebb7f12542a73237bd99613e527963fe9
+  observations:
+  - The product documents hosted, self-hosted, and enterprise paths.
+  - The documented stack includes Stripe and Playwright.
+- path: package.json
+  sha: 984663e94532b8cfd798e80609f310704e1d674c
+  observations:
+  - The monorepo declares build, lint, migration, and E2E CI commands.
+- path: packages/ee/server-only/stripe/webhook/handler.ts
+  sha: 03f07daf3859c794876d5e6992148f5728996e37
+  observations:
+  - The handler verifies the Stripe signature and re-fetches current subscription truth.
+  - It handles subscription, checkout, payment-success, and payment-failure events.
+gate:
+  name: GATE-SAAS-BILLING-RECOVERY-EVIDENCE
+  decision: conditional
+  reason: Billing integration is visible, but duplicate delivery, reconciliation, account lifecycle, support ownership,
+    and rollback evidence were not established by the inspected slice.
+facts:
+- Stripe-backed subscription synchronization exists at the pinned commit.
+- Build, lint, migration, and E2E commands are declared.
+assumptions_not_promoted_to_facts:
+- No repository-wide claim is made about webhook idempotency, deletion/export, refunds, or SLO compliance.
+residual_risks:
+- Duplicate and out-of-order delivery evidence was not inspected.
+- Billing recovery and account lifecycle evidence remains bounded out.
+next_bounded_action: Inspect billing synchronization tests and reconciliation jobs, then map duplicate and out-of-order
+  payment events to subscription and entitlement evidence.
+trial_status: pass
+trace:
+- name: pin repository commit
+  necessary: true
+  evidence: 40-character commit SHA
+- name: inspect product overview
+  necessary: true
+  evidence: pinned README blob
+- name: inspect build and test contract
+  necessary: true
+  evidence: pinned package manifest
+- name: load only matching specialist skills
+  necessary: true
+  evidence: building-saas-products, releasing-and-operating-products, auditing-project-readiness
+- name: separate facts from unverified assumptions
+  necessary: true
+  evidence: facts and assumptions sections
+- name: issue a bounded gate decision
+  necessary: true
+  evidence: GATE-SAAS-BILLING-RECOVERY-EVIDENCE
+- name: define one next bounded action
+  necessary: true
+  evidence: Inspect billing synchronization tests and reconciliation jobs, then map duplicate and out-of-order payment
+    events to subscription and entitlement evidence.
+reviewed_at: '2026-07-21'

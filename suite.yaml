@@ -1,0 +1,21 @@
+name: agentic-project-lifecycle
+version: 1.0.0
+target_stable_version: 1.0.0
+architecture: orchestrator-plus-specialists
+distribution: codex-skills-only-plugin
+skills:
+- orchestrating-large-projects
+- building-saas-products
+- building-ai-products
+- modernizing-existing-projects
+- rescuing-software-projects
+- releasing-and-operating-products
+- auditing-project-readiness
+promotion_requires:
+- executed pressure-scenario baseline-versus-skill advantage
+- acceptable false-positive triggering on held-out prompts
+- multiple non-fixture project trials across modes
+- execution traces without systematic unnecessary work
+- positive leave-one-rule-out contribution for every retained normative rule
+- explicit evaluator scope and limitations
+status: stable

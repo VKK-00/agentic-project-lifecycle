@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Agentic Project Lifecycle</title>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#background)"/>
+  <path d="M142 170a154 154 0 0 1 234 8" fill="none" stroke="#DBEAFE" stroke-width="38" stroke-linecap="round"/>
+  <path d="M370 342a154 154 0 0 1-234-8" fill="none" stroke="#93C5FD" stroke-width="38" stroke-linecap="round"/>
+  <path d="m361 122 25 65-67-9" fill="#DBEAFE"/>
+  <path d="m151 390-25-65 67 9" fill="#93C5FD"/>
+  <circle cx="256" cy="256" r="79" fill="#FFFFFF"/>
+  <path d="m220 258 27 28 50-63" fill="none" stroke="#2563EB" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

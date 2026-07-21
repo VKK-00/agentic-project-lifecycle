@@ -1,0 +1,6 @@
+interface:
+  display_name: Orchestrating Large Projects
+  short_description: Use when Codex must start, decompose, plan, recover, or govern
+    a multi-week product or software initiative wit
+  default_prompt: Use $orchestrating-large-projects to handle this request with explicit
+    gates and evidence.

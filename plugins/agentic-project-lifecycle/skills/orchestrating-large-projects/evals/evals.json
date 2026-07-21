@@ -1,0 +1,70 @@
+{
+  "skill_name": "orchestrating-large-projects",
+  "evals": [
+    {
+      "id": "RULE-ORCH-01",
+      "prompt": "An unfamiliar repository needs a three-month plan today. The requester wants architecture before repository inspection. State the next action.",
+      "expected_output": "The response must apply RULE-ORCH-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-02",
+      "prompt": "One initiative contains onboarding, billing, analytics, and regulated export across four teams. The sponsor asks for one master plan. Respond.",
+      "expected_output": "The response must apply RULE-ORCH-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-03",
+      "prompt": "The target user, workaround, budget, and deadline are known. The only critical uncertainty is whether customers connect production data. Continue discovery.",
+      "expected_output": "The response must apply RULE-ORCH-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-04",
+      "prompt": "The team says enterprise buyers probably require regional data residency, but no evidence confirms it. Record project state.",
+      "expected_output": "The response must apply RULE-ORCH-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-05",
+      "prompt": "Choose between a modular monolith, service extraction, and a managed platform. The CTO requests a recommendation.",
+      "expected_output": "The response must apply RULE-ORCH-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-06",
+      "prompt": "A stakeholder demands merged production code although behavior and acceptance criteria are disputed. A quick prototype may be cleaned later. Decide.",
+      "expected_output": "The response must apply RULE-ORCH-06 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-ORCH-08",
+      "prompt": "Finish a substantial planning turn without implying implementation occurred. Give the completion report shape.",
+      "expected_output": "The response must apply RULE-ORCH-08 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-002-orchestrating-large-projects-positive",
+      "prompt": "Take an AI SaaS from problem interviews to public beta, with RAG evals, plans, billing, and support.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-011-orchestrating-large-projects-positive",
+      "prompt": "Plan a year-long platform program across four teams and three release trains.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-016-orchestrating-large-projects-positive",
+      "prompt": "Create a multi-year AI marketplace with subscriptions, tenants, several workstreams, beta cohorts, and support.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-orchestrating-large-projects-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-orchestrating-large-projects-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-orchestrating-large-projects-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

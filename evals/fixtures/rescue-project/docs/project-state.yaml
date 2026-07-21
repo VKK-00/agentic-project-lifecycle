@@ -1,0 +1,30 @@
+schema_version: '1.0'
+project:
+  id: rescue
+  name: Queue Recovery Service
+  type: software
+  mode: rescue
+  risk_level: medium
+lifecycle:
+  current_phase: release
+  current_gate: GATE-RELEASE-READY
+  status: ready
+current_outcome:
+  id: OUTCOME-RESCUE
+  statement: Restore deterministic queue processing and release confidence.
+  metric: successful_job_rate
+  baseline: 0
+  target: 1.0
+blockers: []
+artifacts:
+  charter: approved
+  prd: approved
+  design: approved
+  plan: approved
+  evidence: verified
+  release_plan: approved
+  runbook: approved
+release:
+  target: v0.1-alpha
+  stage: internal-alpha
+  confidence: high

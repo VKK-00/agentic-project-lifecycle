@@ -1,0 +1,26 @@
+version: v0.1-alpha
+stage: internal-alpha
+owner: release-owner
+support_owner: support-owner
+audience:
+- internal-testers
+hypothesis: Restore deterministic queue processing and release confidence.
+included:
+- FEAT-001
+excluded:
+- non-critical extensions
+entry_criteria:
+- unit tests pass
+- readiness audit passes
+exit_criteria:
+- successful_job_rate reaches 1.0
+metrics:
+- successful_job_rate
+known_limitations:
+- fixture-scale only
+rollout:
+  method: allowlist
+  pause_thresholds:
+  - any critical failure
+rollback:
+  procedure: docs/07-release/ROLLBACK.md

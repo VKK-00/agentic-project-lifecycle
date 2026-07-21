@@ -1,0 +1,6 @@
+{
+  "rules": 42,
+  "high_overlap_pairs": [],
+  "pass": true,
+  "warning": "Lexical overlap is not behavioral ablation."
+}

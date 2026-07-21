@@ -1,0 +1,26 @@
+version: v0.1-alpha
+stage: internal-alpha
+owner: release-owner
+support_owner: support-owner
+audience:
+- internal-testers
+hypothesis: A workspace owner can enforce tenant plan entitlements.
+included:
+- FEAT-001
+excluded:
+- non-critical extensions
+entry_criteria:
+- unit tests pass
+- readiness audit passes
+exit_criteria:
+- activation_rate reaches 0.7
+metrics:
+- activation_rate
+known_limitations:
+- fixture-scale only
+rollout:
+  method: allowlist
+  pause_thresholds:
+  - any critical failure
+rollback:
+  procedure: docs/07-release/ROLLBACK.md

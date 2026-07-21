@@ -1,0 +1,26 @@
+version: v0.1-alpha
+stage: internal-alpha
+owner: release-owner
+support_owner: support-owner
+audience:
+- internal-testers
+hypothesis: Extract explicit actions without inventing owners.
+included:
+- FEAT-001
+excluded:
+- non-critical extensions
+entry_criteria:
+- unit tests pass
+- readiness audit passes
+exit_criteria:
+- schema_validity reaches 1.0
+metrics:
+- schema_validity
+known_limitations:
+- fixture-scale only
+rollout:
+  method: allowlist
+  pause_thresholds:
+  - any critical failure
+rollback:
+  procedure: docs/07-release/ROLLBACK.md

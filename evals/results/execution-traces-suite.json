@@ -1,0 +1,257 @@
+{
+  "kind": "real-command-traces",
+  "traces": [
+    {
+      "project": "greenfield-saas",
+      "mode": "saas",
+      "actions": [
+        {
+          "name": "validate project-state",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "check traceability",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "build minimal context pack",
+          "exit_code": 0,
+          "observed": [
+            "docs/02-product/PRD.md",
+            "docs/04-architecture/SYSTEM.md",
+            "specs/FEAT-001/spec.md"
+          ],
+          "necessary": true
+        },
+        {
+          "name": "python3 -m unittest discover -s tests -v",
+          "argv": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "duration_ms": 328,
+          "stdout": "",
+          "stderr": "test_free_blocks_second_member (test_saas.Tests.test_free_blocks_second_member) ... ok\ntest_pro_allows_member (test_saas.Tests.test_pro_allows_member) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "necessary": true
+        },
+        {
+          "name": "python3 scripts/smoke.py",
+          "argv": [
+            "python3",
+            "scripts/smoke.py"
+          ],
+          "exit_code": 0,
+          "duration_ms": 265,
+          "stdout": "saas smoke: pass\n",
+          "stderr": "",
+          "necessary": true
+        },
+        {
+          "name": "check release readiness",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        }
+      ]
+    },
+    {
+      "project": "ai-assistant",
+      "mode": "ai",
+      "actions": [
+        {
+          "name": "validate project-state",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "check traceability",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "build minimal context pack",
+          "exit_code": 0,
+          "observed": [
+            "docs/02-product/PRD.md",
+            "docs/04-architecture/SYSTEM.md",
+            "specs/FEAT-001/spec.md"
+          ],
+          "necessary": true
+        },
+        {
+          "name": "python3 -m unittest discover -s tests -v",
+          "argv": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "duration_ms": 266,
+          "stdout": "",
+          "stderr": "test_explicit_only (test_extractor.Tests.test_explicit_only) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "necessary": true
+        },
+        {
+          "name": "python3 scripts/smoke.py",
+          "argv": [
+            "python3",
+            "scripts/smoke.py"
+          ],
+          "exit_code": 0,
+          "duration_ms": 203,
+          "stdout": "ai smoke: pass\n",
+          "stderr": "",
+          "necessary": true
+        },
+        {
+          "name": "check release readiness",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        }
+      ]
+    },
+    {
+      "project": "brownfield-modernization",
+      "mode": "brownfield",
+      "actions": [
+        {
+          "name": "validate project-state",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "check traceability",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "build minimal context pack",
+          "exit_code": 0,
+          "observed": [
+            "docs/02-product/PRD.md",
+            "docs/04-architecture/SYSTEM.md",
+            "specs/FEAT-001/spec.md"
+          ],
+          "necessary": true
+        },
+        {
+          "name": "python3 -m unittest discover -s tests -v",
+          "argv": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "duration_ms": 234,
+          "stdout": "",
+          "stderr": "test_contract (test_adapter.Tests.test_contract) ... ok\ntest_negative (test_adapter.Tests.test_negative) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "necessary": true
+        },
+        {
+          "name": "python3 scripts/smoke.py",
+          "argv": [
+            "python3",
+            "scripts/smoke.py"
+          ],
+          "exit_code": 0,
+          "duration_ms": 203,
+          "stdout": "brownfield smoke: pass\n",
+          "stderr": "",
+          "necessary": true
+        },
+        {
+          "name": "check release readiness",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        }
+      ]
+    },
+    {
+      "project": "rescue-project",
+      "mode": "rescue",
+      "actions": [
+        {
+          "name": "validate project-state",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "check traceability",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        },
+        {
+          "name": "build minimal context pack",
+          "exit_code": 0,
+          "observed": [
+            "docs/02-product/PRD.md",
+            "docs/04-architecture/SYSTEM.md",
+            "specs/FEAT-001/spec.md"
+          ],
+          "necessary": true
+        },
+        {
+          "name": "python3 -m unittest discover -s tests -v",
+          "argv": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "duration_ms": 250,
+          "stdout": "",
+          "stderr": "test_order (test_queue_service.Tests.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "necessary": true
+        },
+        {
+          "name": "python3 scripts/smoke.py",
+          "argv": [
+            "python3",
+            "scripts/smoke.py"
+          ],
+          "exit_code": 0,
+          "duration_ms": 203,
+          "stdout": "rescue smoke: pass\n",
+          "stderr": "",
+          "necessary": true
+        },
+        {
+          "name": "check release readiness",
+          "exit_code": 0,
+          "observed": [],
+          "necessary": true
+        }
+      ]
+    }
+  ]
+}

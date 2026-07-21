@@ -1,0 +1,6 @@
+interface:
+  display_name: Releasing And Operating Products
+  short_description: Use when preparing alpha, beta, release candidate, general availability,
+    production rollout, feature flags, mi
+  default_prompt: Use $releasing-and-operating-products to handle this request with
+    explicit gates and evidence.

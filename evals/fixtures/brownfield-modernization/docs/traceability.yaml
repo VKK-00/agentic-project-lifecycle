@@ -1,0 +1,23 @@
+requirements:
+  REQ-CORE-001:
+    implemented_by:
+    - FEAT-001
+    verified_by:
+    - TEST-001
+    released_in:
+    - REL-001
+features:
+  FEAT-001:
+    acceptance_criteria:
+    - AC-001
+tests:
+  TEST-001:
+    evidence: EVIDENCE-001
+evidence:
+  EVIDENCE-001:
+    path: evidence/latest/report.json
+    status: pass
+releases:
+  REL-001:
+    version: v0.1-alpha
+    status: ready

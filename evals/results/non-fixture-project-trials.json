@@ -1,0 +1,72 @@
+{
+  "kind": "pinned-public-repository-read-only-trials",
+  "warning": "Pass means the bounded workflow completed against pinned evidence, not that the repository is production-ready.",
+  "projects": [
+    {
+      "project_id": "documenso-documenso",
+      "repository": "documenso/documenso",
+      "commit_sha": "cc5ef3df160f6f6da4550e7255f11127cc91cbba",
+      "mode": "saas",
+      "skills": [
+        "building-saas-products",
+        "releasing-and-operating-products",
+        "auditing-project-readiness"
+      ],
+      "status": "pass",
+      "gate": {
+        "name": "GATE-SAAS-BILLING-RECOVERY-EVIDENCE",
+        "decision": "conditional",
+        "reason": "Billing integration is visible, but duplicate delivery, reconciliation, account lifecycle, support ownership, and rollback evidence were not established by the inspected slice."
+      },
+      "source_count": 3,
+      "action_count": 7
+    },
+    {
+      "project_id": "open-webui-open-webui",
+      "repository": "open-webui/open-webui",
+      "commit_sha": "ecd48e2f718220a6400ecf49eafd4867a38feb10",
+      "mode": "ai",
+      "skills": [
+        "building-ai-products",
+        "releasing-and-operating-products",
+        "auditing-project-readiness"
+      ],
+      "status": "pass",
+      "gate": {
+        "name": "GATE-AI-MODEL-CHANGE-EVIDENCE",
+        "decision": "blocked",
+        "reason": "The inspected files do not establish a versioned contract, held-out regression corpus, thresholded baseline, failure taxonomy, fallback rehearsal, and rollback evidence for one bounded workflow."
+      },
+      "source_count": 2,
+      "action_count": 7
+    },
+    {
+      "project_id": "pallets-flask",
+      "repository": "pallets/flask",
+      "commit_sha": "36e4a824f340fdee7ed50937ba8e7f6bc7d17f81",
+      "mode": "brownfield",
+      "skills": [
+        "modernizing-existing-projects",
+        "auditing-project-readiness"
+      ],
+      "status": "pass",
+      "gate": {
+        "name": "GATE-BROWNFIELD-COMPATIBILITY-SLICE",
+        "decision": "conditional",
+        "reason": "Strong local quality machinery exists, but a concrete change still needs affected public contracts, characterization tests, downstream risk, deprecation policy, and rollback boundaries."
+      },
+      "source_count": 2,
+      "action_count": 7
+    }
+  ],
+  "modes": [
+    "ai",
+    "brownfield",
+    "saas"
+  ],
+  "trace_summary": {
+    "median_unnecessary_actions": 0,
+    "systematic_overwork": false
+  },
+  "errors": []
+}

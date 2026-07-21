@@ -1,0 +1,58 @@
+project_id: pallets-flask
+repository: pallets/flask
+commit_sha: 36e4a824f340fdee7ed50937ba8e7f6bc7d17f81
+mode: brownfield
+skills:
+- modernizing-existing-projects
+- auditing-project-readiness
+trial_goal: Assess readiness for one compatibility-sensitive brownfield change in a mature public framework.
+sources:
+- path: README.md
+  sha: 64f56cac4f9d60020a39b9c2f803b1846796cf6d
+  observations:
+  - Flask is a mature flexible framework with a large extension ecosystem.
+- path: pyproject.toml
+  sha: 1bc3e0e10e85f76786fd6de0eddefc54418835f4
+  observations:
+  - The package is Production/Stable and defines pytest, coverage, strict typing, style, docs, and tox matrices
+    across versions.
+gate:
+  name: GATE-BROWNFIELD-COMPATIBILITY-SLICE
+  decision: conditional
+  reason: Strong local quality machinery exists, but a concrete change still needs affected public contracts, characterization
+    tests, downstream risk, deprecation policy, and rollback boundaries.
+facts:
+- The pinned configuration defines broad runtime, dependency, typing, style, docs, and test matrices.
+- The project exposes a stable public framework and extension surface.
+assumptions_not_promoted_to_facts:
+- Repository tests are not treated as complete evidence for all third-party consumers.
+residual_risks:
+- Downstream extension behavior is outside the inspected evidence.
+- No specific migration or public API change was selected.
+next_bounded_action: Choose one proposed public behavior change, map affected contracts and consumers, add characterization
+  tests across supported versions, and define deprecation and rollback boundaries.
+trial_status: pass
+trace:
+- name: pin repository commit
+  necessary: true
+  evidence: 40-character commit SHA
+- name: inspect product overview
+  necessary: true
+  evidence: pinned README blob
+- name: inspect build and test contract
+  necessary: true
+  evidence: pinned package manifest
+- name: load only matching specialist skills
+  necessary: true
+  evidence: modernizing-existing-projects, auditing-project-readiness
+- name: separate facts from unverified assumptions
+  necessary: true
+  evidence: facts and assumptions sections
+- name: issue a bounded gate decision
+  necessary: true
+  evidence: GATE-BROWNFIELD-COMPATIBILITY-SLICE
+- name: define one next bounded action
+  necessary: true
+  evidence: Choose one proposed public behavior change, map affected contracts and consumers, add characterization
+    tests across supported versions, and define deprecation and rollback boundaries.
+reviewed_at: '2026-07-21'

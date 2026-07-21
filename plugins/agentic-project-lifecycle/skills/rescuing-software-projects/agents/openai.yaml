@@ -1,0 +1,6 @@
+interface:
+  display_name: Rescuing Software Projects
+  short_description: Use when a software project is late, repeatedly missing commitments,
+    blocked by failing builds or deployments,
+  default_prompt: Use $rescuing-software-projects to handle this request with explicit
+    gates and evidence.

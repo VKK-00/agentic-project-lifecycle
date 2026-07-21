@@ -1,0 +1,65 @@
+{
+  "skill_name": "releasing-and-operating-products",
+  "evals": [
+    {
+      "id": "RULE-OPS-01",
+      "prompt": "A manager says ship a beta but provides only a feature list. Define the release contract.",
+      "expected_output": "The response must apply RULE-OPS-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-OPS-02",
+      "prompt": "A user-facing release has no reliability target, dashboard, alerts, runbook, escalation, or support owner. Decide readiness.",
+      "expected_output": "The response must apply RULE-OPS-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-OPS-03",
+      "prompt": "A high-risk change is technically complete. Choose the safest exposure mechanism and control thresholds.",
+      "expected_output": "The response must apply RULE-OPS-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-OPS-04",
+      "prompt": "Backups exist and migration tests pass on tiny fixtures. The team claims disaster recovery is ready.",
+      "expected_output": "The response must apply RULE-OPS-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-OPS-05",
+      "prompt": "A production incident is resolved. Define the post-incident record and feedback loop.",
+      "expected_output": "The response must apply RULE-OPS-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-OPS-06",
+      "prompt": "Deployment succeeded and CI was green last week. The team wants to mark release complete. List fresh evidence.",
+      "expected_output": "The response must apply RULE-OPS-06 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-002-releasing-and-operating-products-positive",
+      "prompt": "Take an AI SaaS from problem interviews to public beta, with RAG evals, plans, billing, and support.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-003-releasing-and-operating-products-positive",
+      "prompt": "Prepare a 2% canary with pause thresholds, dashboard, support owner, rollback, and verified restore.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-006-releasing-and-operating-products-positive",
+      "prompt": "Check project-state, requirement links, fresh test logs, and whether the release gate can advance.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-releasing-and-operating-products-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-releasing-and-operating-products-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-releasing-and-operating-products-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

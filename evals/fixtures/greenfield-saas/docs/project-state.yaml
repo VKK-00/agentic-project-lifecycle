@@ -1,0 +1,30 @@
+schema_version: '1.0'
+project:
+  id: saas
+  name: Tenant Notes SaaS
+  type: saas
+  mode: greenfield
+  risk_level: medium
+lifecycle:
+  current_phase: release
+  current_gate: GATE-RELEASE-READY
+  status: ready
+current_outcome:
+  id: OUTCOME-SAAS
+  statement: A workspace owner can enforce tenant plan entitlements.
+  metric: activation_rate
+  baseline: 0
+  target: 0.7
+blockers: []
+artifacts:
+  charter: approved
+  prd: approved
+  design: approved
+  plan: approved
+  evidence: verified
+  release_plan: approved
+  runbook: approved
+release:
+  target: v0.1-alpha
+  stage: internal-alpha
+  confidence: high

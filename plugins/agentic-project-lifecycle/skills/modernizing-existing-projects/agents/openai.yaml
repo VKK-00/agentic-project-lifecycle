@@ -1,0 +1,6 @@
+interface:
+  display_name: Modernizing Existing Projects
+  short_description: Use when changing a legacy or brownfield system with unclear
+    behavior, weak tests, old dependencies, compatibi
+  default_prompt: Use $modernizing-existing-projects to handle this request with explicit
+    gates and evidence.

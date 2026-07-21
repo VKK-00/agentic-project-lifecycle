@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "static_errors": [],
+  "checks": [
+    {
+      "check": "evals/run_trigger_eval.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"exact_accuracy\": 0.96,\n  \"precision\": 1.0,\n  \"recall\": 0.9574468085106383,\n  \"false_positive_rate\": 0.0,\n  \"tp\": 45,\n  \"fp\": 0,\n  \"fn\": 2,\n  \"tn\": 303\n}\nFAIL HOLD-016 ['building-ai-products', 'building-saas-products', 'orchestrating-large-projects', 'releasing-and-operating-products'] ['building-ai-products', 'building-saas-products', 'orchestrating-large-projects']\nFAIL HOLD-030 ['auditing-project-readiness', 'modernizing-existing-projects', 'releasing-and-operating-products'] ['modernizing-existing-projects', 'releasing-and-operating-products']\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/run_project_trials.py",
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"project\": \"greenfield-saas\",\n    \"mode\": \"saas\",\n    \"status\": \"pass\",\n    \"actions\": 6,\n    \"repository_type\": \"executable-fixture\"\n  },\n  {\n    \"project\": \"ai-assistant\",\n    \"mode\": \"ai\",\n    \"status\": \"pass\",\n    \"actions\": 6,\n    \"repository_type\": \"executable-fixture\"\n  },\n  {\n    \"project\": \"brownfield-modernization\",\n    \"mode\": \"brownfield\",\n    \"status\": \"pass\",\n    \"actions\": 6,\n    \"repository_type\": \"executable-fixture\"\n  },\n  {\n    \"project\": \"rescue-project\",\n    \"mode\": \"rescue\",\n    \"status\": \"pass\",\n    \"actions\": 6,\n    \"repository_type\": \"executable-fixture\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/analyze_execution_traces.py",
+      "exit_code": 0,
+      "stdout": "{'kind': 'trace-analysis', 'suite': {'trials': 4, 'median_unnecessary_actions': 0.0, 'counts': [0, 0, 0, 0]}, 'baseline': {'trials': 4, 'median_unnecessary_actions': 2.5, 'counts': [1, 1, 4, 6]}, 'systematic_overwork': False, 'warning': 'Baseline is a documented monolithic-workflow proxy; suite traces are executed commands.'}\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/run_non_fixture_trials.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"pinned-public-repository-read-only-trials\",\n  \"warning\": \"Pass means the bounded workflow completed against pinned evidence, not that the repository is production-ready.\",\n  \"projects\": [\n    {\n      \"project_id\": \"documenso-documenso\",\n      \"repository\": \"documenso/documenso\",\n      \"commit_sha\": \"cc5ef3df160f6f6da4550e7255f11127cc91cbba\",\n      \"mode\": \"saas\",\n      \"skills\": [\n        \"building-saas-products\",\n        \"releasing-and-operating-products\",\n        \"auditing-project-readiness\"\n      ],\n      \"status\": \"pass\",\n      \"gate\": {\n        \"name\": \"GATE-SAAS-BILLING-RECOVERY-EVIDENCE\",\n        \"decision\": \"conditional\",\n        \"reason\": \"Billing integration is visible, but duplicate delivery, reconciliation, account lifecycle, support ownership, and rollback evidence were not established by the inspected slice.\"\n      },\n      \"source_count\": 3,\n      \"action_count\": 7\n    },\n    {\n      \"project_id\": \"open-webui-open-webui\",\n      \"repository\": \"open-webui/open-webui\",\n      \"commit_sha\": \"ecd48e2f718220a6400ecf49eafd4867a38feb10\",\n      \"mode\": \"ai\",\n      \"skills\": [\n        \"building-ai-products\",\n        \"releasing-and-operating-products\",\n        \"auditing-project-readiness\"\n      ],\n      \"status\": \"pass\",\n      \"gate\": {\n        \"name\": \"GATE-AI-MODEL-CHANGE-EVIDENCE\",\n        \"decision\": \"blocked\",\n        \"reason\": \"The inspected files do not establish a versioned contract, held-out regression corpus, thresholded baseline, failure taxonomy, fallback rehearsal, and rollback evidence for one bounded workflow.\"\n      },\n      \"source_count\": 2,\n      \"action_count\": 7\n    },\n    {\n      \"project_id\": \"pallets-flask\",\n      \"repository\": \"pallets/flask\",\n      \"commit_sha\": \"36e4a824f340fdee7ed50937ba8e7f6bc7d17f81\",\n      \"mode\": \"brownfield\",\n      \"skills\": [\n        \"modernizing-existing-projects\",\n        \"auditing-project-readiness\"\n      ],\n      \"status\": \"pass\",\n      \"gate\": {\n        \"name\": \"GATE-BROWNFIELD-COMPATIBILITY-SLICE\",\n        \"decision\": \"conditional\",\n        \"reason\": \"Strong local quality machinery exists, but a concrete change still needs affected public contracts, characterization tests, downstream risk, deprecation policy, and rollback boundaries.\"\n      },\n      \"source_count\": 2,\n      \"action_count\": 7\n    }\n  ],\n  \"modes\": [\n    \"ai\",\n    \"brownfield\",\n    \"saas\"\n  ],\n  \"trace_summary\": {\n    \"median_unnecessary_actions\": 0,\n    \"systematic_overwork\": false\n  },\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/run_static_ablation.py",
+      "exit_code": 0,
+      "stdout": "{'declared': 42, 'owned': 42, 'missing': [], 'extra': [], 'pass': True}\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/analyze_rule_redundancy.py",
+      "exit_code": 0,
+      "stdout": "{'rules': 42, 'high_overlap_pairs': [], 'pass': True, 'warning': 'Lexical overlap is not behavioral ablation.'}\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/run_instruction_ablation.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"executed-pressure-scenario-instruction-ablation\",\n  \"scope\": \"Measures pressure-scenario rubric coverage in the complete loaded skill versus the original monolithic baseline and versus removal of each retained normative rule.\",\n  \"limitations\": \"Deterministic skill-instruction coverage eval; it does not claim isolated live-Codex sampling or universal model compliance.\",\n  \"case_count\": 42,\n  \"baseline_score\": 0.2279,\n  \"skill_score\": 0.8931,\n  \"ablated_score\": 0.2785,\n  \"advantage\": 0.6652,\n  \"all_retained_rules_positive_effect\": true,\n  \"failed_rules\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "evals/check_promotion_gate.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"target\": \"1.0.0\",\n  \"promotable\": true,\n  \"recommended_version\": \"1.0.0\",\n  \"blocking_conditions\": [],\n  \"evidence\": {\n    \"pressure_eval\": {\n      \"baseline_score\": 0.2279,\n      \"skill_score\": 0.8931,\n      \"advantage\": 0.6652,\n      \"retained_rules\": 42,\n      \"all_retained_rules_positive_effect\": true\n    },\n    \"triggering\": {\n      \"heldout_cases\": 50,\n      \"precision\": 1.0,\n      \"recall\": 0.9574468085106383,\n      \"false_positive_rate\": 0.0,\n      \"exact_accuracy\": 0.96\n    },\n    \"projects\": {\n      \"executable_fixture_projects\": 4,\n      \"fixture_modes\": [\n        \"ai\",\n        \"brownfield\",\n        \"rescue\",\n        \"saas\"\n      ],\n      \"non_fixture_projects\": 3,\n      \"non_fixture_modes\": [\n        \"ai\",\n        \"brownfield\",\n        \"saas\"\n      ]\n    },\n    \"traces\": {\n      \"suite_median_unnecessary_actions\": 0.0,\n      \"baseline_proxy_median_unnecessary_actions\": 2.5,\n      \"real_project_systematic_overwork\": false\n    },\n    \"removed_rules\": [\n      {\n        \"id\": \"RULE-ORCH-07\",\n        \"reason\": \"Leave-one-rule-out evaluation showed zero independent contribution; the same minimum-specialist-set constraint is already present in the orchestrator overview.\",\n        \"behavior_preserved_by\": \"SKILL.md overview: activate only the smallest specialist set that matches the work.\"\n      }\n    ]\n  },\n  \"evaluation_scope\": \"Measures pressure-scenario rubric coverage in the complete loaded skill versus the original monolithic baseline and versus removal of each retained normative rule.\",\n  \"evaluation_limitations\": \"Deterministic skill-instruction coverage eval; it does not claim isolated live-Codex sampling or universal model compliance.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "scripts/validate_publication.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"plugin\": \"agentic-project-lifecycle\",\n  \"version\": \"1.0.0-rc.1\",\n  \"errors\": []\n}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "trace-analysis",
+  "suite": {
+    "trials": 4,
+    "median_unnecessary_actions": 0.0,
+    "counts": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "baseline": {
+    "trials": 4,
+    "median_unnecessary_actions": 2.5,
+    "counts": [
+      1,
+      1,
+      4,
+      6
+    ]
+  },
+  "systematic_overwork": false,
+  "warning": "Baseline is a documented monolithic-workflow proxy; suite traces are executed commands."
+}

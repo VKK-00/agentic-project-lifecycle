@@ -1,0 +1,30 @@
+project:
+  name: "{{PROJECT_NAME}}"
+  status: discovery
+  owner: "{{OWNER}}"
+  last_updated: "{{DATE}}"
+
+current:
+  phase: orientation
+  objective: "Establish project charter and highest-risk assumptions"
+  next_gate: "Approve project charter"
+  blocked_by: []
+
+sources_of_truth:
+  charter: "docs/00-governance/PROJECT_CHARTER.md"
+  product: "docs/02-product/PRD.md"
+  roadmap: "docs/05-planning/ROADMAP.md"
+  architecture: null
+  quality: null
+  release: null
+
+ledger:
+  facts: []
+  assumptions: []
+  decisions: []
+  open_questions: []
+  contradictions: []
+
+active_releases: []
+active_features: []
+risks: []

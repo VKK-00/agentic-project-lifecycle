@@ -1,0 +1,65 @@
+{
+  "skill_name": "modernizing-existing-projects",
+  "evals": [
+    {
+      "id": "RULE-MOD-01",
+      "prompt": "A poorly documented mature system needs a target architecture this week. Define the evidence inventory first.",
+      "expected_output": "The response must apply RULE-MOD-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-MOD-02",
+      "prompt": "Legacy behavior has few tests and conflicting docs. Establish executable truth without blessing every bug.",
+      "expected_output": "The response must apply RULE-MOD-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-MOD-03",
+      "prompt": "The monolith is messy and the team proposes replacing it in one release. Recommend migration structure and exception.",
+      "expected_output": "The response must apply RULE-MOD-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-MOD-04",
+      "prompt": "A database column and public API field change while old clients remain active. Define a safe sequence.",
+      "expected_output": "The response must apply RULE-MOD-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-MOD-05",
+      "prompt": "A migration command succeeds on sample data. Define rehearsal and reconciliation evidence before production.",
+      "expected_output": "The response must apply RULE-MOD-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-MOD-06",
+      "prompt": "Traffic appears moved and the team wants to delete the old service. Define the decommission gate.",
+      "expected_output": "The response must apply RULE-MOD-06 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-004-modernizing-existing-projects-positive",
+      "prompt": "Replace a legacy SOAP integration behind an adapter while preserving its contract.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-013-modernizing-existing-projects-positive",
+      "prompt": "Migrate a database with expand-contract, dual writes, reconciliation, staged cutover, and decommissioning.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-018-modernizing-existing-projects-positive",
+      "prompt": "Review migration readiness for a public API: compatibility, characterization, canary, and rollback.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-modernizing-existing-projects-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-modernizing-existing-projects-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-modernizing-existing-projects-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "agentic-project-lifecycle",
+  "version": "1.0.0-rc.1",
+  "description": "Product and delivery governance for large agent-assisted projects, from discovery through release and operations.",
+  "author": {
+    "name": "VKK-00",
+    "url": "https://github.com/VKK-00"
+  },
+  "homepage": "https://github.com/VKK-00/agentic-project-lifecycle",
+  "repository": "https://github.com/VKK-00/agentic-project-lifecycle",
+  "license": "Apache-2.0",
+  "keywords": [
+    "agent-skills",
+    "ai-products",
+    "brownfield",
+    "codex",
+    "product-development",
+    "project-governance",
+    "project-rescue",
+    "release-readiness",
+    "saas",
+    "software-lifecycle"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agentic Project Lifecycle",
+    "shortDescription": "Govern large projects from discovery to production",
+    "longDescription": "Plan, govern, validate, release, and operate large software, SaaS, and AI products using an orchestrator and specialized lifecycle skills.",
+    "developerName": "VKK-00",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/VKK-00/agentic-project-lifecycle",
+    "privacyPolicyURL": "https://github.com/VKK-00/agentic-project-lifecycle/blob/main/docs/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/VKK-00/agentic-project-lifecycle/blob/main/docs/TERMS.md",
+    "defaultPrompt": [
+      "Turn this product idea into a governed project from discovery through release.",
+      "Audit this project's readiness for beta or general availability.",
+      "Create a recovery plan for this delayed software project."
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg",
+    "screenshots": []
+  }
+}

@@ -1,0 +1,17 @@
+task: TASK-001
+goal: Implement and verify the first vertical slice
+read:
+- docs/02-product/PRD.md
+- docs/04-architecture/SYSTEM.md
+- specs/FEAT-001/spec.md
+allowed_paths:
+- src/
+- tests/
+- scripts/
+forbidden_paths:
+- src/unrelated.py
+required_commands:
+- python3 -m unittest discover -s tests -v
+- python3 scripts/smoke.py
+decisions_not_to_reopen:
+- ADR-001

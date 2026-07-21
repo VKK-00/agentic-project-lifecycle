@@ -1,0 +1,127 @@
+{
+  "traces": [
+    {
+      "project": "documenso-documenso",
+      "mode": "saas",
+      "actions": [
+        {
+          "name": "pin repository commit",
+          "necessary": true,
+          "evidence": "40-character commit SHA"
+        },
+        {
+          "name": "inspect product overview",
+          "necessary": true,
+          "evidence": "pinned README blob"
+        },
+        {
+          "name": "inspect build and test contract",
+          "necessary": true,
+          "evidence": "pinned package manifest"
+        },
+        {
+          "name": "load only matching specialist skills",
+          "necessary": true,
+          "evidence": "building-saas-products, releasing-and-operating-products, auditing-project-readiness"
+        },
+        {
+          "name": "separate facts from unverified assumptions",
+          "necessary": true,
+          "evidence": "facts and assumptions sections"
+        },
+        {
+          "name": "issue a bounded gate decision",
+          "necessary": true,
+          "evidence": "GATE-SAAS-BILLING-RECOVERY-EVIDENCE"
+        },
+        {
+          "name": "define one next bounded action",
+          "necessary": true,
+          "evidence": "Inspect billing synchronization tests and reconciliation jobs, then map duplicate and out-of-order payment events to subscription and entitlement evidence."
+        }
+      ]
+    },
+    {
+      "project": "open-webui-open-webui",
+      "mode": "ai",
+      "actions": [
+        {
+          "name": "pin repository commit",
+          "necessary": true,
+          "evidence": "40-character commit SHA"
+        },
+        {
+          "name": "inspect product overview",
+          "necessary": true,
+          "evidence": "pinned README blob"
+        },
+        {
+          "name": "inspect build and test contract",
+          "necessary": true,
+          "evidence": "pinned package manifest"
+        },
+        {
+          "name": "load only matching specialist skills",
+          "necessary": true,
+          "evidence": "building-ai-products, releasing-and-operating-products, auditing-project-readiness"
+        },
+        {
+          "name": "separate facts from unverified assumptions",
+          "necessary": true,
+          "evidence": "facts and assumptions sections"
+        },
+        {
+          "name": "issue a bounded gate decision",
+          "necessary": true,
+          "evidence": "GATE-AI-MODEL-CHANGE-EVIDENCE"
+        },
+        {
+          "name": "define one next bounded action",
+          "necessary": true,
+          "evidence": "Select one high-risk RAG or tool-calling workflow and create a versioned contract, held-out baseline, failure taxonomy, latency/cost guardrails, and rollback evidence."
+        }
+      ]
+    },
+    {
+      "project": "pallets-flask",
+      "mode": "brownfield",
+      "actions": [
+        {
+          "name": "pin repository commit",
+          "necessary": true,
+          "evidence": "40-character commit SHA"
+        },
+        {
+          "name": "inspect product overview",
+          "necessary": true,
+          "evidence": "pinned README blob"
+        },
+        {
+          "name": "inspect build and test contract",
+          "necessary": true,
+          "evidence": "pinned package manifest"
+        },
+        {
+          "name": "load only matching specialist skills",
+          "necessary": true,
+          "evidence": "modernizing-existing-projects, auditing-project-readiness"
+        },
+        {
+          "name": "separate facts from unverified assumptions",
+          "necessary": true,
+          "evidence": "facts and assumptions sections"
+        },
+        {
+          "name": "issue a bounded gate decision",
+          "necessary": true,
+          "evidence": "GATE-BROWNFIELD-COMPATIBILITY-SLICE"
+        },
+        {
+          "name": "define one next bounded action",
+          "necessary": true,
+          "evidence": "Choose one proposed public behavior change, map affected contracts and consumers, add characterization tests across supported versions, and define deprecation and rollback boundaries."
+        }
+      ]
+    }
+  ]
+}

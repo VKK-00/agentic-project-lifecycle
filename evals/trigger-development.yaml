@@ -1,0 +1,85 @@
+cases:
+- id: DEV-001
+  prompt: Build a B2B SaaS from idea through closed beta with subscriptions and tenant
+    roles.
+  expected_skills:
+  - orchestrating-large-projects
+  - building-saas-products
+  - releasing-and-operating-products
+- id: DEV-002
+  prompt: Design plan entitlements, tenant export, deletion, and recurring billing.
+  expected_skills:
+  - building-saas-products
+- id: DEV-003
+  prompt: Create an LLM product with RAG, prompt contracts, offline evals and fallback.
+  expected_skills:
+  - orchestrating-large-projects
+  - building-ai-products
+- id: DEV-004
+  prompt: Threat-model prompt injection and unsafe tool calls.
+  expected_skills:
+  - building-ai-products
+- id: DEV-005
+  prompt: Migrate a legacy monolith using characterization tests and strangler slices.
+  expected_skills:
+  - modernizing-existing-projects
+- id: DEV-006
+  prompt: The project is late, CI is red, scope grows, and blockers have no owners.
+  expected_skills:
+  - rescuing-software-projects
+- id: DEV-007
+  prompt: Prepare closed beta with feature flags, SLOs, support, rollback and restore.
+  expected_skills:
+  - releasing-and-operating-products
+- id: DEV-008
+  prompt: Audit requirement-to-test-to-evidence traceability before release readiness.
+  expected_skills:
+  - auditing-project-readiness
+  - releasing-and-operating-products
+- id: DEV-009
+  prompt: Plan a multi-team platform from discovery through several releases.
+  expected_skills:
+  - orchestrating-large-projects
+- id: DEV-010
+  prompt: Fix one off-by-one bug in a function.
+  expected_skills: []
+- id: DEV-011
+  prompt: What is SaaS?
+  expected_skills: []
+- id: DEV-012
+  prompt: Explain RAG.
+  expected_skills: []
+- id: DEV-013
+  prompt: Rename one button.
+  expected_skills: []
+- id: DEV-014
+  prompt: Review this small five-line diff.
+  expected_skills: []
+- id: DEV-015
+  prompt: 'Спроектируй SaaS для школ от идеи до закрытой беты: тарифы, роли и биллинг.'
+  expected_skills:
+  - orchestrating-large-projects
+  - building-saas-products
+  - releasing-and-operating-products
+- id: DEV-016
+  prompt: Нужны evals для LLM, golden dataset и model rollback.
+  expected_skills:
+  - building-ai-products
+  - releasing-and-operating-products
+- id: DEV-017
+  prompt: Мигрируем старый монолит без поломки клиентов.
+  expected_skills:
+  - modernizing-existing-projects
+- id: DEV-018
+  prompt: Проект опоздал, сборка падает, scope растёт, владельцев нет.
+  expected_skills:
+  - rescuing-software-projects
+- id: DEV-019
+  prompt: Перед GA проверь SLO, runbook, restore и rollback.
+  expected_skills:
+  - releasing-and-operating-products
+  - auditing-project-readiness
+- id: DEV-020
+  prompt: Разложи многомесячную платформу с четырьмя командами на независимые outcomes.
+  expected_skills:
+  - orchestrating-large-projects

@@ -1,0 +1,1491 @@
+{
+  "cases": [
+    {
+      "id": "RULE-ORCH-01",
+      "skill": "orchestrating-large-projects",
+      "prompt": "An unfamiliar repository needs a three-month plan today. The requester wants architecture before repository inspection. State the next action.",
+      "required_groups": [
+        [
+          "agents.md",
+          "project instructions"
+        ],
+        [
+          "git status",
+          "recent commit",
+          "history"
+        ],
+        [
+          "tests",
+          "ci"
+        ],
+        [
+          "deployment",
+          "deploy"
+        ],
+        [
+          "current mode",
+          "current phase"
+        ],
+        [
+          "highest-risk",
+          "unknown",
+          "risk"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "start coding now",
+          "architecture immediately"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-ORCH-02",
+      "skill": "orchestrating-large-projects",
+      "prompt": "One initiative contains onboarding, billing, analytics, and regulated export across four teams. The sponsor asks for one master plan. Respond.",
+      "required_groups": [
+        [
+          "split",
+          "decompose"
+        ],
+        [
+          "ownership boundary",
+          "release cadence",
+          "data boundary"
+        ],
+        [
+          "separate spec",
+          "own spec"
+        ],
+        [
+          "verification",
+          "evidence"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "one master plan",
+          "single undivided plan"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-ORCH-03",
+      "skill": "orchestrating-large-projects",
+      "prompt": "The target user, workaround, budget, and deadline are known. The only critical uncertainty is whether customers connect production data. Continue discovery.",
+      "required_groups": [
+        [
+          "one question",
+          "single question"
+        ],
+        [
+          "production data"
+        ],
+        [
+          "highest-value",
+          "critical uncertainty"
+        ],
+        [
+          "do not repeat",
+          "already known"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "questionnaire",
+          "ten questions"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-ORCH-04",
+      "skill": "orchestrating-large-projects",
+      "prompt": "The team says enterprise buyers probably require regional data residency, but no evidence confirms it. Record project state.",
+      "required_groups": [
+        [
+          "fact"
+        ],
+        [
+          "assumption"
+        ],
+        [
+          "decision"
+        ],
+        [
+          "open question",
+          "validate"
+        ],
+        [
+          "risk"
+        ],
+        [
+          "not a requirement",
+          "do not promote"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "must implement now"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-ORCH-05",
+      "skill": "orchestrating-large-projects",
+      "prompt": "Choose between a modular monolith, service extraction, and a managed platform. The CTO requests a recommendation.",
+      "required_groups": [
+        [
+          "two",
+          "three",
+          "options"
+        ],
+        [
+          "trade-off",
+          "tradeoff"
+        ],
+        [
+          "recommend"
+        ],
+        [
+          "cost"
+        ],
+        [
+          "reversibility",
+          "operational burden",
+          "delivery speed"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-ORCH-06",
+      "skill": "orchestrating-large-projects",
+      "prompt": "A stakeholder demands merged production code although behavior and acceptance criteria are disputed. A quick prototype may be cleaned later. Decide.",
+      "required_groups": [
+        [
+          "acceptance criteria"
+        ],
+        [
+          "approved design",
+          "approval"
+        ],
+        [
+          "do not write production",
+          "block implementation"
+        ],
+        [
+          "disposable spike",
+          "prototype"
+        ],
+        [
+          "hypothesis"
+        ],
+        [
+          "timebox"
+        ],
+        [
+          "exit criterion"
+        ],
+        [
+          "non-production"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "merge the prototype"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-ORCH-08",
+      "skill": "orchestrating-large-projects",
+      "prompt": "Finish a substantial planning turn without implying implementation occurred. Give the completion report shape.",
+      "required_groups": [
+        [
+          "phase"
+        ],
+        [
+          "decision"
+        ],
+        [
+          "files"
+        ],
+        [
+          "verification",
+          "observed"
+        ],
+        [
+          "assumptions"
+        ],
+        [
+          "risks"
+        ],
+        [
+          "next gate",
+          "next task"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "everything is done"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-SAAS-01",
+      "skill": "building-saas-products",
+      "prompt": "A founder says small companies need the SaaS and asks for a roadmap, but buyer, admin, acquisition, willingness to pay, and activation are undefined.",
+      "required_groups": [
+        [
+          "user"
+        ],
+        [
+          "buyer"
+        ],
+        [
+          "administrator",
+          "admin"
+        ],
+        [
+          "approver"
+        ],
+        [
+          "segment",
+          "icp"
+        ],
+        [
+          "willingness to pay"
+        ],
+        [
+          "acquisition"
+        ],
+        [
+          "first value",
+          "activation"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "start the roadmap"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-SAAS-02",
+      "skill": "building-saas-products",
+      "prompt": "Design account boundaries for users in multiple workspaces with roles, plan limits, export, and deletion.",
+      "required_groups": [
+        [
+          "tenant",
+          "workspace"
+        ],
+        [
+          "ownership"
+        ],
+        [
+          "membership",
+          "invitation"
+        ],
+        [
+          "role",
+          "authorization",
+          "rbac"
+        ],
+        [
+          "entitlement"
+        ],
+        [
+          "data isolation"
+        ],
+        [
+          "export"
+        ],
+        [
+          "retention"
+        ],
+        [
+          "deletion"
+        ],
+        [
+          "ownership transfer"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-SAAS-03",
+      "skill": "building-saas-products",
+      "prompt": "Checkout exists and the team calls billing complete. Specify missing lifecycle and correctness controls before beta.",
+      "required_groups": [
+        [
+          "trial"
+        ],
+        [
+          "upgrade"
+        ],
+        [
+          "downgrade"
+        ],
+        [
+          "proration"
+        ],
+        [
+          "failed payment"
+        ],
+        [
+          "retry"
+        ],
+        [
+          "grace period"
+        ],
+        [
+          "suspension"
+        ],
+        [
+          "cancellation"
+        ],
+        [
+          "refund"
+        ],
+        [
+          "reconciliation"
+        ],
+        [
+          "idempotency"
+        ],
+        [
+          "source of truth"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "checkout is sufficient"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-SAAS-04",
+      "skill": "building-saas-products",
+      "prompt": "Turn activation into a proper SaaS metric contract and list all required fields.",
+      "required_groups": [
+        [
+          "formula",
+          "definition"
+        ],
+        [
+          "population"
+        ],
+        [
+          "window"
+        ],
+        [
+          "source"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "baseline"
+        ],
+        [
+          "target"
+        ],
+        [
+          "guardrail"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-SAAS-05",
+      "skill": "building-saas-products",
+      "prompt": "Pricing is being chosen before knowing storage, vendor, support, infrastructure, and model cost per active customer. Define the analysis.",
+      "required_groups": [
+        [
+          "cost-to-serve",
+          "unit economics"
+        ],
+        [
+          "tenant",
+          "workflow"
+        ],
+        [
+          "infrastructure"
+        ],
+        [
+          "vendor"
+        ],
+        [
+          "support"
+        ],
+        [
+          "ai cost",
+          "model cost"
+        ],
+        [
+          "threshold",
+          "review trigger"
+        ],
+        [
+          "pricing"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-SAAS-06",
+      "skill": "building-saas-products",
+      "prompt": "Marketing wants public beta tomorrow. Export/deletion are untested, payment recovery is manual, support has no owner, and rollback is unrehearsed.",
+      "required_groups": [
+        [
+          "block",
+          "not ready",
+          "do not open"
+        ],
+        [
+          "export"
+        ],
+        [
+          "deletion"
+        ],
+        [
+          "support owner"
+        ],
+        [
+          "privacy"
+        ],
+        [
+          "billing recovery",
+          "failed payment"
+        ],
+        [
+          "observability"
+        ],
+        [
+          "rollback"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "open beta tomorrow",
+          "ship now"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AI-01",
+      "skill": "building-ai-products",
+      "prompt": "The team proposes using an LLM for the entire workflow. Define the model boundary and failure behavior.",
+      "required_groups": [
+        [
+          "why ai",
+          "ai is needed"
+        ],
+        [
+          "deterministic"
+        ],
+        [
+          "autonomous"
+        ],
+        [
+          "human confirmation",
+          "human approval"
+        ],
+        [
+          "uncertain",
+          "uncertainty"
+        ],
+        [
+          "fallback"
+        ],
+        [
+          "unavailable",
+          "outage"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "llm for everything"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AI-02",
+      "skill": "building-ai-products",
+      "prompt": "A production prompt exists only in code and has no owner or schema. Define its required contract.",
+      "required_groups": [
+        [
+          "version"
+        ],
+        [
+          "purpose"
+        ],
+        [
+          "input schema"
+        ],
+        [
+          "output schema"
+        ],
+        [
+          "grounding"
+        ],
+        [
+          "prohibited"
+        ],
+        [
+          "retry"
+        ],
+        [
+          "fallback"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "product policy"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-AI-03",
+      "skill": "building-ai-products",
+      "prompt": "A candidate model looks better in a few demos. Define evidence for replacing the current model.",
+      "required_groups": [
+        [
+          "golden dataset",
+          "held-out"
+        ],
+        [
+          "baseline"
+        ],
+        [
+          "threshold"
+        ],
+        [
+          "task-specific"
+        ],
+        [
+          "failure category",
+          "taxonomy"
+        ],
+        [
+          "aggregate"
+        ],
+        [
+          "regression"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "demo is enough"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AI-04",
+      "skill": "building-ai-products",
+      "prompt": "The model has variable latency and cost, a provider may fail, and a version will be deprecated. Define budgets and tests.",
+      "required_groups": [
+        [
+          "latency"
+        ],
+        [
+          "cost"
+        ],
+        [
+          "context"
+        ],
+        [
+          "routing"
+        ],
+        [
+          "cache"
+        ],
+        [
+          "provider failure"
+        ],
+        [
+          "fallback"
+        ],
+        [
+          "deprecation"
+        ],
+        [
+          "budget"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-AI-05",
+      "skill": "building-ai-products",
+      "prompt": "An assistant reads private documents and calls tools that modify customer data. Prepare the focused AI threat model.",
+      "required_groups": [
+        [
+          "prompt injection"
+        ],
+        [
+          "data leakage"
+        ],
+        [
+          "tool misuse"
+        ],
+        [
+          "unsafe automation"
+        ],
+        [
+          "unsupported claim",
+          "hallucination"
+        ],
+        [
+          "sensitive data"
+        ],
+        [
+          "grounding"
+        ],
+        [
+          "uncertainty"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "trust model output"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AI-06",
+      "skill": "building-ai-products",
+      "prompt": "A new model passed one manual demo and the team wants 100% traffic. Define the gate.",
+      "required_groups": [
+        [
+          "versioned prompt",
+          "versioned model"
+        ],
+        [
+          "production sampling"
+        ],
+        [
+          "regression eval"
+        ],
+        [
+          "observability"
+        ],
+        [
+          "kill switch"
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "baseline"
+        ],
+        [
+          "staged",
+          "widen exposure"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "100% traffic now"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-MOD-01",
+      "skill": "modernizing-existing-projects",
+      "prompt": "A poorly documented mature system needs a target architecture this week. Define the evidence inventory first.",
+      "required_groups": [
+        [
+          "runtime entry"
+        ],
+        [
+          "critical workflow"
+        ],
+        [
+          "external contract"
+        ],
+        [
+          "data ownership"
+        ],
+        [
+          "deployment"
+        ],
+        [
+          "telemetry"
+        ],
+        [
+          "incident"
+        ],
+        [
+          "consumer"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "clean-room rewrite"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-MOD-02",
+      "skill": "modernizing-existing-projects",
+      "prompt": "Legacy behavior has few tests and conflicting docs. Establish executable truth without blessing every bug.",
+      "required_groups": [
+        [
+          "characterization test",
+          "contract check"
+        ],
+        [
+          "production-derived"
+        ],
+        [
+          "behavior must survive"
+        ],
+        [
+          "intended"
+        ],
+        [
+          "accidental"
+        ],
+        [
+          "explicit"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-MOD-03",
+      "skill": "modernizing-existing-projects",
+      "prompt": "The monolith is messy and the team proposes replacing it in one release. Recommend migration structure and exception.",
+      "required_groups": [
+        [
+          "strangler"
+        ],
+        [
+          "adapter"
+        ],
+        [
+          "seam"
+        ],
+        [
+          "slice"
+        ],
+        [
+          "big-bang"
+        ],
+        [
+          "incremental impossible",
+          "explicit constraint"
+        ],
+        [
+          "reversible"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "rewrite everything now"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-MOD-04",
+      "skill": "modernizing-existing-projects",
+      "prompt": "A database column and public API field change while old clients remain active. Define a safe sequence.",
+      "required_groups": [
+        [
+          "expand"
+        ],
+        [
+          "contract"
+        ],
+        [
+          "compatibility window"
+        ],
+        [
+          "dual read",
+          "dual write"
+        ],
+        [
+          "cutover criteria"
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "public interface"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "rename in place"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-MOD-05",
+      "skill": "modernizing-existing-projects",
+      "prompt": "A migration command succeeds on sample data. Define rehearsal and reconciliation evidence before production.",
+      "required_groups": [
+        [
+          "production-shaped"
+        ],
+        [
+          "rehearse"
+        ],
+        [
+          "reconciliation"
+        ],
+        [
+          "loss"
+        ],
+        [
+          "duplication"
+        ],
+        [
+          "ordering"
+        ],
+        [
+          "latency"
+        ],
+        [
+          "recovery"
+        ],
+        [
+          "exit code"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "exit code proves success"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-MOD-06",
+      "skill": "modernizing-existing-projects",
+      "prompt": "Traffic appears moved and the team wants to delete the old service. Define the decommission gate.",
+      "required_groups": [
+        [
+          "traffic"
+        ],
+        [
+          "data"
+        ],
+        [
+          "consumers"
+        ],
+        [
+          "alerts"
+        ],
+        [
+          "support"
+        ],
+        [
+          "rollback window"
+        ],
+        [
+          "prove",
+          "evidence"
+        ],
+        [
+          "decommission"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "delete immediately"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-01",
+      "skill": "rescuing-software-projects",
+      "prompt": "A late project has red builds, flaky deployments, and changing scope. Stakeholders keep adding features. State first recovery actions.",
+      "required_groups": [
+        [
+          "freeze"
+        ],
+        [
+          "scope"
+        ],
+        [
+          "reproducible build"
+        ],
+        [
+          "test"
+        ],
+        [
+          "deployment"
+        ],
+        [
+          "status"
+        ],
+        [
+          "evidence",
+          "actually working"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "accept new features"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-02",
+      "skill": "rescuing-software-projects",
+      "prompt": "The recovery team has dozens of commitments, dependencies, blockers, and unclear ownership. Define the inventory.",
+      "required_groups": [
+        [
+          "commitment"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "dependency"
+        ],
+        [
+          "blocker"
+        ],
+        [
+          "critical path"
+        ],
+        [
+          "keep"
+        ],
+        [
+          "renegotiate"
+        ],
+        [
+          "defer"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "decision owner"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-RESCUE-03",
+      "skill": "rescuing-software-projects",
+      "prompt": "There are 40 blockers and no credible milestone. Classify blockers and choose the recovery release.",
+      "required_groups": [
+        [
+          "product"
+        ],
+        [
+          "technical"
+        ],
+        [
+          "dependency"
+        ],
+        [
+          "ownership",
+          "people"
+        ],
+        [
+          "operational"
+        ],
+        [
+          "decision latency"
+        ],
+        [
+          "remove non-critical"
+        ],
+        [
+          "smallest release"
+        ],
+        [
+          "restore trust",
+          "usable value"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-RESCUE-04",
+      "skill": "rescuing-software-projects",
+      "prompt": "Because delivery is failing, an architect proposes a six-month platform rewrite. Decide whether it belongs in recovery.",
+      "required_groups": [
+        [
+          "do not",
+          "reject",
+          "block"
+        ],
+        [
+          "critical path"
+        ],
+        [
+          "reversible"
+        ],
+        [
+          "proof point"
+        ],
+        [
+          "directly removes"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "start six-month rewrite"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-05",
+      "skill": "rescuing-software-projects",
+      "prompt": "The recovery release has started. Define daily evidence and the condition for re-baselining roadmap.",
+      "required_groups": [
+        [
+          "passing checks"
+        ],
+        [
+          "deployability"
+        ],
+        [
+          "blocker age"
+        ],
+        [
+          "decision latency"
+        ],
+        [
+          "scope change"
+        ],
+        [
+          "remaining risk"
+        ],
+        [
+          "re-baseline"
+        ],
+        [
+          "stable recovery release"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-OPS-01",
+      "skill": "releasing-and-operating-products",
+      "prompt": "A manager says ship a beta but provides only a feature list. Define the release contract.",
+      "required_groups": [
+        [
+          "audience"
+        ],
+        [
+          "hypothesis"
+        ],
+        [
+          "included"
+        ],
+        [
+          "excluded"
+        ],
+        [
+          "entry criteria"
+        ],
+        [
+          "exit criteria"
+        ],
+        [
+          "metrics"
+        ],
+        [
+          "limitations"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "support channel"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-OPS-02",
+      "skill": "releasing-and-operating-products",
+      "prompt": "A user-facing release has no reliability target, dashboard, alerts, runbook, escalation, or support owner. Decide readiness.",
+      "required_groups": [
+        [
+          "slo",
+          "reliability target"
+        ],
+        [
+          "telemetry"
+        ],
+        [
+          "dashboard"
+        ],
+        [
+          "actionable alert"
+        ],
+        [
+          "runbook"
+        ],
+        [
+          "escalation"
+        ],
+        [
+          "support owner"
+        ],
+        [
+          "before exposing"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "release anyway"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-OPS-03",
+      "skill": "releasing-and-operating-products",
+      "prompt": "A high-risk change is technically complete. Choose the safest exposure mechanism and control thresholds.",
+      "required_groups": [
+        [
+          "internal cohort",
+          "allowlist",
+          "feature flag",
+          "canary",
+          "percentage"
+        ],
+        [
+          "smallest safe"
+        ],
+        [
+          "pause threshold"
+        ],
+        [
+          "rollback threshold"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "100% immediately"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-OPS-04",
+      "skill": "releasing-and-operating-products",
+      "prompt": "Backups exist and migration tests pass on tiny fixtures. The team claims disaster recovery is ready.",
+      "required_groups": [
+        [
+          "rehearse"
+        ],
+        [
+          "migration"
+        ],
+        [
+          "restore"
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "operator recovery"
+        ],
+        [
+          "production-shaped"
+        ],
+        [
+          "backup is not",
+          "backup without restore"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "backup proves recovery"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-OPS-05",
+      "skill": "releasing-and-operating-products",
+      "prompt": "A production incident is resolved. Define the post-incident record and feedback loop.",
+      "required_groups": [
+        [
+          "impact"
+        ],
+        [
+          "timeline"
+        ],
+        [
+          "detection"
+        ],
+        [
+          "cause"
+        ],
+        [
+          "contributing"
+        ],
+        [
+          "corrective action"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "deadline"
+        ],
+        [
+          "blame"
+        ],
+        [
+          "specification",
+          "roadmap"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "person at fault"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-OPS-06",
+      "skill": "releasing-and-operating-products",
+      "prompt": "Deployment succeeded and CI was green last week. The team wants to mark release complete. List fresh evidence.",
+      "required_groups": [
+        [
+          "fresh command"
+        ],
+        [
+          "manual critical path"
+        ],
+        [
+          "limitations"
+        ],
+        [
+          "approval"
+        ],
+        [
+          "post-release metric"
+        ],
+        [
+          "do not declare"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "deployment success means complete"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-01",
+      "skill": "auditing-project-readiness",
+      "prompt": "An agent says a feature is ready based on reading the plan. No validators ran. Perform the readiness audit.",
+      "required_groups": [
+        [
+          "run validator",
+          "validator"
+        ],
+        [
+          "blocking condition"
+        ],
+        [
+          "artifact"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "correction"
+        ],
+        [
+          "do not state ready"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "ready based on plan"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-02",
+      "skill": "auditing-project-readiness",
+      "prompt": "A repository contains a PRD, tests, and release note but no links between them. Define traceability.",
+      "required_groups": [
+        [
+          "requirement"
+        ],
+        [
+          "implementation",
+          "feature"
+        ],
+        [
+          "test"
+        ],
+        [
+          "evidence"
+        ],
+        [
+          "release"
+        ],
+        [
+          "document presence"
+        ],
+        [
+          "proof"
+        ]
+      ],
+      "forbidden_groups": []
+    },
+    {
+      "id": "RULE-AUDIT-03",
+      "skill": "auditing-project-readiness",
+      "prompt": "A coding agent requests the entire repository and history for one bounded task. Define the context packet.",
+      "required_groups": [
+        [
+          "goal"
+        ],
+        [
+          "approved decision"
+        ],
+        [
+          "contract"
+        ],
+        [
+          "allowed path"
+        ],
+        [
+          "forbidden path"
+        ],
+        [
+          "verification command"
+        ],
+        [
+          "path traversal"
+        ],
+        [
+          "unrelated"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "entire repository dump"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-04",
+      "skill": "auditing-project-readiness",
+      "prompt": "A prior agent claims tests passed yesterday but no logs or exit codes exist. Define acceptable evidence.",
+      "required_groups": [
+        [
+          "fresh"
+        ],
+        [
+          "command"
+        ],
+        [
+          "exit code"
+        ],
+        [
+          "duration"
+        ],
+        [
+          "log"
+        ],
+        [
+          "observed"
+        ],
+        [
+          "agent statement"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "trust the claim"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-05",
+      "skill": "auditing-project-readiness",
+      "prompt": "Audit a release with code and tests but no owner, support, telemetry, rollout, rollback, restore, or migration rehearsal.",
+      "required_groups": [
+        [
+          "block"
+        ],
+        [
+          "owner"
+        ],
+        [
+          "support"
+        ],
+        [
+          "telemetry"
+        ],
+        [
+          "rollout"
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "migration"
+        ],
+        [
+          "restore"
+        ],
+        [
+          "risk evidence"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "ready"
+        ]
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-06",
+      "skill": "auditing-project-readiness",
+      "prompt": "A process skill passes static lint and synthetic fixtures. Its author wants stable 1.0. Decide what executed evidence is still mandatory.",
+      "required_groups": [
+        [
+          "executed",
+          "held-out"
+        ],
+        [
+          "baseline"
+        ],
+        [
+          "false-positive"
+        ],
+        [
+          "non-fixture"
+        ],
+        [
+          "trace"
+        ],
+        [
+          "ablation"
+        ],
+        [
+          "do not promote",
+          "block"
+        ]
+      ],
+      "forbidden_groups": [
+        [
+          "static checks are enough",
+          "stable 1.0 now"
+        ]
+      ]
+    }
+  ]
+}

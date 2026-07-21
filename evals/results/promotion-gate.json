@@ -1,0 +1,51 @@
+{
+  "target": "1.0.0",
+  "promotable": true,
+  "recommended_version": "1.0.0",
+  "blocking_conditions": [],
+  "evidence": {
+    "pressure_eval": {
+      "baseline_score": 0.2279,
+      "skill_score": 0.8931,
+      "advantage": 0.6652,
+      "retained_rules": 42,
+      "all_retained_rules_positive_effect": true
+    },
+    "triggering": {
+      "heldout_cases": 50,
+      "precision": 1.0,
+      "recall": 0.9574468085106383,
+      "false_positive_rate": 0.0,
+      "exact_accuracy": 0.96
+    },
+    "projects": {
+      "executable_fixture_projects": 4,
+      "fixture_modes": [
+        "ai",
+        "brownfield",
+        "rescue",
+        "saas"
+      ],
+      "non_fixture_projects": 3,
+      "non_fixture_modes": [
+        "ai",
+        "brownfield",
+        "saas"
+      ]
+    },
+    "traces": {
+      "suite_median_unnecessary_actions": 0.0,
+      "baseline_proxy_median_unnecessary_actions": 2.5,
+      "real_project_systematic_overwork": false
+    },
+    "removed_rules": [
+      {
+        "id": "RULE-ORCH-07",
+        "reason": "Leave-one-rule-out evaluation showed zero independent contribution; the same minimum-specialist-set constraint is already present in the orchestrator overview.",
+        "behavior_preserved_by": "SKILL.md overview: activate only the smallest specialist set that matches the work."
+      }
+    ]
+  },
+  "evaluation_scope": "Measures pressure-scenario rubric coverage in the complete loaded skill versus the original monolithic baseline and versus removal of each retained normative rule.",
+  "evaluation_limitations": "Deterministic skill-instruction coverage eval; it does not claim isolated live-Codex sampling or universal model compliance."
+}

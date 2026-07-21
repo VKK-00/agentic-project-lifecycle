@@ -1,0 +1,33 @@
+{
+  "kind": "executable-fixture-project-trials",
+  "projects": [
+    {
+      "project": "greenfield-saas",
+      "mode": "saas",
+      "status": "pass",
+      "actions": 6,
+      "repository_type": "executable-fixture"
+    },
+    {
+      "project": "ai-assistant",
+      "mode": "ai",
+      "status": "pass",
+      "actions": 6,
+      "repository_type": "executable-fixture"
+    },
+    {
+      "project": "brownfield-modernization",
+      "mode": "brownfield",
+      "status": "pass",
+      "actions": 6,
+      "repository_type": "executable-fixture"
+    },
+    {
+      "project": "rescue-project",
+      "mode": "rescue",
+      "status": "pass",
+      "actions": 6,
+      "repository_type": "executable-fixture"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "auditing-project-readiness",
+  "evals": [
+    {
+      "id": "RULE-AUDIT-01",
+      "prompt": "An agent says a feature is ready based on reading the plan. No validators ran. Perform the readiness audit.",
+      "expected_output": "The response must apply RULE-AUDIT-01 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-AUDIT-02",
+      "prompt": "A repository contains a PRD, tests, and release note but no links between them. Define traceability.",
+      "expected_output": "The response must apply RULE-AUDIT-02 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-AUDIT-03",
+      "prompt": "A coding agent requests the entire repository and history for one bounded task. Define the context packet.",
+      "expected_output": "The response must apply RULE-AUDIT-03 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-AUDIT-04",
+      "prompt": "A prior agent claims tests passed yesterday but no logs or exit codes exist. Define acceptable evidence.",
+      "expected_output": "The response must apply RULE-AUDIT-04 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-AUDIT-05",
+      "prompt": "Audit a release with code and tests but no owner, support, telemetry, rollout, rollback, restore, or migration rehearsal.",
+      "expected_output": "The response must apply RULE-AUDIT-05 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "RULE-AUDIT-06",
+      "prompt": "A process skill passes static lint and synthetic fixtures. Its author wants stable 1.0. Decide what executed evidence is still mandatory.",
+      "expected_output": "The response must apply RULE-AUDIT-06 and cover its owned pressure-scenario rubric without the prohibited shortcut."
+    },
+    {
+      "id": "HOLD-006-auditing-project-readiness-positive",
+      "prompt": "Check project-state, requirement links, fresh test logs, and whether the release gate can advance.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-010-auditing-project-readiness-positive",
+      "prompt": "Is this bounded feature ready for implementation? Verify spec, design approval, tests, paths, and owner.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-015-auditing-project-readiness-positive",
+      "prompt": "Audit GA readiness for metrics, support, rollout, rollback, restore, and evidence.",
+      "expected_output": "This skill should activate."
+    },
+    {
+      "id": "HOLD-031-auditing-project-readiness-negative",
+      "prompt": "Fix one exception message in a bounded ticket.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-032-auditing-project-readiness-negative",
+      "prompt": "Explain annual recurring revenue.",
+      "expected_output": "This skill should not activate."
+    },
+    {
+      "id": "HOLD-033-auditing-project-readiness-negative",
+      "prompt": "What is tenant isolation?",
+      "expected_output": "This skill should not activate."
+    }
+  ]
+}

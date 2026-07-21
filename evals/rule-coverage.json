@@ -1,0 +1,298 @@
+{
+  "rules": [
+    {
+      "id": "RULE-ORCH-01",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-01"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-02",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-02"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-03",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-03"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-04",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-04"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-05",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-05"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-06",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-06"
+      ]
+    },
+    {
+      "id": "RULE-ORCH-08",
+      "skill": "orchestrating-large-projects",
+      "assertions": [
+        "ASSERT-RULE-ORCH-08"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-01",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-01"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-02",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-02"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-03",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-03"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-04",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-04"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-05",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-05"
+      ]
+    },
+    {
+      "id": "RULE-SAAS-06",
+      "skill": "building-saas-products",
+      "assertions": [
+        "ASSERT-RULE-SAAS-06"
+      ]
+    },
+    {
+      "id": "RULE-AI-01",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-01"
+      ]
+    },
+    {
+      "id": "RULE-AI-02",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-02"
+      ]
+    },
+    {
+      "id": "RULE-AI-03",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-03"
+      ]
+    },
+    {
+      "id": "RULE-AI-04",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-04"
+      ]
+    },
+    {
+      "id": "RULE-AI-05",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-05"
+      ]
+    },
+    {
+      "id": "RULE-AI-06",
+      "skill": "building-ai-products",
+      "assertions": [
+        "ASSERT-RULE-AI-06"
+      ]
+    },
+    {
+      "id": "RULE-MOD-01",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-01"
+      ]
+    },
+    {
+      "id": "RULE-MOD-02",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-02"
+      ]
+    },
+    {
+      "id": "RULE-MOD-03",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-03"
+      ]
+    },
+    {
+      "id": "RULE-MOD-04",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-04"
+      ]
+    },
+    {
+      "id": "RULE-MOD-05",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-05"
+      ]
+    },
+    {
+      "id": "RULE-MOD-06",
+      "skill": "modernizing-existing-projects",
+      "assertions": [
+        "ASSERT-RULE-MOD-06"
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-01",
+      "skill": "rescuing-software-projects",
+      "assertions": [
+        "ASSERT-RULE-RESCUE-01"
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-02",
+      "skill": "rescuing-software-projects",
+      "assertions": [
+        "ASSERT-RULE-RESCUE-02"
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-03",
+      "skill": "rescuing-software-projects",
+      "assertions": [
+        "ASSERT-RULE-RESCUE-03"
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-04",
+      "skill": "rescuing-software-projects",
+      "assertions": [
+        "ASSERT-RULE-RESCUE-04"
+      ]
+    },
+    {
+      "id": "RULE-RESCUE-05",
+      "skill": "rescuing-software-projects",
+      "assertions": [
+        "ASSERT-RULE-RESCUE-05"
+      ]
+    },
+    {
+      "id": "RULE-OPS-01",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-01"
+      ]
+    },
+    {
+      "id": "RULE-OPS-02",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-02"
+      ]
+    },
+    {
+      "id": "RULE-OPS-03",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-03"
+      ]
+    },
+    {
+      "id": "RULE-OPS-04",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-04"
+      ]
+    },
+    {
+      "id": "RULE-OPS-05",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-05"
+      ]
+    },
+    {
+      "id": "RULE-OPS-06",
+      "skill": "releasing-and-operating-products",
+      "assertions": [
+        "ASSERT-RULE-OPS-06"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-01",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-01"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-02",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-02"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-03",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-03"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-04",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-04"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-05",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-05"
+      ]
+    },
+    {
+      "id": "RULE-AUDIT-06",
+      "skill": "auditing-project-readiness",
+      "assertions": [
+        "ASSERT-RULE-AUDIT-06"
+      ]
+    }
+  ]
+}

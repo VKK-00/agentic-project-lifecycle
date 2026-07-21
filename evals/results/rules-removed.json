@@ -1,0 +1,9 @@
+{
+  "removed_rules": [
+    {
+      "id": "RULE-ORCH-07",
+      "reason": "Leave-one-rule-out evaluation showed zero independent contribution; the same minimum-specialist-set constraint is already present in the orchestrator overview.",
+      "behavior_preserved_by": "SKILL.md overview: activate only the smallest specialist set that matches the work."
+    }
+  ]
+}

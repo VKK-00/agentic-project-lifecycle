@@ -1,0 +1,173 @@
+{
+  "kind": "monolithic-workflow-proxy",
+  "traces": [
+    {
+      "project": "greenfield-saas",
+      "mode": "saas",
+      "actions": [
+        {
+          "name": "read lifecycle",
+          "necessary": true
+        },
+        {
+          "name": "read interviewing",
+          "necessary": true
+        },
+        {
+          "name": "read artifacts",
+          "necessary": true
+        },
+        {
+          "name": "read planning",
+          "necessary": true
+        },
+        {
+          "name": "read release",
+          "necessary": true
+        },
+        {
+          "name": "create charter",
+          "necessary": true
+        },
+        {
+          "name": "create PRD",
+          "necessary": true
+        },
+        {
+          "name": "create roadmap",
+          "necessary": true
+        },
+        {
+          "name": "ask generic discovery",
+          "necessary": false
+        }
+      ]
+    },
+    {
+      "project": "ai-assistant",
+      "mode": "ai",
+      "actions": [
+        {
+          "name": "read lifecycle",
+          "necessary": true
+        },
+        {
+          "name": "read interviewing",
+          "necessary": true
+        },
+        {
+          "name": "read artifacts",
+          "necessary": true
+        },
+        {
+          "name": "read planning",
+          "necessary": true
+        },
+        {
+          "name": "read release",
+          "necessary": true
+        },
+        {
+          "name": "create charter",
+          "necessary": true
+        },
+        {
+          "name": "create PRD",
+          "necessary": true
+        },
+        {
+          "name": "create roadmap",
+          "necessary": true
+        },
+        {
+          "name": "ask generic discovery",
+          "necessary": false
+        }
+      ]
+    },
+    {
+      "project": "brownfield-modernization",
+      "mode": "brownfield",
+      "actions": [
+        {
+          "name": "read lifecycle",
+          "necessary": true
+        },
+        {
+          "name": "read interviewing",
+          "necessary": true
+        },
+        {
+          "name": "read artifacts",
+          "necessary": true
+        },
+        {
+          "name": "read planning",
+          "necessary": true
+        },
+        {
+          "name": "read release",
+          "necessary": true
+        },
+        {
+          "name": "create charter",
+          "necessary": false
+        },
+        {
+          "name": "create PRD",
+          "necessary": false
+        },
+        {
+          "name": "create roadmap",
+          "necessary": false
+        },
+        {
+          "name": "ask generic discovery",
+          "necessary": false
+        }
+      ]
+    },
+    {
+      "project": "rescue-project",
+      "mode": "rescue",
+      "actions": [
+        {
+          "name": "read lifecycle",
+          "necessary": true
+        },
+        {
+          "name": "read interviewing",
+          "necessary": true
+        },
+        {
+          "name": "read artifacts",
+          "necessary": true
+        },
+        {
+          "name": "read planning",
+          "necessary": false
+        },
+        {
+          "name": "read release",
+          "necessary": false
+        },
+        {
+          "name": "create charter",
+          "necessary": false
+        },
+        {
+          "name": "create PRD",
+          "necessary": false
+        },
+        {
+          "name": "create roadmap",
+          "necessary": false
+        },
+        {
+          "name": "ask generic discovery",
+          "necessary": false
+        }
+      ]
+    }
+  ]
+}

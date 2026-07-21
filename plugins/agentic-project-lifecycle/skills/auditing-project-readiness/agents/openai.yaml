@@ -1,0 +1,6 @@
+interface:
+  display_name: Auditing Project Readiness
+  short_description: Use when checking whether a project, feature, migration, or release
+    is ready to advance; when requirements, te
+  default_prompt: Use $auditing-project-readiness to handle this request with explicit
+    gates and evidence.

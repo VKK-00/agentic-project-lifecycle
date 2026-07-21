@@ -1,0 +1,54 @@
+{
+  "positive": [
+    {
+      "id": "positive-greenfield-lifecycle",
+      "prompt": "Turn this B2B workflow idea into a governed product project from discovery through GA.",
+      "expected_behavior": "Route through the lifecycle orchestrator, identify missing context, and propose staged artifacts and decision gates.",
+      "expected_result": "A traceable plan covering discovery, product definition, architecture, implementation, verification, release, and operations without inventing unavailable evidence."
+    },
+    {
+      "id": "positive-saas-design",
+      "prompt": "Design the delivery plan for a multi-tenant SaaS with subscriptions, entitlements, and an activation funnel.",
+      "expected_behavior": "Use the SaaS specialist together with lifecycle governance and release planning.",
+      "expected_result": "A plan that explicitly covers tenancy, billing boundaries, entitlements, activation metrics, operational readiness, and validation gates."
+    },
+    {
+      "id": "positive-ai-product",
+      "prompt": "Plan an AI document-review product, including evaluation, safety, human review, rollout, and monitoring.",
+      "expected_behavior": "Use the AI-product specialist and distinguish model evaluation from ordinary software testing.",
+      "expected_result": "A plan with measurable quality criteria, safety controls, human escalation, staged rollout, monitoring, and rollback evidence."
+    },
+    {
+      "id": "positive-brownfield-modernization",
+      "prompt": "Modernize this legacy service without breaking existing clients and prepare a reversible cutover.",
+      "expected_behavior": "Inspect the existing system before proposing changes and route to brownfield modernization and release skills.",
+      "expected_result": "An evidence-based migration plan covering compatibility, strangler or adapter options, verification, reversible cutover, and decommission conditions."
+    },
+    {
+      "id": "positive-readiness-audit",
+      "prompt": "Audit whether this project is ready for beta and list every missing piece of release evidence.",
+      "expected_behavior": "Use the readiness auditor and treat missing evidence as missing rather than assuming success.",
+      "expected_result": "A pass, conditional-pass, or fail decision linked to traceability, tests, operational evidence, rollback readiness, and explicit gaps."
+    }
+  ],
+  "negative": [
+    {
+      "id": "negative-simple-translation",
+      "prompt": "Translate 'Good morning' into Ukrainian.",
+      "expected_behavior": "Do not invoke project-lifecycle specialist workflows for a trivial translation.",
+      "expected_result": "A direct translation without creating project artifacts or a lifecycle plan."
+    },
+    {
+      "id": "negative-single-fact",
+      "prompt": "What is the capital of France?",
+      "expected_behavior": "Do not invoke the plugin for a simple factual question unrelated to project delivery.",
+      "expected_result": "A concise factual answer without lifecycle analysis."
+    },
+    {
+      "id": "negative-tiny-local-edit",
+      "prompt": "Rename the local variable tmp to result in this five-line function.",
+      "expected_behavior": "Handle the narrow edit directly unless repository evidence reveals wider risk; do not force a full project-governance workflow.",
+      "expected_result": "A focused edit and proportionate validation, with no unnecessary roadmap, release plan, or governance artifacts."
+    }
+  ]
+}

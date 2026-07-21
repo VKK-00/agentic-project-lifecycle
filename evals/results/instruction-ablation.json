@@ -1,0 +1,434 @@
+{
+  "kind": "executed-pressure-scenario-instruction-ablation",
+  "scope": "Measures pressure-scenario rubric coverage in the complete loaded skill versus the original monolithic baseline and versus removal of each retained normative rule.",
+  "limitations": "Deterministic skill-instruction coverage eval; it does not claim isolated live-Codex sampling or universal model compliance.",
+  "case_count": 42,
+  "baseline_score": 0.2279,
+  "skill_score": 0.8931,
+  "ablated_score": 0.2785,
+  "advantage": 0.6652,
+  "all_retained_rules_positive_effect": true,
+  "failed_rules": [],
+  "rules": [
+    {
+      "rule_id": "RULE-ORCH-01",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.8333,
+      "full": 1.0,
+      "ablated": 0.5,
+      "baseline_delta": 0.1667,
+      "ablation_delta": 0.5,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-02",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.5,
+      "full": 0.75,
+      "ablated": 0.5,
+      "baseline_delta": 0.25,
+      "ablation_delta": 0.25,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-03",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.0,
+      "full": 0.5,
+      "ablated": 0.0,
+      "baseline_delta": 0.5,
+      "ablation_delta": 0.5,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-04",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.8333,
+      "full": 0.8333,
+      "ablated": 0.6667,
+      "baseline_delta": 0.0,
+      "ablation_delta": 0.1667,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-05",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.2,
+      "full": 0.6,
+      "ablated": 0.0,
+      "baseline_delta": 0.4,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-06",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.625,
+      "full": 1.0,
+      "ablated": 0.0,
+      "baseline_delta": 0.375,
+      "ablation_delta": 1.0,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-ORCH-08",
+      "skill": "orchestrating-large-projects",
+      "baseline": 0.8571,
+      "full": 0.8571,
+      "ablated": 0.7143,
+      "baseline_delta": 0.0,
+      "ablation_delta": 0.1429,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-01",
+      "skill": "building-saas-products",
+      "baseline": 0.125,
+      "full": 0.875,
+      "ablated": 0.125,
+      "baseline_delta": 0.75,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-02",
+      "skill": "building-saas-products",
+      "baseline": 0.0,
+      "full": 1.0,
+      "ablated": 0.5455,
+      "baseline_delta": 1.0,
+      "ablation_delta": 0.4545,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-03",
+      "skill": "building-saas-products",
+      "baseline": 0.0,
+      "full": 0.9231,
+      "ablated": 0.0,
+      "baseline_delta": 0.9231,
+      "ablation_delta": 0.9231,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-04",
+      "skill": "building-saas-products",
+      "baseline": 0.25,
+      "full": 1.0,
+      "ablated": 0.25,
+      "baseline_delta": 0.75,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-05",
+      "skill": "building-saas-products",
+      "baseline": 0.125,
+      "full": 1.0,
+      "ablated": 0.5,
+      "baseline_delta": 0.875,
+      "ablation_delta": 0.5,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-SAAS-06",
+      "skill": "building-saas-products",
+      "baseline": 0.25,
+      "full": 1.0,
+      "ablated": 0.375,
+      "baseline_delta": 0.75,
+      "ablation_delta": 0.625,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-01",
+      "skill": "building-ai-products",
+      "baseline": 0.0,
+      "full": 1.0,
+      "ablated": 0.2857,
+      "baseline_delta": 1.0,
+      "ablation_delta": 0.7143,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-02",
+      "skill": "building-ai-products",
+      "baseline": 0.1,
+      "full": 1.0,
+      "ablated": 0.4,
+      "baseline_delta": 0.9,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-03",
+      "skill": "building-ai-products",
+      "baseline": 0.0,
+      "full": 0.8571,
+      "ablated": 0.2857,
+      "baseline_delta": 0.8571,
+      "ablation_delta": 0.5714,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-04",
+      "skill": "building-ai-products",
+      "baseline": 0.0,
+      "full": 0.7778,
+      "ablated": 0.4444,
+      "baseline_delta": 0.7778,
+      "ablation_delta": 0.3333,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-05",
+      "skill": "building-ai-products",
+      "baseline": 0.0,
+      "full": 0.875,
+      "ablated": 0.125,
+      "baseline_delta": 0.875,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AI-06",
+      "skill": "building-ai-products",
+      "baseline": 0.125,
+      "full": 1.0,
+      "ablated": 0.25,
+      "baseline_delta": 0.875,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-01",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.125,
+      "full": 0.6,
+      "ablated": 0.0,
+      "baseline_delta": 0.475,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-02",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.0,
+      "full": 0.8333,
+      "ablated": 0.1667,
+      "baseline_delta": 0.8333,
+      "ablation_delta": 0.6667,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-03",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.0,
+      "full": 1.0,
+      "ablated": 0.2857,
+      "baseline_delta": 1.0,
+      "ablation_delta": 0.7143,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-04",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.2857,
+      "full": 0.8571,
+      "ablated": 0.2857,
+      "baseline_delta": 0.5714,
+      "ablation_delta": 0.5714,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-05",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.0,
+      "full": 0.8889,
+      "ablated": 0.0,
+      "baseline_delta": 0.8889,
+      "ablation_delta": 0.8889,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-MOD-06",
+      "skill": "modernizing-existing-projects",
+      "baseline": 0.375,
+      "full": 1.0,
+      "ablated": 0.375,
+      "baseline_delta": 0.625,
+      "ablation_delta": 0.625,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-RESCUE-01",
+      "skill": "rescuing-software-projects",
+      "baseline": 0.4286,
+      "full": 1.0,
+      "ablated": 0.4286,
+      "baseline_delta": 0.5714,
+      "ablation_delta": 0.5714,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-RESCUE-02",
+      "skill": "rescuing-software-projects",
+      "baseline": 0.2,
+      "full": 1.0,
+      "ablated": 0.4,
+      "baseline_delta": 0.8,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-RESCUE-03",
+      "skill": "rescuing-software-projects",
+      "baseline": 0.1111,
+      "full": 1.0,
+      "ablated": 0.2222,
+      "baseline_delta": 0.8889,
+      "ablation_delta": 0.7778,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-RESCUE-04",
+      "skill": "rescuing-software-projects",
+      "baseline": 0.2,
+      "full": 1.0,
+      "ablated": 0.4,
+      "baseline_delta": 0.8,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-RESCUE-05",
+      "skill": "rescuing-software-projects",
+      "baseline": 0.0,
+      "full": 0.875,
+      "ablated": 0.125,
+      "baseline_delta": 0.875,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-01",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.5,
+      "full": 1.0,
+      "ablated": 0.4,
+      "baseline_delta": 0.5,
+      "ablation_delta": 0.6,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-02",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.25,
+      "full": 1.0,
+      "ablated": 0.25,
+      "baseline_delta": 0.75,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-03",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.0,
+      "full": 0.75,
+      "ablated": 0.25,
+      "baseline_delta": 0.75,
+      "ablation_delta": 0.5,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-04",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.1429,
+      "full": 0.8571,
+      "ablated": 0.2857,
+      "baseline_delta": 0.7143,
+      "ablation_delta": 0.5714,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-05",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.2,
+      "full": 1.0,
+      "ablated": 0.1,
+      "baseline_delta": 0.8,
+      "ablation_delta": 0.9,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-OPS-06",
+      "skill": "releasing-and-operating-products",
+      "baseline": 0.3333,
+      "full": 0.8333,
+      "ablated": 0.1667,
+      "baseline_delta": 0.5,
+      "ablation_delta": 0.6667,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-01",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.3333,
+      "full": 0.8333,
+      "ablated": 0.1667,
+      "baseline_delta": 0.5,
+      "ablation_delta": 0.6667,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-02",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.5714,
+      "full": 1.0,
+      "ablated": 0.7143,
+      "baseline_delta": 0.4286,
+      "ablation_delta": 0.2857,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-03",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.25,
+      "full": 0.875,
+      "ablated": 0.125,
+      "baseline_delta": 0.625,
+      "ablation_delta": 0.75,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-04",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.1429,
+      "full": 0.8571,
+      "ablated": 0.1429,
+      "baseline_delta": 0.7143,
+      "ablation_delta": 0.7143,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-05",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.1556,
+      "full": 0.6,
+      "ablated": 0.1556,
+      "baseline_delta": 0.4444,
+      "ablation_delta": 0.4444,
+      "positive_effect": true
+    },
+    {
+      "rule_id": "RULE-AUDIT-06",
+      "skill": "auditing-project-readiness",
+      "baseline": 0.1429,
+      "full": 1.0,
+      "ablated": 0.2857,
+      "baseline_delta": 0.8571,
+      "ablation_delta": 0.7143,
+      "positive_effect": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+version: v0.1-alpha
+stage: internal-alpha
+owner: release-owner
+support_owner: support-owner
+audience:
+- internal-testers
+hypothesis: Preserve the legacy price contract through a typed adapter.
+included:
+- FEAT-001
+excluded:
+- non-critical extensions
+entry_criteria:
+- unit tests pass
+- readiness audit passes
+exit_criteria:
+- contract_pass_rate reaches 1.0
+metrics:
+- contract_pass_rate
+known_limitations:
+- fixture-scale only
+rollout:
+  method: allowlist
+  pause_thresholds:
+  - any critical failure
+rollback:
+  procedure: docs/07-release/ROLLBACK.md
