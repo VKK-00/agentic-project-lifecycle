@@ -46,6 +46,7 @@ docs/
 - `evals/` — trigger routing, pressure scenarios, fixture trials, public-repository evidence и ablation.
 - `tests/test_suite.py` — regression-проверки стабильности suite и installer behavior.
 - `scripts/build_release.py` — воспроизводимая упаковка plugin и checksums.
+- `.github/dependabot.yml` — еженедельная проверка обновлений GitHub Actions и Python-зависимостей.
 
 ## Как система работает end-to-end
 
@@ -66,6 +67,7 @@ Plugin не содержит MCP-сервера, внешней базы дан�
 ## Внешние интеграции
 
 - GitHub — исходный код, issues, Actions и releases.
+- GitHub Dependabot и secret scanning — alerts, security updates и защита push от известных типов секретов.
 - Codex Plugins — plugin manifest, marketplace discovery, installation cache и Plugins Directory.
 - OpenAI Platform — отдельная последующая submission/review процедура для публичного Plugins Directory.
 
@@ -124,3 +126,4 @@ python scripts/build_release.py --version 1.0.0-rc.1 --output dist
 ## Журнал существенных изменений анализа
 
 - 2026-07-21 — создан начальный анализ перед публикацией greenfield GitHub-репозитория и упаковкой suite 1.0.0 как Codex skills-only plugin.
+- 2026-07-21 — CI actions закреплены на immutable SHA актуальных релизов; добавлены Dependabot, secret scanning, push protection и private vulnerability reporting.

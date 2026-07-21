@@ -6,6 +6,7 @@
 - Added repository marketplace metadata, visual assets, public installation documentation, privacy and support policies, and directory-review test cases.
 - Moved the canonical skill source under the plugin while keeping evaluation and release tooling outside the distribution.
 - Added publication validation, deterministic release archives, checksums, and GitHub Actions CI.
+- Pinned CI actions to immutable release commits and enabled weekly dependency update checks.
 
 ## 1.0.0
 
