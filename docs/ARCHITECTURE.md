@@ -45,5 +45,3 @@ Traceability is directional: goals and requirements lead to design and implement
 - Instruction ablation removes one retained rule at a time to measure independent contribution.
 - The promotion gate consolidates the thresholds into a single release decision.
 - Publication validation separately checks the plugin manifest, marketplace, public documents, submission cases, repository hygiene, and obvious secret patterns.
-
-See `PROJECT_ANALYSIS.ru.md` for the complete implementation analysis and maintenance notes.
