@@ -211,6 +211,7 @@ def check_public_files(errors: list[str]) -> None:
     required = [
         "README.md",
         "README.ru.md",
+        "README.uk.md",
         "CHANGELOG.md",
         "CONTRIBUTING.md",
         "SECURITY.md",
@@ -224,6 +225,14 @@ def check_public_files(errors: list[str]) -> None:
         path = ROOT / relative
         if not path.is_file() or path.stat().st_size == 0:
             errors.append(f"required public file is missing or empty: {relative}")
+    russian_markdown = sorted(
+        path.relative_to(ROOT).as_posix() for path in ROOT.rglob("*.ru.md") if path.is_file()
+    )
+    if russian_markdown != ["README.ru.md"]:
+        errors.append(
+            "README.ru.md must be the only Russian-localized Markdown file: "
+            f"found={russian_markdown}"
+        )
     for relative in ["LICENSE", "plugins/agentic-project-lifecycle/LICENSE"]:
         path = ROOT / relative
         if path.is_file() and path.stat().st_size < 10_000:

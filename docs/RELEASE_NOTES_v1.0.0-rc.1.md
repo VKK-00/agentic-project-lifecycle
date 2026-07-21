@@ -6,7 +6,7 @@ This release candidate is the first public Codex plugin package of the stable La
 
 - One lifecycle orchestrator and six specialist skills.
 - Codex plugin manifest and repository marketplace metadata.
-- English and Russian installation and usage documentation.
+- English, Russian, and Ukrainian installation and usage documentation.
 - Deterministic ZIP and `tar.gz` release archives with SHA-256 checksums.
 - Held-out routing evaluation, executable fixture trials, pinned read-only public-repository trials, trace analysis, and instruction ablation evidence.
 - CI validation for the suite, plugin publication contract, tests, and release build.

@@ -8,7 +8,7 @@ Agentic Project Lifecycle is a Codex skills-only plugin for governing large soft
 
 > Release status: `1.0.0-rc.1` packages the already stable `1.0.0` skill suite as a distributable Codex plugin. It is a release candidate so the public installation path can be validated before the first generally available plugin release.
 
-[Русская версия](README.ru.md)
+[English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
 ## What it helps with
 

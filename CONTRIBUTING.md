@@ -30,7 +30,7 @@ When changing a skill:
 - update relevant trigger cases and executable project trials;
 - preserve the distinction between observed evidence and inferred conclusions;
 - run the promotion gate and explain any metric change;
-- update `PROJECT_ANALYSIS.ru.md` when architecture, data flow, configuration, or important commands change.
+- update `docs/ARCHITECTURE.md` when public architecture, data flow, configuration, or important commands change.
 
 ## Pull requests
 

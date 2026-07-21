@@ -46,6 +46,18 @@ def test_directory_submission_case_counts_are_exact() -> None:
     assert len(ids) == len(set(ids))
 
 
+def test_localized_readmes_are_public_and_internal_analysis_is_absent() -> None:
+    readmes = [ROOT / "README.md", ROOT / "README.ru.md", ROOT / "README.uk.md"]
+    for readme in readmes:
+        text = readme.read_text(encoding="utf-8")
+        assert "README.ru.md" in text
+        assert "README.uk.md" in text
+    russian_markdown = sorted(
+        path.relative_to(ROOT).as_posix() for path in ROOT.rglob("*.ru.md")
+    )
+    assert russian_markdown == ["README.ru.md"]
+
+
 def test_publication_validator_passes() -> None:
     result = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "validate_publication.py")],

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added Ukrainian installation and usage documentation alongside the English and Russian versions.
+- Removed the internal Russian project-analysis document from the public repository.
+
 ## 1.0.0-rc.1 - 2026-07-21
 
 - Packaged the stable `1.0.0` skill suite as the `agentic-project-lifecycle` Codex plugin.
