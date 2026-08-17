@@ -17,5 +17,6 @@ constraints:
   production_actions: forbidden
   paths: repository-relative-without-traversal
   verification_commands: subset-of-permissions.allowed_commands
-  high_risk_approval: required
-  rollback_for_write: required
+  high_risk_approval: explicit-source-bound
+  elevated_permission_approval: explicit-source-bound
+  rollback_for_write: task-source-commit-bound

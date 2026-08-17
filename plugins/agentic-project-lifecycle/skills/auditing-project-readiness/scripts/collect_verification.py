@@ -239,6 +239,10 @@ def main() -> int:
         if not root.is_dir():
             raise ValueError(f"repository root does not exist: {root}")
         output_relative = _relative_to_root(root, args.output, "output")
+        if output_relative == Path("."):
+            raise ValueError(
+                "output must be a dedicated directory below the repository root"
+            )
         config = _load_config(args.config)
         commit = _head_commit(root)
         dirty = sorted(
@@ -268,6 +272,16 @@ def main() -> int:
             )
             checks.append(check)
             evidence_records.append(record)
+            post_command_dirty = sorted(
+                path
+                for path in _changed_paths(root)
+                if not _is_under(path, output_relative)
+            )
+            if post_command_dirty:
+                raise ValueError(
+                    "verification command changed non-output repository paths: "
+                    + ", ".join(post_command_dirty)
+                )
 
         report = {
             "schema_version": SCHEMA_VERSION,
