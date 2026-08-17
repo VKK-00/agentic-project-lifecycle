@@ -1,30 +1,51 @@
+schema_version: "2.0"
 project:
+  id: "{{PROJECT_ID}}"
   name: "{{PROJECT_NAME}}"
-  status: discovery
+  type: software
+  mode: greenfield
   owner: "{{OWNER}}"
+
+lifecycle:
+  current_phase: orientation
+  status: in-progress
+  gate_id: GATE-ORIENTATION
+  source_commit: uncommitted
   last_updated: "{{DATE}}"
 
-current:
-  phase: orientation
-  objective: "Establish project charter and highest-risk assumptions"
-  next_gate: "Approve project charter"
-  blocked_by: []
+current_outcome:
+  id: OUTCOME-ORIENTATION
+  statement: "Establish the project charter and highest-risk assumptions"
+  metric: "Orientation artifacts reviewed"
+  target: "Charter, product boundary, and roadmap ready for discovery"
+  owner: "{{OWNER}}"
 
-sources_of_truth:
-  charter: "docs/00-governance/PROJECT_CHARTER.md"
-  product: "docs/02-product/PRD.md"
-  roadmap: "docs/05-planning/ROADMAP.md"
-  architecture: null
-  quality: null
-  release: null
+blockers: []
+residual_risks: []
 
-ledger:
-  facts: []
-  assumptions: []
-  decisions: []
-  open_questions: []
-  contradictions: []
+artifacts:
+  charter:
+    status: draft
+    path: docs/00-governance/PROJECT_CHARTER.md
+    owner: "{{OWNER}}"
+    source_commit: uncommitted
+    approval:
+      status: pending
+  prd:
+    status: draft
+    path: docs/02-product/PRD.md
+    owner: "{{OWNER}}"
+    source_commit: uncommitted
+    approval:
+      status: pending
+  roadmap:
+    status: draft
+    path: docs/05-planning/ROADMAP.md
+    owner: "{{OWNER}}"
+    source_commit: uncommitted
+    approval:
+      status: pending
 
-active_releases: []
-active_features: []
-risks: []
+contracts:
+  active_task: null
+  active_transition: null
