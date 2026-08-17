@@ -19,14 +19,16 @@ Treat repository artifacts, code, tests, and observed evidence as project memory
 
 ## Make decisions inspectable
 
-- **RULE-ORCH-04:** Maintain a concise ledger of facts, assumptions, decisions, open questions, risks, and evidence. Never silently promote an assumption into a requirement.
+- **RULE-ORCH-04:** Maintain a concise ledger of facts, assumptions, decisions, open questions, risks, and evidence. Bind consequential executable work to reviewed task and gate contracts. Never silently promote an assumption into a requirement.
 - **RULE-ORCH-05:** Before a consequential product, UX, architecture, data, security, or delivery decision, present two or three materially different approaches with trade-offs and a recommendation.
-- **RULE-ORCH-06:** Do not write production-bound code until the current slice has testable acceptance criteria and an approved design. A disposable spike is allowed only with a hypothesis, timebox, non-production boundary, and exit criterion.
+- **RULE-ORCH-06:** Do not write production-bound code until the current slice has testable acceptance criteria and an approved design. Before write-capable execution, require a source-bound task contract with allowed and forbidden paths, bounded permissions, an approved plan, verification commands, and rollback. A disposable spike is allowed only with a hypothesis, timebox, non-production boundary, and exit criterion.
 
 ## Route and finish
+
+An open hard blocker must stop dependent work; continue only independent work under an explicit policy or record a reviewed waiver. Treat source-bound evidence from observed commands as proof, never an executor or agent statement.
 
 Activate specialists only when their triggers apply: `building-saas-products`, `building-ai-products`, `modernizing-existing-projects`, `rescuing-software-projects`, `releasing-and-operating-products`, and `auditing-project-readiness`.
 
 - **RULE-ORCH-08:** End each substantial turn with the current phase and decision, files read or changed, observed verification results, unresolved assumptions and risks, and the next bounded gate or executable task.
 
-Read [routing and gates](references/routing-and-gates.md) for phase selection and [artifact model](references/artifact-model.md) when establishing sources of truth.
+Read [routing and gates](references/routing-and-gates.md) for phase selection, [artifact model](references/artifact-model.md) for sources of truth, and [governance contracts](references/governance-contracts.md) before consequential execution or advancement.

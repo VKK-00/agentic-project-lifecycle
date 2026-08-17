@@ -1,0 +1,26 @@
+schema_version: "1.0"
+version: "{{RELEASE_VERSION}}"
+name: "{{RELEASE_NAME}}"
+stage: planned
+owner: "{{OWNER}}"
+support_owner: "{{OWNER}}"
+audience:
+  - defined release cohort
+hypothesis: "The included scope delivers the approved release outcome"
+included:
+  - approved release scope
+excluded:
+  - production promotion without a separate approval
+entry_criteria:
+  - source-bound verification evidence passes
+  - rollback and observability artifacts are ready
+exit_criteria:
+  - release metrics satisfy their approved thresholds
+metrics:
+  - critical journey success
+known_limitations:
+  - scaffold defaults require owner review before approval
+rollout:
+  - begin with the smallest approved cohort
+rollback:
+  - restore the previous known-good release when an abort trigger fires

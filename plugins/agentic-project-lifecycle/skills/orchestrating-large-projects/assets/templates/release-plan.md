@@ -3,7 +3,8 @@ id: "REL-{{RELEASE_VERSION}}"
 status: draft
 owner: "{{OWNER}}"
 last_reviewed: "{{DATE}}"
-source_of_truth: true
+source_of_truth: false
+canonical: "{{RELEASE_VERSION}}.yaml"
 related: []
 ---
 

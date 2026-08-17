@@ -1,0 +1,47 @@
+schema_version: "1.0"
+task:
+  id: "{{TASK_ID}}"
+  objective: "Specify and approve {{FEATURE_NAME}} before implementation"
+  kind: feature
+  source_commit: "{{SOURCE_COMMIT}}"
+  risk_level: low
+  current_gate: specification
+
+scope:
+  allowed_paths:
+    - "specs/{{FEATURE_ID}}-{{FEATURE_SLUG}}/**"
+  forbidden_paths:
+    - ".github/**"
+    - "migrations/**"
+    - "secrets/**"
+  max_changed_files: 8
+  max_diff_lines: 500
+  max_new_dependencies: 0
+
+permissions:
+  filesystem: read-only
+  network: disabled
+  allowed_commands: []
+  forbidden_command_patterns:
+    - "git push"
+    - "rm -rf"
+  dependency_changes: forbidden
+  destructive_actions: forbidden
+  production_actions: forbidden
+
+plan:
+  id: "{{PLAN_ID}}"
+  status: draft
+  steps: []
+
+approval:
+  required: false
+  status: not-required
+
+rollback: {}
+
+completion:
+  required_evidence:
+    - approved_specification
+    - approved_execution_plan
+    - observed_verification

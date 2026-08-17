@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from datetime import date
@@ -113,14 +114,33 @@ def common_values(owner: str) -> dict[str, str]:
     return {"OWNER": owner.strip() or "unassigned", "DATE": date.today().isoformat()}
 
 
+def git_head(root: Path) -> str:
+    """Return the full current commit for source-bound contracts."""
+    result = subprocess.run(
+        ["git", "rev-parse", "--verify", "HEAD"],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    commit = result.stdout.strip()
+    if result.returncode != 0 or not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise ScaffoldError(
+            "This artifact requires a Git repository with an initial commit"
+        )
+    return commit
+
+
 def build_init(args: argparse.Namespace) -> list[PlannedWrite]:
     root = args.root.resolve()
+    project_name = args.project_name.strip()
+    if not project_name:
+        raise ScaffoldError("--project-name cannot be empty")
     values = {
         **common_values(args.owner),
-        "PROJECT_NAME": args.project_name.strip(),
+        "PROJECT_NAME": project_name,
+        "PROJECT_ID": f"PROJECT-{slugify(project_name).upper()}",
     }
-    if not values["PROJECT_NAME"]:
-        raise ScaffoldError("--project-name cannot be empty")
     return [
         PlannedWrite("project-state.yaml", root / "docs/project-state.yaml", values),
         PlannedWrite(
@@ -145,10 +165,14 @@ def build_feature(args: argparse.Namespace) -> list[PlannedWrite]:
         "FEATURE_ID": feature_id,
         "FEATURE_NAME": feature_name,
         "FEATURE_SLUG": feature_slug,
+        "SOURCE_COMMIT": git_head(root),
+        "TASK_ID": f"TASK-{feature_id}",
+        "PLAN_ID": f"PLAN-{feature_id}",
     }
     folder = root / "specs" / f"{feature_id}-{feature_slug}"
     return [
         PlannedWrite("feature-spec.md", folder / "spec.md", values),
+        PlannedWrite("task-contract.yaml", folder / "task-contract.yaml", values),
         PlannedWrite("design-spec.md", folder / "design.md", values),
         PlannedWrite("implementation-plan.md", folder / "plan.md", values),
         PlannedWrite("tasks.md", folder / "tasks.md", values),
@@ -168,8 +192,11 @@ def build_release(args: argparse.Namespace) -> list[PlannedWrite]:
         "RELEASE_VERSION": version,
         "RELEASE_NAME": release_name,
     }
-    destination = root / "docs/05-planning/releases" / f"{version}.md"
-    return [PlannedWrite("release-plan.md", destination, values)]
+    folder = root / "docs/05-planning/releases"
+    return [
+        PlannedWrite("release-plan.yaml", folder / f"{version}.yaml", values),
+        PlannedWrite("release-plan.md", folder / f"{version}.md", values),
+    ]
 
 
 def build_adr(args: argparse.Namespace) -> list[PlannedWrite]:

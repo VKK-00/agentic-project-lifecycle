@@ -1,0 +1,21 @@
+kind: task-contract
+version: "1.0"
+validator: skills/auditing-project-readiness/scripts/validate_task_contract.py
+required_sections:
+  - task
+  - scope
+  - permissions
+  - plan
+  - approval
+  - rollback
+  - completion
+source_binding:
+  field: task.source_commit
+  format: full-lowercase-git-sha
+constraints:
+  writable_plan_status: approved
+  production_actions: forbidden
+  paths: repository-relative-without-traversal
+  verification_commands: subset-of-permissions.allowed_commands
+  high_risk_approval: required
+  rollback_for_write: required

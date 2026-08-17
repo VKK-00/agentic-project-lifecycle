@@ -1,0 +1,25 @@
+kind: evidence-record
+version: "1.0"
+validator: scripts/validate_evidence.py
+required_sections:
+  - evidence
+  - environment
+  - command
+  - artifacts
+  - result
+  - freshness
+source_binding:
+  field: evidence.source_commit
+  format: full-lowercase-git-sha
+observed_fields:
+  - command.argv
+  - command.exit_code
+  - command.duration_ms
+  - artifacts.path
+  - artifacts.sha256
+  - artifacts.size_bytes
+constraints:
+  pass_exit_code: 0
+  timestamps: timezone-aware-iso-8601
+  artifact_digest: lowercase-sha256
+  expiration: enforced

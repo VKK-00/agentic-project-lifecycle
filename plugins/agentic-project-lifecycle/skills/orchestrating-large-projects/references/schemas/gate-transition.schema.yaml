@@ -1,0 +1,22 @@
+kind: gate-transition
+version: "1.0"
+validator: skills/auditing-project-readiness/scripts/validate_gate_transition.py
+required_sections:
+  - transition
+  - outcome
+  - conditions
+  - evidence
+  - approvals
+  - blockers
+  - residual_risks
+  - policy
+  - decision
+source_binding:
+  field: transition.source_commit
+  format: full-lowercase-git-sha
+constraints:
+  hard_blocker: stop-dependent-work
+  open_soft_blocker: owned-residual-risk-required
+  phase_skip: policy-and-lifecycle-owner-approval-required
+  approved_conditions: satisfied-or-explicitly-waived
+  evidence_commit: must-match-transition
