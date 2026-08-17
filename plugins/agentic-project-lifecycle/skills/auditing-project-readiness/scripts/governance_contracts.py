@@ -296,10 +296,23 @@ def validate_task_contract(data: object) -> list[str]:
         errors,
     )
     consequential = risk_level in {"high", "critical"}
-    requires_approval = bool(approval_required or consequential)
+    elevated_permissions = (
+        network == "allowlist"
+        or dependency_changes in {"approval-required", "allowed"}
+        or destructive_actions == "approval-required"
+    )
+    requires_approval = bool(
+        approval_required or consequential or elevated_permissions
+    )
+    if consequential and approval_required is not True:
+        errors.append("high-risk task requires approval.required true")
+    if elevated_permissions and approval_required is not True:
+        errors.append("elevated permissions require approval.required true")
     if consequential and approval_status != "approved":
         errors.append("high-risk task requires approved human authorization")
-    if requires_approval and approval_status == "approved":
+    if elevated_permissions and approval_status != "approved":
+        errors.append("elevated permissions require approved authorization")
+    if approval_status == "approved":
         _text(approval, "approved_by", "approval", errors)
         _timestamp(approval.get("approved_at"), "approval.approved_at", errors)
         approval_commit = _commit(
@@ -307,22 +320,24 @@ def validate_task_contract(data: object) -> list[str]:
         )
         if task_commit and approval_commit and task_commit != approval_commit:
             errors.append("approval is not bound to the task source commit")
-    elif requires_approval and approval_status != "approved" and not consequential:
+    elif requires_approval:
         errors.append("required approval is not approved")
-    if (
-        network == "allowlist"
-        or dependency_changes in {"approval-required", "allowed"}
-        or destructive_actions == "approval-required"
-    ) and approval_status != "approved":
-        errors.append("elevated permissions require approved authorization")
 
     rollback = _mapping(root.get("rollback"), "rollback", errors)
     if filesystem == "workspace-write-scoped":
-        _commit(
+        checkpoint_commit = _commit(
             rollback.get("checkpoint_commit"),
             "rollback.checkpoint_commit",
             errors,
         )
+        if (
+            task_commit
+            and checkpoint_commit
+            and task_commit != checkpoint_commit
+        ):
+            errors.append(
+                "rollback checkpoint is not bound to the task source commit"
+            )
         _enum(
             rollback,
             "strategy",
@@ -688,6 +703,11 @@ def validate_evidence_record(
         errors.append("reference time must include a timezone")
     else:
         reference_now = reference_now.astimezone(timezone.utc)
+        if (
+            collected_at is not None
+            and collected_at > reference_now + timedelta(minutes=5)
+        ):
+            errors.append("evidence.collected_at is in the future")
         if expires_at is not None and reference_now >= expires_at:
             errors.append("evidence is expired")
         if collected_at is not None and max_age is not None:

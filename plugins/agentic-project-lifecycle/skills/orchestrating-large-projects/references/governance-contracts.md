@@ -17,7 +17,7 @@ An open hard blocker must **stop dependent work**. Independent work may continue
 
 ## Task contract
 
-The task contract is the execution boundary. It records the objective, source commit, risk, allowed and forbidden paths, change budgets, command and network policy, approved plan, human approval, rollback checkpoint, and required evidence. A writable task requires an approved plan. Production actions remain forbidden in this plugin. The enforcing command is:
+The task contract is the execution boundary. It records the objective, source commit, risk, allowed and forbidden paths, change budgets, command and network policy, approved plan, human approval, rollback checkpoint, and required evidence. A writable task requires an approved plan and a rollback checkpoint bound to the task source commit. High-risk work and elevated network, dependency, or destructive permissions require explicit source-bound human approval. Production actions remain forbidden in this plugin. The enforcing command is:
 
 ```text
 python skills/auditing-project-readiness/scripts/validate_task_contract.py <task-contract.yaml>
