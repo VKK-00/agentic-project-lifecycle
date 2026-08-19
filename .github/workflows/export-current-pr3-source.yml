@@ -1,0 +1,30 @@
+name: Export current PR3 source
+
+on:
+  push:
+    branches:
+      - agent/export-multiplatform-20260819
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Stage repository snapshot
+        run: |
+          mkdir -p "$RUNNER_TEMP/source"
+          rsync -a --delete --exclude='.git/' --exclude='.worktrees/' ./ "$RUNNER_TEMP/source/"
+      - name: Upload repository snapshot
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: apl-pr3-current-source-${{ github.sha }}
+          path: ${{ runner.temp }}/source/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
