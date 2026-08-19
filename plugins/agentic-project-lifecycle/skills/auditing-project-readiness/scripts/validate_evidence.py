@@ -2,32 +2,28 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 
-import yaml
-
+from governance.cli import run_yaml_validator
 from governance_contracts import validate_evidence_record
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate source-bound evidence")
-    parser.add_argument("path", type=Path)
+def _extra(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--expected-commit")
-    args = parser.parse_args()
-    try:
-        data = yaml.safe_load(args.path.read_text(encoding="utf-8"))
-        errors = validate_evidence_record(
-            data, expected_commit=args.expected_commit
-        )
-    except Exception as exc:
-        errors = [f"cannot parse YAML: {exc}"]
-    if errors:
-        print("EVIDENCE: FAIL")
-        for error in errors:
-            print(f"- {error}")
-        return 1
-    print("EVIDENCE: PASS")
-    return 0
+
+
+def _invoke(validator, data, args: argparse.Namespace) -> list[str]:
+    return validator(data, expected_commit=args.expected_commit)
+
+
+def main() -> int:
+    return run_yaml_validator(
+        title="EVIDENCE",
+        namespace="evidence",
+        description="Validate source-bound evidence",
+        validator=validate_evidence_record,
+        extra_arguments=_extra,
+        invoke=_invoke,
+    )
 
 
 if __name__ == "__main__":

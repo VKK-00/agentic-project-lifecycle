@@ -24,8 +24,10 @@ def static_checks() -> list[str]:
     expected_version = str(suite.get("version", ""))
     link_pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
     manifest = yaml.safe_load((ROOT / "suite.yaml").read_text(encoding="utf-8"))
-    if manifest.get("version") != "1.0.0" or manifest.get("status") != "stable":
-        errors.append("suite.yaml must declare version 1.0.0 and status stable")
+    expected_status = str(manifest.get("status", ""))
+    expected_maturity = "stable" if expected_status == "stable" else "release-candidate"
+    if not expected_version or expected_status not in {"stable", "release-candidate"}:
+        errors.append("suite.yaml must declare a version and supported status")
     expected = set(manifest.get("skills", []))
     actual = {path.name for path in SKILLS_ROOT.iterdir() if path.is_dir()}
     if expected != actual:
@@ -55,8 +57,8 @@ def static_checks() -> list[str]:
         skill_version = str(metadata.get("metadata", {}).get("version", ""))
         if skill_version != expected_version:
             errors.append(f"{path}: version {skill_version} does not match suite {expected_version}")
-        if expected_version == "1.0.0" and metadata.get("metadata", {}).get("maturity") != "stable":
-            errors.append(f"{path}: stable suite requires maturity: stable")
+        if metadata.get("metadata", {}).get("maturity") != expected_maturity:
+            errors.append(f"{path}: maturity does not match suite status {expected_status}")
         description = str(metadata.get("description", ""))
         if not description.startswith("Use when "):
             errors.append(f"{path}: description must start with 'Use when '")
@@ -64,8 +66,6 @@ def static_checks() -> list[str]:
             errors.append(f"{path}: description exceeds 1024 characters")
         if len(body.split()) >= 500:
             errors.append(f"{path}: body exceeds 500 words")
-        if metadata.get("metadata", {}).get("version") != "1.0.0" or metadata.get("metadata", {}).get("maturity") != "stable":
-            errors.append(f"{path}: metadata must be 1.0.0 stable")
         for rule_id in re.findall(r"RULE-[A-Z]+-\d{2}", body):
             if rule_id in declared_rules:
                 errors.append(f"duplicate normative rule id: {rule_id}")

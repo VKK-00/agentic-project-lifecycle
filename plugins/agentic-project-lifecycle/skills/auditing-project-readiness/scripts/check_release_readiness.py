@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -14,9 +15,11 @@ from typing import Any
 import yaml
 
 try:
+    from governance.runner_support import safe_environment
     from governance_contracts import validate_evidence_record
 except ModuleNotFoundError:  # pragma: no cover - import path for module loaders
     sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from governance.runner_support import safe_environment
     from governance_contracts import validate_evidence_record
 
 REQUIRED_RELEASE_FIELDS = (
@@ -44,11 +47,12 @@ REQUIRED_FILES = (
 
 def _git(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["git", *args],
+        ["git", "-c", "core.hooksPath=/dev/null", *args],
         cwd=root,
         text=True,
         capture_output=True,
         check=False,
+        env=safe_environment(),
     )
 
 
@@ -66,6 +70,7 @@ def _changed_paths(root: Path, errors: list[str]) -> list[str]:
     for args in (
         ("diff", "--name-only", "HEAD", "--"),
         ("ls-files", "--others", "--exclude-standard"),
+        ("ls-files", "--others", "--ignored", "--exclude-standard"),
     ):
         result = _git(root, *args)
         if result.returncode != 0:
@@ -136,6 +141,30 @@ def _validate_artifacts(
             )
 
 
+def _validate_latest_mirror(
+    root: Path, record: dict[str, Any], index: int, errors: list[str]
+) -> None:
+    artifacts = record.get("artifacts")
+    if not isinstance(artifacts, list):
+        return
+    for artifact_index, raw in enumerate(artifacts):
+        if not isinstance(raw, dict):
+            continue
+        relative = raw.get("path")
+        if not isinstance(relative, str) or not relative:
+            continue
+        filename = Path(relative).name
+        mirror = root / "evidence" / "latest" / filename
+        if not mirror.is_file():
+            errors.append(f"evidence[{index}]: latest artifact mirror is missing: {filename}")
+            continue
+        payload = mirror.read_bytes()
+        if hashlib.sha256(payload).hexdigest() != raw.get("sha256"):
+            errors.append(f"evidence[{index}]: artifact digest mismatch: evidence/latest/{filename}")
+        if len(payload) != raw.get("size_bytes"):
+            errors.append(f"evidence[{index}]: artifact size mismatch: evidence/latest/{filename}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Check release readiness")
     parser.add_argument("--root", type=Path, required=True)
@@ -146,10 +175,16 @@ def main() -> int:
     errors: list[str] = []
     head = _head_commit(root, errors)
 
-    release_path = root / f"docs/05-planning/releases/{args.release}.yaml"
-    if not release_path.is_file():
-        errors.append(f"missing release plan: {release_path.relative_to(root)}")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", args.release):
+        errors.append("release identifier is invalid")
         release_data: dict[str, Any] = {}
+        release_path = root / "docs/05-planning/releases/invalid.yaml"
+    else:
+        release_path = root / f"docs/05-planning/releases/{args.release}.yaml"
+    if not release_path.is_file():
+        if "release identifier is invalid" not in errors:
+            errors.append(f"missing release plan: {release_path.relative_to(root)}")
+        release_data = {}
     else:
         release_data = _read_yaml(release_path, "release plan", errors)
     for field in REQUIRED_RELEASE_FIELDS:
@@ -194,6 +229,7 @@ def main() -> int:
                     errors.append(f"evidence[{index}]: {error}")
                 if isinstance(record, dict):
                     _validate_artifacts(root, record, index, errors)
+                    _validate_latest_mirror(root, record, index, errors)
 
     dirty = _changed_paths(root, errors)
     if dirty:

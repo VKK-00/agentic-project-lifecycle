@@ -1,0 +1,95 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/run-manifest/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "event_log": {
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "size_bytes": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "report": {
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "size_bytes": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "run": {
+      "properties": {
+        "branch": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "source_tree": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_commit",
+        "source_tree",
+        "branch"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run",
+    "event_log",
+    "metadata"
+  ],
+  "title": "RunManifest v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

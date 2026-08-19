@@ -39,9 +39,8 @@
             "-v"
           ],
           "exit_code": 0,
-          "duration_ms": 328,
           "stdout": "",
-          "stderr": "test_free_blocks_second_member (test_saas.Tests.test_free_blocks_second_member) ... ok\ntest_pro_allows_member (test_saas.Tests.test_pro_allows_member) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "stderr": "test_free_blocks_second_member (test_saas.Tests.test_free_blocks_second_member) ... ok\ntest_pro_allows_member (test_saas.Tests.test_pro_allows_member) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in <elapsed>s\n\nOK\n",
           "necessary": true
         },
         {
@@ -51,7 +50,6 @@
             "scripts/smoke.py"
           ],
           "exit_code": 0,
-          "duration_ms": 265,
           "stdout": "saas smoke: pass\n",
           "stderr": "",
           "necessary": true
@@ -102,9 +100,8 @@
             "-v"
           ],
           "exit_code": 0,
-          "duration_ms": 266,
           "stdout": "",
-          "stderr": "test_explicit_only (test_extractor.Tests.test_explicit_only) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "stderr": "test_explicit_only (test_extractor.Tests.test_explicit_only) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in <elapsed>s\n\nOK\n",
           "necessary": true
         },
         {
@@ -114,7 +111,6 @@
             "scripts/smoke.py"
           ],
           "exit_code": 0,
-          "duration_ms": 203,
           "stdout": "ai smoke: pass\n",
           "stderr": "",
           "necessary": true
@@ -165,9 +161,8 @@
             "-v"
           ],
           "exit_code": 0,
-          "duration_ms": 234,
           "stdout": "",
-          "stderr": "test_contract (test_adapter.Tests.test_contract) ... ok\ntest_negative (test_adapter.Tests.test_negative) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "stderr": "test_contract (test_adapter.Tests.test_contract) ... ok\ntest_negative (test_adapter.Tests.test_negative) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in <elapsed>s\n\nOK\n",
           "necessary": true
         },
         {
@@ -177,7 +172,6 @@
             "scripts/smoke.py"
           ],
           "exit_code": 0,
-          "duration_ms": 203,
           "stdout": "brownfield smoke: pass\n",
           "stderr": "",
           "necessary": true
@@ -228,9 +222,8 @@
             "-v"
           ],
           "exit_code": 0,
-          "duration_ms": 250,
           "stdout": "",
-          "stderr": "test_order (test_queue_service.Tests.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "stderr": "test_order (test_queue_service.Tests.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in <elapsed>s\n\nOK\n",
           "necessary": true
         },
         {
@@ -240,7 +233,6 @@
             "scripts/smoke.py"
           ],
           "exit_code": 0,
-          "duration_ms": 203,
           "stdout": "rescue smoke: pass\n",
           "stderr": "",
           "necessary": true

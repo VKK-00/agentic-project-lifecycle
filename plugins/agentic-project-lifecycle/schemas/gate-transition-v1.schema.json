@@ -1,0 +1,395 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/gate-transition/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "approvals": {
+      "items": {
+        "properties": {
+          "actor": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "assurance": {
+            "enum": [
+              "declared",
+              "git-signed",
+              "github-review"
+            ]
+          },
+          "decided_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "pending",
+              "approved",
+              "rejected",
+              "expired"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_commit": {
+            "pattern": "^[0-9a-f]{40}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "required",
+          "decision"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "blockers": {
+      "items": {
+        "properties": {
+          "category": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "hard",
+              "soft",
+              "informational"
+            ]
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "resolved",
+              "waived"
+            ]
+          },
+          "waiver": {
+            "properties": {
+              "approved_by": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "expires_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_commit": {
+                "pattern": "^[0-9a-f]{40}$",
+                "type": "string"
+              }
+            },
+            "required": [],
+            "type": "object",
+            "unevaluatedProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "class",
+          "status",
+          "owner",
+          "reason"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "conditions": {
+      "items": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "satisfied",
+              "unsatisfied",
+              "waived"
+            ]
+          },
+          "waiver": {
+            "properties": {
+              "approved_by": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "expires_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_commit": {
+                "pattern": "^[0-9a-f]{40}$",
+                "type": "string"
+              }
+            },
+            "required": [],
+            "type": "object",
+            "unevaluatedProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "evidence"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "decision": {
+      "properties": {
+        "decided_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "decided_by": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected"
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "evidence": {
+      "items": {
+        "properties": {
+          "claim_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_commit": {
+            "pattern": "^[0-9a-f]{40}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail",
+              "stale"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "status",
+          "source_commit"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "outcome": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "owner": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "statement",
+        "owner"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "policy": {
+      "properties": {
+        "allow_phase_skip": {
+          "type": "boolean"
+        },
+        "hard_blocker_behavior": {
+          "enum": [
+            "stop-dependent-work",
+            "continue-independent-only"
+          ]
+        },
+        "profile_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "profile_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "hard_blocker_behavior",
+        "allow_phase_skip"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "residual_risks": {
+      "items": {
+        "properties": {
+          "blocker_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "review_by": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "statement": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "blocker_id",
+          "owner",
+          "statement",
+          "review_by"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "transition": {
+      "properties": {
+        "from": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "project_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "requested_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "to": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "advance",
+            "reopen",
+            "hold",
+            "waive"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "project_id",
+        "type",
+        "from",
+        "to",
+        "requested_at",
+        "source_commit"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "transition",
+    "outcome",
+    "conditions",
+    "evidence",
+    "approvals",
+    "blockers",
+    "residual_risks",
+    "policy",
+    "decision"
+  ],
+  "title": "GateTransition v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

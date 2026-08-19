@@ -21,7 +21,7 @@ Run the same checks used by CI:
 python validate.py
 python -m pytest -q
 python scripts/validate_publication.py
-python scripts/build_release.py --version 1.0.0-rc.1 --output dist
+python scripts/build_release.py --version 1.1.0-rc.1 --output dist
 ```
 
 When changing a skill:

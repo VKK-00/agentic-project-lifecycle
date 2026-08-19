@@ -1,0 +1,202 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/evidence/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "artifacts": {
+      "items": {
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "size_bytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "command": {
+      "properties": {
+        "argv": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "duration_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "argv",
+        "exit_code",
+        "duration_ms"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "environment": {
+      "properties": {
+        "platform": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "python_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "tool_versions": {
+          "additionalProperties": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "working_directory": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "working_directory",
+        "platform",
+        "python_version",
+        "tool_versions"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "evidence": {
+      "properties": {
+        "claim_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "collected_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "collector": {
+          "properties": {
+            "name": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "tool",
+                "human",
+                "agent-with-tool"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "name"
+          ],
+          "type": "object",
+          "unevaluatedProperties": false
+        },
+        "expires_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "claim_id",
+        "source_commit",
+        "collected_at",
+        "expires_at",
+        "collector"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "freshness": {
+      "properties": {
+        "max_age_hours": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "policy": {
+          "enum": [
+            "commit-bound",
+            "time-bound",
+            "manual-review"
+          ]
+        }
+      },
+      "required": [
+        "policy",
+        "max_age_hours"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "result": {
+      "properties": {
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "error"
+          ]
+        },
+        "summary": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "summary"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "evidence",
+    "environment",
+    "command",
+    "artifacts",
+    "result",
+    "freshness"
+  ],
+  "title": "EvidenceRecord v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

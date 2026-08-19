@@ -1,0 +1,26 @@
+schema_version: '1.0'
+policy:
+  id: project-rescue
+  version: '1.0'
+  name: Project Rescue Lifecycle
+  minimum_approval_assurance: declared
+  protected_paths:
+  - .github/**
+  - migrations/**
+  - auth/**
+  - secrets/**
+  - infra/**
+gates:
+- id: implementation-to-release
+  from: implementation
+  to: release
+  required_claims:
+  - recovery_baseline
+  - critical_path_checks
+  - diff_conformance
+  required_roles:
+  - engineering-owner
+  non_waivable_blocker_classes:
+  - security-critical
+  - data-integrity
+  allow_phase_skip: false

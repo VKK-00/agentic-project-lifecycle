@@ -1,0 +1,9 @@
+# Default ownership
+* @VKK-00
+
+/plugins/agentic-project-lifecycle/skills/ @VKK-00
+/plugins/agentic-project-lifecycle/schemas/ @VKK-00
+/scripts/ @VKK-00
+/.github/workflows/ @VKK-00
+/action.yml @VKK-00
+/SECURITY.md @VKK-00

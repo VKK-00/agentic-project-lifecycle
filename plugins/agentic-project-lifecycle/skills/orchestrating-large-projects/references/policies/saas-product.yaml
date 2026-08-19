@@ -1,0 +1,27 @@
+schema_version: '1.0'
+policy:
+  id: saas-product
+  version: '1.0'
+  name: SaaS Product Lifecycle
+  minimum_approval_assurance: declared
+  protected_paths:
+  - .github/**
+  - migrations/**
+  - auth/**
+  - secrets/**
+  - infra/**
+gates:
+- id: implementation-to-release
+  from: implementation
+  to: release
+  required_claims:
+  - unit_tests
+  - integration_tests
+  - tenant_isolation
+  - diff_conformance
+  required_roles:
+  - engineering-owner
+  non_waivable_blocker_classes:
+  - security-critical
+  - data-integrity
+  allow_phase_skip: false

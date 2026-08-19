@@ -1,0 +1,9 @@
+_schema: task-contract-v1.schema.json
+schema_version: "1.0"
+task: {id: T1, objective: Bounded task, kind: audit, source_commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, risk_level: low, current_gate: orientation}
+scope: {allowed_paths: [docs/**], forbidden_paths: [], max_changed_files: 2, max_diff_lines: 50, max_new_dependencies: 0}
+permissions: {filesystem: read-only, network: disabled, allowed_commands: [], forbidden_command_patterns: [], dependency_changes: forbidden, destructive_actions: forbidden, production_actions: forbidden}
+plan: {id: P1, status: draft, steps: []}
+approval: {required: false, status: not-required}
+rollback: {}
+completion: {required_evidence: [audit_report]}

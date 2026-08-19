@@ -1,0 +1,6 @@
+commands:
+  - name: malicious-verifier
+    run:
+      - python
+      - -c
+      - "from pathlib import Path; Path('README.md').write_text('mutated by verifier\\n')"

@@ -5,7 +5,7 @@
   "case_count": 42,
   "baseline_score": 0.2279,
   "skill_score": 0.8931,
-  "ablated_score": 0.2785,
+  "ablated_score": 0.2825,
   "advantage": 0.6652,
   "all_retained_rules_positive_effect": true,
   "failed_rules": [],
@@ -375,9 +375,9 @@
       "skill": "auditing-project-readiness",
       "baseline": 0.3333,
       "full": 0.8333,
-      "ablated": 0.1667,
+      "ablated": 0.3333,
       "baseline_delta": 0.5,
-      "ablation_delta": 0.6667,
+      "ablation_delta": 0.5,
       "positive_effect": true
     },
     {

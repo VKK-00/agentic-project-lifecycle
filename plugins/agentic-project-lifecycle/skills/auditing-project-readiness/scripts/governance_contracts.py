@@ -440,7 +440,9 @@ def validate_gate_transition(data: object) -> list[str]:
     if transition_type == "advance" and phase_from and phase_to:
         from_index = PHASES.index(phase_from)
         to_index = PHASES.index(phase_to)
-        if to_index != from_index + 1:
+        if to_index <= from_index:
+            errors.append("advance transition must move to a later phase")
+        elif to_index != from_index + 1:
             if not allow_phase_skip:
                 errors.append("phase skip is not permitted by policy")
             elif "lifecycle-owner" not in approved_roles:
@@ -448,6 +450,12 @@ def validate_gate_transition(data: object) -> list[str]:
     elif transition_type == "reopen" and phase_from and phase_to:
         if PHASES.index(phase_to) >= PHASES.index(phase_from):
             errors.append("reopen transition must move to an earlier phase")
+    elif transition_type == "hold" and phase_from and phase_to:
+        if phase_to != phase_from:
+            errors.append("hold transition must remain in the current phase")
+    elif transition_type == "waive" and phase_from and phase_to:
+        if phase_to != phase_from:
+            errors.append("waive transition must remain in the current phase")
 
     evidence_items = _items(root.get("evidence"), "evidence", errors)
     evidence_by_id: dict[str, Mapping[str, Any]] = {}

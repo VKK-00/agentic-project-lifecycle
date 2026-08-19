@@ -6,7 +6,7 @@
 
 Agentic Project Lifecycle is a Codex skills-only plugin for governing large software projects from discovery through production operations. It combines one lifecycle orchestrator with six focused specialist skills, executable project fixtures, held-out routing tests, and a measurable release-readiness gate.
 
-> Release status: `1.0.0-rc.1` packages the already stable `1.0.0` skill suite as a distributable Codex plugin. It is a release candidate so the public installation path can be validated before the first generally available plugin release.
+> Release status: `1.1.0-rc.1` packages the already release-candidate `1.1.0-rc.1` skill suite as a distributable Codex plugin. It is a release candidate so the public installation path can be validated before the first generally available plugin release.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -36,7 +36,7 @@ Agentic Project Lifecycle is a Codex skills-only plugin for governing large soft
 Add this repository as a plugin marketplace, then install the plugin:
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.0.0-rc.1
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
@@ -82,7 +82,7 @@ python scripts/validate_publication.py
 Build deterministic release archives:
 
 ```bash
-python scripts/build_release.py --version 1.0.0-rc.1 --output dist
+python scripts/build_release.py --version 1.1.0-rc.1 --output dist
 ```
 
 The build creates ZIP and `tar.gz` plugin archives, validation evidence, the promotion-gate result, and SHA-256 checksums.

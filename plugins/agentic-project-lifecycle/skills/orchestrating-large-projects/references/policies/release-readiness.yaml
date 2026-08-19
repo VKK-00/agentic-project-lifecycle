@@ -1,0 +1,28 @@
+schema_version: '1.0'
+policy:
+  id: release-readiness
+  version: '1.0'
+  name: Release Readiness
+  minimum_approval_assurance: git-signed
+  protected_paths:
+  - .github/**
+  - migrations/**
+  - auth/**
+  - secrets/**
+  - infra/**
+gates:
+- id: implementation-to-release
+  from: implementation
+  to: release
+  required_claims:
+  - unit_tests
+  - integration_tests
+  - critical_journey
+  - rollback_validation
+  - diff_conformance
+  required_roles:
+  - engineering-owner
+  non_waivable_blocker_classes:
+  - security-critical
+  - data-integrity
+  allow_phase_skip: false

@@ -1,8 +1,11 @@
 {
-  "target": "1.0.0",
-  "promotable": true,
-  "recommended_version": "1.0.0",
-  "blocking_conditions": [],
+  "target": "1.1.0",
+  "candidate_version": "1.1.0-rc.1",
+  "promotable": false,
+  "recommended_version": "1.1.0-rc.1",
+  "blocking_conditions": [
+    "live multi-run behavioral evaluation is missing"
+  ],
   "evidence": {
     "pressure_eval": {
       "baseline_score": 0.2279,
@@ -33,10 +36,8 @@
         "saas"
       ]
     },
-    "traces": {
-      "suite_median_unnecessary_actions": 0.0,
-      "baseline_proxy_median_unnecessary_actions": 2.5,
-      "real_project_systematic_overwork": false
+    "live_behavioral": {
+      "status": "missing"
     },
     "removed_rules": [
       {

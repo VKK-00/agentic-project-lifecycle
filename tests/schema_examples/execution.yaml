@@ -1,0 +1,5 @@
+_schema: execution-result-v1.schema.json
+schema_version: "1.0"
+execution: {id: EX1, task_id: T1, base_commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, head_commit: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, task_contract_sha256: "0000000000000000000000000000000000000000000000000000000000000000", status: candidate}
+change_set: {changed_files: [], total_changed_files: 0, total_diff_lines: 0, new_dependencies: []}
+result: {status: pending, violations: []}

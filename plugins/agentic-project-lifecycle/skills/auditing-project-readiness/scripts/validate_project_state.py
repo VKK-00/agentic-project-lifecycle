@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import sys
+import subprocess
 
 import yaml
 
@@ -109,7 +110,20 @@ def main() -> int:
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--root", type=Path)
     args = parser.parse_args()
-    errors = validate(args.path, strict=args.strict, root=args.root)
+    root = args.root
+    if args.strict and root is None:
+        result = subprocess.run(
+            ["git", "-C", str(args.path.resolve().parent), "rev-parse", "--show-toplevel"],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            print("PROJECT STATE: FAIL")
+            print("- strict mode requires a resolvable Git repository root")
+            return 1
+        root = Path(result.stdout.strip()).resolve()
+    errors = validate(args.path, strict=args.strict, root=root)
     if errors:
         print("PROJECT STATE: FAIL")
         for error in errors:

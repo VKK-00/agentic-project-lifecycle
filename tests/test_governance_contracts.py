@@ -978,3 +978,24 @@ def test_auditor_requires_contract_validation_and_observed_evidence() -> None:
         "agent statement",
     ):
         assert phrase in combined
+
+
+def test_release_readiness_rejects_ignored_non_evidence_changes(tmp_path: Path) -> None:
+    root = tmp_path / "release"
+    create_release_fixture(root)
+    (root / ".gitignore").write_text("ignored/\n", encoding="utf-8")
+    git(root, "add", ".gitignore")
+    git(root, "commit", "-qm", "ignore scratch directory")
+    # Re-collect evidence for the new HEAD before introducing the ignored change.
+    config = root / "verification.yaml"
+    output = root / "evidence" / "latest"
+    result = run_collector(root, config, output)
+    assert result.returncode == 0, result.stdout + result.stderr
+    target = root / "ignored" / "escape.txt"
+    target.parent.mkdir()
+    target.write_text("escaped\n", encoding="utf-8")
+
+    result = run_release_checker(root)
+
+    assert result.returncode == 1
+    assert "repository has non-evidence changes after verification" in result.stdout

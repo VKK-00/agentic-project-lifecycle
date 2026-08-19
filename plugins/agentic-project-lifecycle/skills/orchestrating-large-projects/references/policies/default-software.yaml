@@ -1,0 +1,26 @@
+schema_version: '1.0'
+policy:
+  id: default-software
+  version: '1.0'
+  name: Default Software Lifecycle
+  minimum_approval_assurance: declared
+  protected_paths:
+  - .github/**
+  - migrations/**
+  - auth/**
+  - secrets/**
+  - infra/**
+gates:
+- id: implementation-to-release
+  from: implementation
+  to: release
+  required_claims:
+  - unit_tests
+  - integration_tests
+  - diff_conformance
+  required_roles:
+  - engineering-owner
+  non_waivable_blocker_classes:
+  - security-critical
+  - data-integrity
+  allow_phase_skip: false
