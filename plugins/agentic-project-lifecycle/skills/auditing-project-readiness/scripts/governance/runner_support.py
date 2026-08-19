@@ -15,6 +15,7 @@ import stat
 import shlex
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 from typing import Any
@@ -54,6 +55,17 @@ _SHELL_INTERPRETERS = {
 
 class RunnerSupportError(RuntimeError):
     """Fail-closed helper failure."""
+
+
+@dataclass(frozen=True)
+class IsolationCapability:
+    """Observed availability of one OS-enforced network isolation mechanism."""
+
+    available: bool
+    platform: str
+    mechanism: str | None
+    executable: str | None
+    reason: str
 
 
 @dataclass(frozen=True)
@@ -426,6 +438,143 @@ def safe_environment(extra: Mapping[str, str] | None = None) -> dict[str, str]:
 
 
 
+def probe_network_isolation() -> IsolationCapability:
+    """Execute the intended sandbox primitive and report observed capability.
+
+    Merely finding ``unshare`` or ``sandbox-exec`` is insufficient: hosted CI
+    and hardened kernels can expose the executable while denying namespace
+    creation. The probe therefore exercises the exact production primitive.
+    """
+
+    system = platform.system()
+    if system == "Linux":
+        executable = shutil.which("unshare")
+        if not executable:
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="linux-unshare",
+                executable=None,
+                reason="unshare executable was not found",
+            )
+        namespace_path = Path("/proc/self/ns/net")
+        if not namespace_path.exists():
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="linux-unshare",
+                executable=executable,
+                reason="/proc/self/ns/net is unavailable",
+            )
+        try:
+            parent_namespace = os.readlink(namespace_path)
+            result = subprocess.run(
+                [
+                    executable,
+                    "--net",
+                    "--pid",
+                    "--fork",
+                    "--kill-child=SIGKILL",
+                    "--map-root-user",
+                    "--",
+                    sys.executable,
+                    "-c",
+                    "import os; print(os.readlink('/proc/self/ns/net'))",
+                ],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=5,
+                env=safe_environment({"APL_NETWORK_ISOLATION_PROBE": "1"}),
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="linux-unshare",
+                executable=executable,
+                reason=f"network namespace probe failed: {exc}",
+            )
+        child_namespace = result.stdout.strip().splitlines()[-1] if result.stdout.strip() else ""
+        if result.returncode != 0:
+            detail = result.stderr.strip() or result.stdout.strip() or f"exit code {result.returncode}"
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="linux-unshare",
+                executable=executable,
+                reason=f"network namespace probe failed: {detail}",
+            )
+        if not child_namespace or child_namespace == parent_namespace:
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="linux-unshare",
+                executable=executable,
+                reason="unshare did not create a distinct network namespace",
+            )
+        return IsolationCapability(
+            available=True,
+            platform=system,
+            mechanism="linux-unshare",
+            executable=executable,
+            reason="network namespace changed",
+        )
+
+    if system == "Darwin":
+        executable = shutil.which("sandbox-exec")
+        if not executable:
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="macos-sandbox-exec",
+                executable=None,
+                reason="sandbox-exec executable was not found",
+            )
+        profile = "(version 1)(allow default)(deny network*)"
+        try:
+            result = subprocess.run(
+                [executable, "-p", profile, "/usr/bin/true"],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=5,
+                env=safe_environment(),
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="macos-sandbox-exec",
+                executable=executable,
+                reason=f"sandbox probe failed: {exc}",
+            )
+        if result.returncode != 0:
+            detail = result.stderr.strip() or result.stdout.strip() or f"exit code {result.returncode}"
+            return IsolationCapability(
+                available=False,
+                platform=system,
+                mechanism="macos-sandbox-exec",
+                executable=executable,
+                reason=f"sandbox probe failed: {detail}",
+            )
+        return IsolationCapability(
+            available=True,
+            platform=system,
+            mechanism="macos-sandbox-exec",
+            executable=executable,
+            reason="sandbox profile executed successfully",
+        )
+
+    return IsolationCapability(
+        available=False,
+        platform=system,
+        mechanism=None,
+        executable=None,
+        reason=f"no supported network isolator for {system or 'unknown platform'}",
+    )
+
+
 def pid_isolation_command(argv: list[str]) -> list[str]:
     """Keep Linux descendants inside a disposable PID namespace."""
 
@@ -448,29 +597,29 @@ def pid_isolation_command(argv: list[str]) -> list[str]:
 
 
 def network_isolation_command(argv: list[str]) -> list[str]:
-    """Wrap a verification command in a fail-closed OS network sandbox."""
+    """Wrap a verification command in an observed, fail-closed OS sandbox."""
 
-    system = platform.system()
-    if system == "Linux":
-        executable = shutil.which("unshare")
-        if executable:
-            return [
-                executable,
-                "--net",
-                "--pid",
-                "--fork",
-                "--kill-child=SIGKILL",
-                "--map-root-user",
-                "--",
-                *argv,
-            ]
-    elif system == "Darwin":
-        executable = shutil.which("sandbox-exec")
-        if executable:
-            profile = "(version 1)(allow default)(deny network*)"
-            return [executable, "-p", profile, *argv]
+    capability = probe_network_isolation()
+    if not capability.available or not capability.executable:
+        raise RunnerSupportError(
+            "network-isolated verification is unavailable: " + capability.reason
+        )
+    if capability.mechanism == "linux-unshare":
+        return [
+            capability.executable,
+            "--net",
+            "--pid",
+            "--fork",
+            "--kill-child=SIGKILL",
+            "--map-root-user",
+            "--",
+            *argv,
+        ]
+    if capability.mechanism == "macos-sandbox-exec":
+        profile = "(version 1)(allow default)(deny network*)"
+        return [capability.executable, "-p", profile, *argv]
     raise RunnerSupportError(
-        "network-isolated verification is unavailable on this platform"
+        "network-isolated verification is unavailable: unsupported capability"
     )
 
 

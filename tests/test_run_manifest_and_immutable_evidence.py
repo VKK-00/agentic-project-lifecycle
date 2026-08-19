@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "plugins/agentic-project-lifecycle/skills/auditing-project-readiness/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
+from governance.runner_support import probe_network_isolation  # noqa: E402
+
 from governance.run_manifest import (  # noqa: E402
     append_event,
     build_run_manifest,
@@ -199,9 +201,10 @@ def test_collector_does_not_inherit_secret_environment_variables(tmp_path: Path)
 
 
 def test_collector_uses_a_distinct_linux_network_namespace(tmp_path: Path) -> None:
-    if sys.platform != "linux" or not Path("/proc/self/ns/net").exists():
+    capability = probe_network_isolation()
+    if not capability.available or os.environ.get("APL_TEST_FAKE_UNSHARE") == "1":
         import pytest
-        pytest.skip("Linux network namespaces are required")
+        pytest.skip(f"real Linux network namespace unavailable: {capability.reason}")
     root = tmp_path / "repo"
     _, config = init_repo(root)
     parent_namespace = os.readlink("/proc/self/ns/net")

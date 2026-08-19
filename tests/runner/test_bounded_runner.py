@@ -20,8 +20,10 @@ from governance.runner import (  # noqa: E402
     run_bounded_task,
 )
 from governance.runner_support import (  # noqa: E402
+    IsolationCapability,
     RunnerSupportError,
     network_isolation_command,
+    probe_network_isolation,
     run_verification_commands,
 )
 
@@ -434,13 +436,58 @@ def test_network_isolation_command_fails_closed_when_platform_has_no_supported_i
         network_isolation_command(["python", "-m", "pytest", "-q"])
 
 
-def test_network_isolation_command_uses_linux_network_namespace(
+def test_network_isolation_probe_reports_permission_denied(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr("governance.runner_support.platform.system", lambda: "Linux")
     monkeypatch.setattr(
         "governance.runner_support.shutil.which",
         lambda name: "/usr/bin/unshare" if name == "unshare" else None,
+    )
+    monkeypatch.setattr(
+        "governance.runner_support.subprocess.run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(
+            args=args[0], returncode=1, stdout="", stderr="unshare: Operation not permitted"
+        ),
+    )
+
+    capability = probe_network_isolation()
+
+    assert capability.available is False
+    assert capability.mechanism == "linux-unshare"
+    assert "Operation not permitted" in capability.reason
+
+
+def test_network_isolation_command_fails_closed_when_probe_is_unavailable(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        "governance.runner_support.probe_network_isolation",
+        lambda: IsolationCapability(
+            available=False,
+            platform="Linux",
+            mechanism="linux-unshare",
+            executable="/usr/bin/unshare",
+            reason="unshare: Operation not permitted",
+        ),
+    )
+
+    with pytest.raises(RunnerSupportError, match="Operation not permitted"):
+        network_isolation_command(["python", "-m", "pytest", "-q"])
+
+
+def test_network_isolation_command_uses_probed_linux_network_namespace(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        "governance.runner_support.probe_network_isolation",
+        lambda: IsolationCapability(
+            available=True,
+            platform="Linux",
+            mechanism="linux-unshare",
+            executable="/usr/bin/unshare",
+            reason="network namespace changed",
+        ),
     )
     assert network_isolation_command(["python", "-m", "pytest", "-q"]) == [
         "/usr/bin/unshare",
