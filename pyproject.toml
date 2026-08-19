@@ -4,16 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agentic-project-lifecycle"
-version = "1.0.0rc1"
+version = "1.1.0rc1"
 description = "Validation and release tooling for the Agentic Project Lifecycle skills-only plugin"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
 authors = [{ name = "VKK-00" }]
-dependencies = ["PyYAML>=6.0,<7"]
+dependencies = ["PyYAML>=6.0,<7", "jsonschema>=4.23,<5"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10"]
+dev = ["pytest>=8,<10", "hypothesis>=6.160,<7", "mutmut>=3.6,<4"]
 
 [tool.setuptools]
 py-modules = []
@@ -21,3 +21,33 @@ py-modules = []
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--strict-markers"
+
+[tool.mutmut]
+source_paths = [
+  "plugins/agentic-project-lifecycle/skills/auditing-project-readiness/scripts/governance/",
+  "plugins/agentic-project-lifecycle/skills/auditing-project-readiness/scripts/governance_contracts.py",
+]
+pytest_add_cli_args_test_selection = [
+  "tests/test_governance_contracts.py",
+  "tests/test_governance_contract_hardening.py",
+  "tests/test_fail_closed_invariants.py",
+  "tests/test_governance_diagnostics.py",
+  "tests/test_execution_result.py",
+  "tests/test_policy_and_audit.py",
+  "tests/test_run_manifest_and_immutable_evidence.py",
+  "tests/test_governance_properties.py",
+  "tests/runner/test_bounded_runner.py",
+  "tests/runner/test_codex_backend.py",
+]
+mutate_only_covered_lines = true
+max_stack_depth = 8
+also_copy = [
+  "plugins/agentic-project-lifecycle/schemas/",
+  "plugins/agentic-project-lifecycle/skills/orchestrating-large-projects/references/policies/",
+  "pyproject.toml",
+]
+cache_invalidation_files = [
+  "plugins/agentic-project-lifecycle/schemas/*.json",
+  "plugins/agentic-project-lifecycle/skills/orchestrating-large-projects/references/policies/*.yaml",
+]
+on_dependency_change = "rerun"

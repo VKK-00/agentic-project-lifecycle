@@ -1,0 +1,9 @@
+_schema: project-state-v2.schema.json
+schema_version: "2.0"
+project: {id: PR1, name: Project, type: software, mode: greenfield, owner: alice}
+lifecycle: {current_phase: orientation, status: in-progress, gate_id: G1, source_commit: uncommitted}
+current_outcome: {id: O1, statement: Orient, metric: artifacts, target: reviewed, owner: alice}
+blockers: []
+residual_risks: []
+artifacts: {}
+contracts: {active_task: null, active_transition: null}

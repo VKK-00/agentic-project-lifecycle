@@ -1,0 +1,180 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/execution/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "change_set": {
+      "properties": {
+        "changed_files": {
+          "items": {
+            "properties": {
+              "additions": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "deletions": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "new_mode": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "old_mode": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "path": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "plan_steps": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "previous_path": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "added",
+                  "deleted",
+                  "modified",
+                  "renamed",
+                  "copied",
+                  "type-changed",
+                  "unmerged",
+                  "unknown"
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "status",
+              "additions",
+              "deletions",
+              "old_mode",
+              "new_mode",
+              "plan_steps"
+            ],
+            "type": "object",
+            "unevaluatedProperties": false
+          },
+          "type": "array"
+        },
+        "new_dependencies": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "total_changed_files": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total_diff_lines": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "changed_files",
+        "total_changed_files",
+        "total_diff_lines",
+        "new_dependencies"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "execution": {
+      "properties": {
+        "base_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "head_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "policy_profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "candidate",
+            "pass",
+            "fail",
+            "rolled-back"
+          ]
+        },
+        "task_contract_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "task_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "task_id",
+        "base_commit",
+        "head_commit",
+        "task_contract_sha256",
+        "status"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "result": {
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "pass",
+            "fail"
+          ]
+        },
+        "violations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "violations"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "execution",
+    "change_set",
+    "result"
+  ],
+  "title": "ExecutionResult v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,11 @@
+_schema: gate-transition-v1.schema.json
+schema_version: "1.0"
+transition: {id: G1, project_id: PR1, type: hold, from: planning, to: planning, requested_at: "2026-08-18T00:00:00Z", source_commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+outcome: {id: O1, statement: Hold planning, owner: alice}
+conditions: []
+evidence: []
+approvals: []
+blockers: []
+residual_risks: []
+policy: {hard_blocker_behavior: stop-dependent-work, allow_phase_skip: false}
+decision: {status: pending}

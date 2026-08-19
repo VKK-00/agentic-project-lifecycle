@@ -1,0 +1,281 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/project-state/v2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "artifacts": {
+      "additionalProperties": {
+        "properties": {
+          "approval": {
+            "properties": {
+              "approved_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "approved_by": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_commit": {
+                "oneOf": [
+                  {
+                    "pattern": "^[0-9a-f]{40}$",
+                    "type": "string"
+                  },
+                  {
+                    "const": "uncommitted"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "approved",
+                  "rejected",
+                  "not-required"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ],
+            "type": "object",
+            "unevaluatedProperties": false
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_commit": {
+            "oneOf": [
+              {
+                "pattern": "^[0-9a-f]{40}$",
+                "type": "string"
+              },
+              {
+                "const": "uncommitted"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "verified",
+              "complete"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "path",
+          "owner",
+          "source_commit",
+          "approval"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "object"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "contracts": {
+      "properties": {
+        "active_evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "active_execution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "active_task": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "active_transition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "active_task",
+        "active_transition"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "current_outcome": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "metric": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "owner": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "target": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "statement",
+        "metric",
+        "target",
+        "owner"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "lifecycle": {
+      "properties": {
+        "current_phase": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "gate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "last_updated": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_commit": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            {
+              "const": "uncommitted"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "blocked",
+            "in-progress",
+            "review",
+            "ready",
+            "complete"
+          ]
+        }
+      },
+      "required": [
+        "current_phase",
+        "status",
+        "gate_id",
+        "source_commit"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "policy": {
+      "properties": {
+        "profile_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "profile_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "profile_id",
+        "profile_version",
+        "profile_sha256"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "project": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "mode": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "owner": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "mode",
+        "owner"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "residual_risks": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "2.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project",
+    "lifecycle",
+    "current_outcome",
+    "blockers",
+    "residual_risks",
+    "artifacts",
+    "contracts"
+  ],
+  "title": "ProjectState v2",
+  "type": "object",
+  "unevaluatedProperties": false
+}

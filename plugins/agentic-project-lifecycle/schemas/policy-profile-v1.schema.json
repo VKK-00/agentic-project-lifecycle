@@ -1,0 +1,111 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/policy/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "gates": {
+      "items": {
+        "properties": {
+          "allow_phase_skip": {
+            "type": "boolean"
+          },
+          "from": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "non_waivable_blocker_classes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "required_claims": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "required_roles": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "to": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "from",
+          "to",
+          "required_claims",
+          "required_roles",
+          "non_waivable_blocker_classes",
+          "allow_phase_skip"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "policy": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "minimum_approval_assurance": {
+          "enum": [
+            "declared",
+            "git-signed",
+            "github-review"
+          ]
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "protected_paths": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "minimum_approval_assurance",
+        "protected_paths"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy",
+    "gates"
+  ],
+  "title": "PolicyProfile v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

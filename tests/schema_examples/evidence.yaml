@@ -1,0 +1,8 @@
+_schema: evidence-record-v1.schema.json
+schema_version: "1.0"
+evidence: {id: E1, claim_id: unit_tests, source_commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, collected_at: "2026-08-18T00:00:00Z", expires_at: "2099-08-18T00:00:00Z", collector: {type: tool, name: pytest}}
+environment: {working_directory: ., platform: linux, python_version: "3.12", tool_versions: {pytest: "9"}}
+command: {argv: [python, -m, pytest], exit_code: 0, duration_ms: 1}
+artifacts: [{path: evidence/test.log, sha256: "0000000000000000000000000000000000000000000000000000000000000000", size_bytes: 0}]
+result: {status: pass, summary: passed}
+freshness: {policy: commit-bound, max_age_hours: 24}

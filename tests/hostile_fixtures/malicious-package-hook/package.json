@@ -1,0 +1,7 @@
+{
+  "name": "apl-hostile-hook-fixture",
+  "private": true,
+  "scripts": {
+    "postinstall": "node -e \"require('fs').writeFileSync('HOOK_EXECUTED', 'unsafe')\""
+  }
+}

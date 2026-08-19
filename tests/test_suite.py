@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -12,17 +13,17 @@ PLUGIN_ROOT = ROOT / "plugins" / "agentic-project-lifecycle"
 SKILLS_ROOT = PLUGIN_ROOT / "skills"
 
 
-def test_stable_version_is_consistent() -> None:
+def test_release_candidate_version_is_consistent() -> None:
     suite = yaml.safe_load((ROOT / "suite.yaml").read_text(encoding="utf-8"))
-    assert suite["version"] == "1.0.0"
-    assert suite["status"] == "stable"
+    assert suite["version"] == "1.1.0-rc.1"
+    assert suite["status"] == "release-candidate"
     assert len(suite["skills"]) == 7
     for name in suite["skills"]:
         text = (SKILLS_ROOT / name / "SKILL.md").read_text(encoding="utf-8")
         _, raw, _ = text.split("---", 2)
         metadata = yaml.safe_load(raw)
-        assert metadata["metadata"]["version"] == "1.0.0"
-        assert metadata["metadata"]["maturity"] == "stable"
+        assert metadata["metadata"]["version"] == "1.1.0-rc.1"
+        assert metadata["metadata"]["maturity"] == "release-candidate"
 
 
 def test_all_retained_rules_have_positive_effect() -> None:
@@ -62,9 +63,9 @@ def test_redundant_rule_was_removed() -> None:
 
 def test_promotion_gate_passes() -> None:
     report = json.loads((ROOT / "evals/results/promotion-gate.json").read_text(encoding="utf-8"))
-    assert report["promotable"] is True
-    assert report["recommended_version"] == "1.0.0"
-    assert report["blocking_conditions"] == []
+    assert report["promotable"] is False
+    assert report["recommended_version"] == "1.1.0-rc.1"
+    assert "live multi-run behavioral evaluation is missing" in report["blocking_conditions"]
 
 
 def test_installer_smoke(tmp_path: Path) -> None:
@@ -87,3 +88,17 @@ def test_installer_smoke(tmp_path: Path) -> None:
     )
     assert second.returncode != 0
     assert "refusing to overwrite" in second.stderr + second.stdout
+
+
+def test_published_fixture_traces_are_deterministic() -> None:
+    report = json.loads(
+        (ROOT / "evals/results/execution-traces-suite.json").read_text(encoding="utf-8")
+    )
+    for trace in report["traces"]:
+        for action in trace["actions"]:
+            assert "duration_ms" not in action
+            for stream in ("stdout", "stderr"):
+                value = action.get(stream, "")
+                assert not re.search(
+                    r"Ran \d+ tests? in \d+(?:\.\d+)?s", value
+                )

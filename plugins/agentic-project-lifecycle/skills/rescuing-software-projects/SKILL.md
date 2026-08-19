@@ -4,8 +4,8 @@ description: Use when a software project is late, repeatedly missing commitments
 license: Apache-2.0
 metadata:
   author: VKK-00
-  version: 1.0.0
-  maturity: stable
+  version: 1.1.0-rc.1
+  maturity: release-candidate
 ---
 # Rescuing Software Projects
 

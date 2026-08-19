@@ -1,0 +1,92 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/audit/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "audit": {
+      "properties": {
+        "policy_profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "project_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "repository_head": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "repository_head",
+        "policy_profile_sha256"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "issues": {
+      "items": {
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "remediation": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rule": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "path",
+          "rule",
+          "message",
+          "remediation"
+        ],
+        "type": "object",
+        "unevaluatedProperties": false
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "audit",
+    "issues"
+  ],
+  "title": "ProjectAudit v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

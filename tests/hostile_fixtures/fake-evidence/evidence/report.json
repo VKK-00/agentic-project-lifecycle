@@ -1,0 +1,5 @@
+{
+  "status": "pass",
+  "claim": "all checks passed",
+  "note": "Adversarial fixture: no command, commit, environment, or artifact evidence exists."
+}

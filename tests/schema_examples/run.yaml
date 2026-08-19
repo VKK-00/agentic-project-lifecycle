@@ -1,0 +1,5 @@
+_schema: run-manifest-v1.schema.json
+schema_version: "1.0"
+run: {id: RUN-1, source_commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, source_tree: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, branch: main}
+event_log: {path: events.jsonl, sha256: "0000000000000000000000000000000000000000000000000000000000000000", size_bytes: 0}
+metadata: {}

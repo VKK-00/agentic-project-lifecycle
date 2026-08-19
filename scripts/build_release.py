@@ -15,6 +15,8 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+from build_sbom import write_sbom
+
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_NAME = "agentic-project-lifecycle"
 PLUGIN_ROOT = ROOT / "plugins" / PLUGIN_NAME
@@ -151,12 +153,15 @@ def main() -> int:
     build_zip(zip_path, files, epoch)
     build_tar(tar_path, files, epoch)
 
+    sbom_path = args.output / f"{PLUGIN_NAME}-{args.version}.spdx.json"
+    write_sbom(sbom_path, args.version, epoch=epoch)
+
     promotion_path = args.output / "promotion-gate.json"
     shutil.copyfile(RESULTS / "promotion-gate.json", promotion_path)
     validation_path = args.output / "validation-report.md"
     build_validation_report(validation_path, args.version)
 
-    artifacts = [zip_path, tar_path, promotion_path, validation_path]
+    artifacts = [zip_path, tar_path, sbom_path, promotion_path, validation_path]
     checksum_path = args.output / "SHA256SUMS"
     checksum_path.write_text(
         "".join(f"{sha256(path)}  {path.name}\n" for path in artifacts),

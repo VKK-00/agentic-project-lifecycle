@@ -1,0 +1,349 @@
+{
+  "$id": "https://github.com/VKK-00/agentic-project-lifecycle/schemas/task-contract/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "approval": {
+      "properties": {
+        "approved_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "approved_by": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "assurance": {
+          "enum": [
+            "declared",
+            "git-signed",
+            "github-review"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "not-required",
+            "pending",
+            "approved",
+            "rejected",
+            "expired"
+          ]
+        }
+      },
+      "required": [
+        "required",
+        "status"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "completion": {
+      "properties": {
+        "required_evidence": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "required_evidence"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "permissions": {
+      "properties": {
+        "allowed_commands": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "allowed_domains": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "dependency_changes": {
+          "enum": [
+            "forbidden",
+            "approval-required",
+            "allowed"
+          ]
+        },
+        "destructive_actions": {
+          "enum": [
+            "forbidden",
+            "approval-required"
+          ]
+        },
+        "filesystem": {
+          "enum": [
+            "read-only",
+            "workspace-write-scoped"
+          ]
+        },
+        "forbidden_command_patterns": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "network": {
+          "enum": [
+            "disabled",
+            "allowlist"
+          ]
+        },
+        "production_actions": {
+          "const": "forbidden"
+        }
+      },
+      "required": [
+        "filesystem",
+        "network",
+        "allowed_commands",
+        "forbidden_command_patterns",
+        "dependency_changes",
+        "destructive_actions",
+        "production_actions"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "plan": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "superseded"
+          ]
+        },
+        "steps": {
+          "items": {
+            "properties": {
+              "action": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "addresses": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "expected_changes": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "verification_commands": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              }
+            },
+            "required": [
+              "id",
+              "addresses",
+              "action",
+              "expected_changes",
+              "verification_commands"
+            ],
+            "type": "object",
+            "unevaluatedProperties": false
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "steps"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "policy": {
+      "properties": {
+        "profile_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "profile_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "profile_id",
+        "profile_version",
+        "profile_sha256"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "rollback": {
+      "properties": {
+        "checkpoint_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "preserve_failed_diff": {
+          "type": "boolean"
+        },
+        "strategy": {
+          "enum": [
+            "reset-to-checkpoint",
+            "revert-commit",
+            "restore-from-patch"
+          ]
+        }
+      },
+      "required": [],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "scope": {
+      "properties": {
+        "allow_deletions": {
+          "type": "boolean"
+        },
+        "allow_mode_changes": {
+          "type": "boolean"
+        },
+        "allowed_paths": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "forbidden_paths": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "max_changed_files": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_diff_lines": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_new_dependencies": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "allowed_paths",
+        "forbidden_paths",
+        "max_changed_files",
+        "max_diff_lines",
+        "max_new_dependencies"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "task": {
+      "properties": {
+        "current_gate": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "feature",
+            "bugfix",
+            "remediation",
+            "migration",
+            "release",
+            "audit"
+          ]
+        },
+        "objective": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "risk_level": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "objective",
+        "kind",
+        "source_commit",
+        "risk_level",
+        "current_gate"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "task",
+    "scope",
+    "permissions",
+    "plan",
+    "approval",
+    "rollback",
+    "completion"
+  ],
+  "title": "TaskContract v1",
+  "type": "object",
+  "unevaluatedProperties": false
+}

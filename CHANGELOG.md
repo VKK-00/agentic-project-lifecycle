@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0-rc.1 - 2026-08-18
+
+- Added stable diagnostics with JSON and SARIF output.
+- Added actual Git-diff enforcement through ExecutionResult.
+- Added versioned policy profiles and cross-contract project audits.
+- Added Draft 2020-12 schemas, the unified `apl` CLI, and a reusable GitHub Action.
+- Added immutable evidence runs, tamper-evident manifests, hostile fixtures, and a repeated live behavioral evaluation harness.
+- Added deterministic SPDX 2.3 SBOM generation, pinned security workflows, dependency auditing, mutation testing, and release attestations.
+- Kept stable promotion blocked pending real multi-run behavioral evaluation.
+
 ## Unreleased
 
 - Added Ukrainian installation and usage documentation alongside the English and Russian versions.

@@ -4,8 +4,8 @@ description: Use when preparing alpha, beta, release candidate, general availabi
 license: Apache-2.0
 metadata:
   author: VKK-00
-  version: 1.0.0
-  maturity: stable
+  version: 1.1.0-rc.1
+  maturity: release-candidate
 ---
 # Releasing and Operating Products
 

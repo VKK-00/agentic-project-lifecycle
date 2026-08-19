@@ -4,8 +4,8 @@ description: Use when checking whether a project, feature, migration, or release
 license: Apache-2.0
 metadata:
   author: VKK-00
-  version: 1.0.0
-  maturity: stable
+  version: 1.1.0-rc.1
+  maturity: release-candidate
 ---
 # Auditing Project Readiness
 

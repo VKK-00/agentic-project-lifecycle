@@ -2,7 +2,7 @@
 
 Agentic Project Lifecycle — плагин Codex с набором навыков для управления крупными программными проектами: от исследования задачи и планирования до выпуска, эксплуатации и разбора инцидентов.
 
-Версия плагина `1.0.0-rc.1` упаковывает стабильный набор навыков `1.0.0` в проверяемый формат плагина. Статус release candidate нужен для проверки публичной установки перед первым GA-релизом плагина.
+Версия плагина `1.1.0-rc.1` упаковывает стабильный набор навыков `1.0.0` в проверяемый формат плагина. Статус release candidate нужен для проверки публичной установки перед первым GA-релизом плагина.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -19,7 +19,7 @@ Agentic Project Lifecycle — плагин Codex с набором навыко�
 ## Установка в Codex
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.0.0-rc.1
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
@@ -42,7 +42,7 @@ python -m pip install -e ".[dev]"
 python validate.py
 python -m pytest -q
 python scripts/validate_publication.py
-python scripts/build_release.py --version 1.0.0-rc.1 --output dist
+python scripts/build_release.py --version 1.1.0-rc.1 --output dist
 ```
 
 Подробные результаты и ограничения описаны в [VALIDATION.md](VALIDATION.md), [STABILITY_REPORT.md](STABILITY_REPORT.md) и [evals/README.md](evals/README.md).

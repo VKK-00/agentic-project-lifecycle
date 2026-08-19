@@ -1,0 +1,89 @@
+name: Agentic Project Lifecycle
+description: Validate Agentic Project Lifecycle governance artifacts in GitHub Actions.
+author: VKK-00
+
+inputs:
+  kind:
+    description: Artifact kind: task, gate, evidence, execution, state, policy, audit, or run.
+    required: true
+  path:
+    description: Repository-relative path to the governance artifact.
+    required: true
+  format:
+    description: Output format: text, json, or sarif.
+    required: false
+    default: text
+  root:
+    description: Repository root used for strict and Git-aware validation.
+    required: false
+    default: .
+  task:
+    description: Task contract path required when validating an execution result.
+    required: false
+    default: ""
+  expected-commit:
+    description: Expected source commit for evidence validation.
+    required: false
+    default: ""
+  strict:
+    description: Enable strict project-state validation.
+    required: false
+    default: "true"
+
+outputs:
+  result:
+    description: pass when validation succeeds; fail otherwise.
+    value: ${{ steps.validate.outputs.result }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install APL runtime dependencies
+      shell: bash
+      run: >-
+        python -m pip install --disable-pip-version-check
+        "${GITHUB_ACTION_PATH}"
+
+    - id: validate
+      name: Validate governance artifact
+      shell: bash
+      env:
+        APL_KIND: ${{ inputs.kind }}
+        APL_PATH: ${{ inputs.path }}
+        APL_FORMAT: ${{ inputs.format }}
+        APL_ROOT: ${{ inputs.root }}
+        APL_TASK: ${{ inputs.task }}
+        APL_EXPECTED_COMMIT: ${{ inputs.expected-commit }}
+        APL_STRICT: ${{ inputs.strict }}
+      run: |
+        set -euo pipefail
+        case "$APL_KIND" in
+          task|gate|evidence|execution|state|policy|audit|run) ;;
+          *) echo "Unsupported APL artifact kind: $APL_KIND" >&2; exit 2 ;;
+        esac
+        case "$APL_FORMAT" in
+          text|json|sarif) ;;
+          *) echo "Unsupported APL output format: $APL_FORMAT" >&2; exit 2 ;;
+        esac
+
+        args=(validate "$APL_KIND" "$APL_PATH" --format "$APL_FORMAT" --root "$APL_ROOT")
+        if [[ "$APL_KIND" == "state" && "$APL_STRICT" == "true" ]]; then
+          args+=(--strict)
+        fi
+        if [[ -n "$APL_TASK" ]]; then
+          args+=(--task "$APL_TASK")
+        fi
+        if [[ -n "$APL_EXPECTED_COMMIT" ]]; then
+          args+=(--expected-commit "$APL_EXPECTED_COMMIT")
+        fi
+
+        if python "$GITHUB_ACTION_PATH/scripts/apl_cli.py" "${args[@]}"; then
+          echo "result=pass" >> "$GITHUB_OUTPUT"
+        else
+          echo "result=fail" >> "$GITHUB_OUTPUT"
+          exit 1
+        fi
+
+branding:
+  icon: shield
+  color: blue

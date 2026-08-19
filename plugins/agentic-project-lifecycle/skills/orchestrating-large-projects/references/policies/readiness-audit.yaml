@@ -1,0 +1,26 @@
+schema_version: '1.0'
+policy:
+  id: readiness-audit
+  version: '1.0'
+  name: Readiness Audit
+  minimum_approval_assurance: declared
+  protected_paths:
+  - .github/**
+  - migrations/**
+  - auth/**
+  - secrets/**
+  - infra/**
+gates:
+- id: implementation-to-release
+  from: implementation
+  to: release
+  required_claims:
+  - contract_validation
+  - evidence_freshness
+  - diff_conformance
+  required_roles:
+  - engineering-owner
+  non_waivable_blocker_classes:
+  - security-critical
+  - data-integrity
+  allow_phase_skip: false

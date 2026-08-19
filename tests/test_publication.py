@@ -28,7 +28,7 @@ def test_plugin_manifest_and_marketplace_are_consistent() -> None:
     entry = marketplace["plugins"][0]
 
     assert manifest["name"] == PLUGIN_NAME
-    assert manifest["version"] == "1.0.0-rc.1"
+    assert manifest["version"] == "1.1.0-rc.1"
     assert manifest["skills"] == "./skills/"
     assert manifest["license"] == "Apache-2.0"
     assert entry["name"] == manifest["name"]
@@ -79,7 +79,7 @@ def test_release_archives_are_reproducible_and_safe(tmp_path: Path) -> None:
                 sys.executable,
                 str(ROOT / "scripts" / "build_release.py"),
                 "--version",
-                "1.0.0-rc.1",
+                "1.1.0-rc.1",
                 "--output",
                 str(output),
             ],
@@ -92,8 +92,9 @@ def test_release_archives_are_reproducible_and_safe(tmp_path: Path) -> None:
         assert result.returncode == 0, result.stdout + result.stderr
 
     expected = {
-        "agentic-project-lifecycle-1.0.0-rc.1.zip",
-        "agentic-project-lifecycle-1.0.0-rc.1.tar.gz",
+        "agentic-project-lifecycle-1.1.0-rc.1.zip",
+        "agentic-project-lifecycle-1.1.0-rc.1.tar.gz",
+        "agentic-project-lifecycle-1.1.0-rc.1.spdx.json",
         "promotion-gate.json",
         "validation-report.md",
         "SHA256SUMS",
@@ -103,8 +104,8 @@ def test_release_archives_are_reproducible_and_safe(tmp_path: Path) -> None:
         name: file_hash(outputs[1] / name) for name in expected
     }
 
-    zip_path = outputs[0] / "agentic-project-lifecycle-1.0.0-rc.1.zip"
-    tar_path = outputs[0] / "agentic-project-lifecycle-1.0.0-rc.1.tar.gz"
+    zip_path = outputs[0] / "agentic-project-lifecycle-1.1.0-rc.1.zip"
+    tar_path = outputs[0] / "agentic-project-lifecycle-1.1.0-rc.1.tar.gz"
     with zipfile.ZipFile(zip_path) as archive:
         zip_names = archive.namelist()
     with tarfile.open(tar_path) as archive:
