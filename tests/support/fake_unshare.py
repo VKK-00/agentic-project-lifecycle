@@ -48,6 +48,15 @@ def _terminate_group(process: subprocess.Popen[bytes]) -> None:
 
 def main() -> int:
     command = _command(sys.argv[1:])
+    if (
+        os.environ.get("APL_TEST_FAKE_UNSHARE") == "1"
+        and os.environ.get("APL_NETWORK_ISOLATION_PROBE") == "1"
+    ):
+        # Report a distinct synthetic namespace only to the explicit capability
+        # probe. Ordinary verification commands still run under process-group
+        # supervision without claiming real network isolation.
+        print("net:[apl-test-isolated]")
+        return 0
     process = subprocess.Popen(command, start_new_session=True)
 
     def forward(signum: int, _frame: object) -> None:
