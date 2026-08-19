@@ -12,6 +12,7 @@ This release candidate adds deterministic enforcement to the existing seven-skil
 - Immutable evidence runs, tamper-evident event logs, hostile fixtures, and repeated live-evaluation harness.
 - Deterministic SPDX 2.3 SBOM, pinned security workflows, CodeQL, dependency review, Scorecard, dependency audit, mutation testing, and tag-only provenance/SBOM attestations.
 - Fail-closed transition, strict-root, source-identity, collision, and release-path handling.
+- Network-isolated verification probes the actual operating-system capability before use; an installed `unshare` or `sandbox-exec` executable is not treated as proof that isolation is available.
 
 ## Promotion status
 
