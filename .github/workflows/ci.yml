@@ -35,7 +35,16 @@ jobs:
       - name: Run regression tests
         env:
           PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
-        run: python -m pytest -q
+        shell: bash
+        run: set -o pipefail; python -m pytest -q 2>&1 | tee "$RUNNER_TEMP/pytest.log"
+      - name: Upload regression failure log
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: pytest-failure-${{ matrix.python-version }}-${{ github.sha }}
+          path: ${{ runner.temp }}/pytest.log
+          if-no-files-found: error
+          retention-days: 3
       - name: Validate publication contract
         run: python scripts/validate_publication.py
       - name: Build deterministic release assets
