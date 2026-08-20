@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from build_sbom import write_sbom
+from platform_support import build_bundle, load_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_NAME = "agentic-project-lifecycle"
@@ -161,7 +162,12 @@ def main() -> int:
     validation_path = args.output / "validation-report.md"
     build_validation_report(validation_path, args.version)
 
-    artifacts = [zip_path, tar_path, sbom_path, promotion_path, validation_path]
+    platform_assets = []
+    for platform in load_registry()["platforms"]:
+        asset = args.output / f"{PLUGIN_NAME}-{args.version}-{platform['id']}.zip"
+        build_bundle(platform["id"], asset, epoch=epoch)
+        platform_assets.append(asset)
+    artifacts = [zip_path, tar_path, sbom_path, promotion_path, validation_path, *platform_assets]
     checksum_path = args.output / "SHA256SUMS"
     checksum_path.write_text(
         "".join(f"{sha256(path)}  {path.name}\n" for path in artifacts),

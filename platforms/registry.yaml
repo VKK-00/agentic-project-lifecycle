@@ -1,0 +1,17 @@
+schema_version: "1.0"
+platforms:
+  - {id: agent-skills, aliases: [agent-skills, agentskills], tier: distribution-supported, project_path: .agents/skills/agentic-project-lifecycle, user_path: agentic-project-lifecycle}
+  - {id: codex, aliases: [codex], tier: distribution-supported, project_path: .codex/skills/agentic-project-lifecycle, user_path: codex/agentic-project-lifecycle, native_manifest: plugins/agentic-project-lifecycle/.codex-plugin/plugin.json}
+  - {id: claude-code, aliases: [claude, claude-code], tier: distribution-supported, project_path: .claude/skills/agentic-project-lifecycle, user_path: claude-code/agentic-project-lifecycle, native_manifest: platforms/native/claude-code.json}
+  - {id: github-copilot, aliases: [copilot, github-copilot], tier: distribution-supported, project_path: .github/skills/agentic-project-lifecycle, user_path: github-copilot/agentic-project-lifecycle}
+  - {id: cursor, aliases: [cursor], tier: distribution-supported, project_path: .cursor/skills/agentic-project-lifecycle, user_path: cursor/agentic-project-lifecycle, native_manifest: platforms/native/cursor.json}
+  - {id: kimi-code, aliases: [kimi, kimi-code], tier: distribution-supported, project_path: .kimi/skills/agentic-project-lifecycle, user_path: kimi-code/agentic-project-lifecycle, native_manifest: platforms/native/kimi-code.json}
+  - {id: gemini-cli, aliases: [gemini, gemini-cli], tier: distribution-supported, project_path: .gemini/skills/agentic-project-lifecycle, user_path: gemini-cli/agentic-project-lifecycle, native_manifest: platforms/native/gemini-cli.json}
+  - {id: opencode, aliases: [opencode], tier: distribution-supported, project_path: .opencode/skills/agentic-project-lifecycle, user_path: opencode/agentic-project-lifecycle}
+  - {id: factory-droid, aliases: [factory, factory-droid], tier: distribution-supported, project_path: .factory/skills/agentic-project-lifecycle, user_path: factory-droid/agentic-project-lifecycle}
+  - {id: amp, aliases: [amp], tier: distribution-supported, project_path: .amp/skills/agentic-project-lifecycle, user_path: amp/agentic-project-lifecycle}
+  - {id: devin, aliases: [devin], tier: distribution-supported, project_path: .devin/skills/agentic-project-lifecycle, user_path: devin/agentic-project-lifecycle}
+  - {id: pi, aliases: [pi], tier: distribution-supported, project_path: .pi/skills/agentic-project-lifecycle, user_path: pi/agentic-project-lifecycle, native_manifest: platforms/native/pi.json}
+  - {id: hermes, aliases: [hermes], tier: distribution-supported, project_path: .hermes/skills/agentic-project-lifecycle, user_path: hermes/agentic-project-lifecycle}
+  - {id: antigravity, aliases: [antigravity], tier: distribution-supported, project_path: .antigravity/skills/agentic-project-lifecycle, user_path: antigravity/agentic-project-lifecycle}
+  - {id: gemini-enterprise, aliases: [gemini-enterprise], tier: distribution-supported, project_path: .gemini-enterprise/skills/agentic-project-lifecycle, user_path: gemini-enterprise/agentic-project-lifecycle}
