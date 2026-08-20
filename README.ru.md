@@ -2,7 +2,7 @@
 
 Agentic Project Lifecycle — плагин Codex с набором навыков для управления крупными программными проектами: от исследования задачи и планирования до выпуска, эксплуатации и разбора инцидентов.
 
-Версия плагина `1.1.0-rc.1` упаковывает стабильный набор навыков `1.0.0` в проверяемый формат плагина. Статус release candidate нужен для проверки публичной установки перед первым GA-релизом плагина.
+`main` содержит проверенную реализацию `1.1.0-rc.1`. Тег и GitHub release для неё ещё не опубликованы, поэтому до выпуска релиза следует использовать `--ref main`. Stable `1.1.0` остаётся заблокированным до повторяемого authenticated live-agent evaluation.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -19,19 +19,35 @@ Agentic Project Lifecycle — плагин Codex с набором навыко�
 ## Установка в Codex
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref main
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
 В Codex Desktop репозиторий можно добавить через **Plugins > Marketplaces**, а затем установить **Agentic Project Lifecycle**.
 
+## Распространение для платформ
+
+APL использует один канонический набор из семи навыков и создаёт детерминированные bundles для Agent Skills, Codex, Claude Code, GitHub Copilot, Cursor, Kimi Code, Gemini CLI, OpenCode, Factory Droid, Amp, Devin, Pi, Hermes, Antigravity и Gemini Enterprise.
+
+```bash
+python apl platform list
+python apl platform install codex --scope project --root /path/to/project
+python apl platform verify /path/to/project/.codex/skills/agentic-project-lifecycle
+```
+
+Установщик проверяет staging-копию до атомарной публикации и восстанавливает предыдущую установку, если финальная проверка не проходит. Для `--scope user` всегда нужен явный `--root`.
+
+Distribution не доказывает, что платформа активировала навыки или что модель им следовала: activation evidence и bounded execution — отдельные claims. В committed activation matrix все платформы намеренно имеют статус `not-live-tested`.
+
+## Установка в совместимый каталог
+
 Для установки только навыков в Agent Skills-совместимый каталог:
 
 ```bash
-python scripts/install_skills.py --target /path/to/project/.agents/skills
+python apl platform install agent-skills --scope project --root /path/to/project
 ```
 
-Без флага `--force` установщик не перезаписывает существующие навыки.
+Без флага `--force` установщик не перезаписывает существующую установку.
 
 ## Проверка исходного кода
 
