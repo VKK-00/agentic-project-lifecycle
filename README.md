@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/VKK-00/agentic-project-lifecycle?include_prereleases)](https://github.com/VKK-00/agentic-project-lifecycle/releases)
 
-Agentic Project Lifecycle is a Codex skills-only plugin for governing large software projects from discovery through production operations. It combines one lifecycle orchestrator with six focused specialist skills, executable project fixtures, held-out routing tests, and a measurable release-readiness gate.
+Agentic Project Lifecycle is a cross-platform skill suite for governing large software projects from discovery through production operations. It combines one lifecycle orchestrator with six focused specialist skills, executable project fixtures, held-out routing tests, and a measurable release-readiness gate. Codex is one supported native distribution target, not the only supported platform.
 
 > Release status: [`v1.1.0-rc.1`](https://github.com/VKK-00/agentic-project-lifecycle/releases/tag/v1.1.0-rc.1) is a published prerelease with deterministic assets, SHA-256 checksums, and provenance/SBOM attestations. Stable `1.1.0` remains blocked on authenticated repeated live-agent evaluation.
 
