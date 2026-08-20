@@ -2,7 +2,7 @@
 
 Agentic Project Lifecycle — плагин Codex с набором навыков для управления крупными программными проектами: от исследования задачи и планирования до выпуска, эксплуатации и разбора инцидентов.
 
-`main` содержит проверенную реализацию `1.1.0-rc.1`. Тег и GitHub release для неё ещё не опубликованы, поэтому до выпуска релиза следует использовать `--ref main`. Stable `1.1.0` остаётся заблокированным до повторяемого authenticated live-agent evaluation.
+[`v1.1.0-rc.1`](https://github.com/VKK-00/agentic-project-lifecycle/releases/tag/v1.1.0-rc.1) — опубликованный prerelease с детерминированными assets, SHA-256 checksums и provenance/SBOM attestations. Stable `1.1.0` остаётся заблокированным до повторяемого authenticated live-agent evaluation.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -19,7 +19,7 @@ Agentic Project Lifecycle — плагин Codex с набором навыко�
 ## Установка в Codex
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref main
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 

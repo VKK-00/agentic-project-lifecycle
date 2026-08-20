@@ -6,7 +6,7 @@
 
 Agentic Project Lifecycle is a Codex skills-only plugin for governing large software projects from discovery through production operations. It combines one lifecycle orchestrator with six focused specialist skills, executable project fixtures, held-out routing tests, and a measurable release-readiness gate.
 
-> Release status: `main` contains the verified `1.1.0-rc.1` implementation. A Git tag and release assets have not yet been published; use `--ref main` until that release is cut. Stable `1.1.0` remains blocked on authenticated repeated live-agent evaluation.
+> Release status: [`v1.1.0-rc.1`](https://github.com/VKK-00/agentic-project-lifecycle/releases/tag/v1.1.0-rc.1) is a published prerelease with deterministic assets, SHA-256 checksums, and provenance/SBOM attestations. Stable `1.1.0` remains blocked on authenticated repeated live-agent evaluation.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -36,7 +36,7 @@ Agentic Project Lifecycle is a Codex skills-only plugin for governing large soft
 Add this repository as a plugin marketplace, then install the plugin:
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref main
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
