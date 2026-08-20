@@ -89,6 +89,20 @@ The build creates ZIP and `tar.gz` plugin archives, validation evidence, the pro
 
 ## Evidence and limitations
 
+## Multi-platform distribution
+
+APL maintains one canonical seven-skill inventory. Platform packages are distribution artifacts, not evidence that a model loaded or followed the skills. Activation evidence and bounded execution are separate claims; the committed activation matrix intentionally records every platform as `not-live-tested`.
+
+```bash
+python apl platform list
+python apl platform export codex --output codex.zip --epoch 1787211940
+python apl platform install codex --scope project --root /path/to/project
+python apl platform verify /path/to/project/.codex/skills/agentic-project-lifecycle
+python apl platform activation validate activation-record.json
+```
+
+The installer validates a staged copy, atomically publishes it, then restores the prior installation if published verification fails. `--link` is development-only and rejected on Windows. `--scope user` requires an explicit `--root`; APL never infers or writes a user home directory.
+
 The `1.0.0` skill suite passed its documented promotion gate. The repository includes held-out routing cases, executable fixture projects, pinned read-only public-repository trials, execution-trace analysis, and leave-one-rule-out instruction ablation. See [Validation](VALIDATION.md), [Stability report](STABILITY_REPORT.md), and [evaluation documentation](evals/README.md).
 
 These evaluations test the suite's routing and artifact rules; they do not prove that every model run or project outcome will be correct. The public-repository trials do not certify the sampled projects. Users remain responsible for reviewing changes and approving consequential actions.

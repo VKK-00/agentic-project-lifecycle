@@ -24,6 +24,15 @@ from governance.project_audit import build_project_audit  # noqa: E402
 from governance.run_manifest import verify_event_log  # noqa: E402
 from governance.runner import BoundedRunnerError, run_bounded_task  # noqa: E402
 from governance.codex_backend import CodexBackend  # noqa: E402
+from scripts.platform_support import (  # noqa: E402
+    PlatformError,
+    build_bundle,
+    install_platform,
+    load_registry,
+    resolve_platform,
+    validate_activation_record,
+    verify_installation,
+)
 from governance.schema_validation import SCHEMA_FILES, validate_schema_document  # noqa: E402
 from governance_contracts import (  # noqa: E402
     validate_evidence_record,
@@ -178,6 +187,33 @@ def _run(args: argparse.Namespace) -> int:
     return 0 if report["run"]["status"] == "pass" else 1
 
 
+def _platform(args: argparse.Namespace) -> int:
+    if args.platform_command == "list":
+        payload = load_registry()["platforms"]
+        print(json.dumps(payload, indent=2, sort_keys=True) if args.format == "json" else "\n".join(item["id"] for item in payload))
+        return 0
+    if args.platform_command == "detect":
+        root = args.root.resolve()
+        matches = [item["id"] for item in load_registry()["platforms"] if (root / item["project_path"]).exists()]
+        print(json.dumps({"platforms": matches}, indent=2) if args.format == "json" else "\n".join(matches))
+        return 0
+    if args.platform_command == "install":
+        target = install_platform(args.platform, scope=args.scope, root=args.root, force=args.force, dry_run=args.dry_run, link=args.link)
+        print(json.dumps({"platform": resolve_platform(args.platform)["id"], "target": str(target), "dry_run": args.dry_run}, indent=2) if args.format == "json" else str(target))
+        return 0
+    if args.platform_command == "verify":
+        errors = verify_installation(args.target, allow_development_link=args.link)
+        print(json.dumps({"pass": not errors, "issues": errors}, indent=2) if args.format == "json" else ("PASS" if not errors else "FAIL\n- " + "\n- ".join(errors)))
+        return 1 if errors else 0
+    if args.platform_command == "export":
+        manifest = build_bundle(args.platform, args.output, epoch=args.epoch)
+        print(json.dumps({"output": str(args.output), "manifest": manifest}, indent=2) if args.format == "json" else str(args.output))
+        return 0
+    errors = validate_activation_record(args.path)
+    print(json.dumps({"pass": not errors, "issues": errors}, indent=2) if args.format == "json" else ("PASS" if not errors else "FAIL\n- " + "\n- ".join(errors)))
+    return 1 if errors else 0
+
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="apl", description="Agentic Project Lifecycle control-plane CLI")
@@ -239,6 +275,36 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--run-id")
     run.add_argument("--format", choices=("text", "json"), default="text")
     run.set_defaults(handler=_run)
+
+    platform = sub.add_parser("platform", help="Distribute and verify canonical skills on supported platforms")
+    platform.add_argument("--format", choices=("text", "json"), default="text")
+    platform_sub = platform.add_subparsers(dest="platform_command", required=True)
+    platform_sub.add_parser("list").set_defaults(handler=_platform)
+    detect = platform_sub.add_parser("detect")
+    detect.add_argument("--root", type=Path, required=True)
+    detect.set_defaults(handler=_platform)
+    install = platform_sub.add_parser("install")
+    install.add_argument("platform")
+    install.add_argument("--scope", choices=("project", "user"), default="project")
+    install.add_argument("--root", type=Path, required=True)
+    install.add_argument("--force", action="store_true")
+    install.add_argument("--dry-run", action="store_true")
+    install.add_argument("--link", action="store_true")
+    install.set_defaults(handler=_platform)
+    verify_platform = platform_sub.add_parser("verify")
+    verify_platform.add_argument("target", type=Path)
+    verify_platform.add_argument("--link", action="store_true")
+    verify_platform.set_defaults(handler=_platform)
+    export = platform_sub.add_parser("export")
+    export.add_argument("platform")
+    export.add_argument("--output", type=Path, required=True)
+    export.add_argument("--epoch", type=int, required=True)
+    export.set_defaults(handler=_platform)
+    activation = platform_sub.add_parser("activation")
+    activation_sub = activation.add_subparsers(dest="activation_command", required=True)
+    activation_validate = activation_sub.add_parser("validate")
+    activation_validate.add_argument("path", type=Path)
+    activation_validate.set_defaults(handler=_platform, platform_command="activation")
     return parser
 
 
@@ -246,7 +312,7 @@ def main() -> int:
     args = build_parser().parse_args()
     try:
         return args.handler(args)
-    except (BoundedRunnerError, OSError, RuntimeError, ValueError, yaml.YAMLError, json.JSONDecodeError) as exc:
+    except (BoundedRunnerError, PlatformError, OSError, RuntimeError, ValueError, yaml.YAMLError, json.JSONDecodeError) as exc:
         print(f"APL: FAIL\n- {exc}", file=sys.stderr)
         return 1
 

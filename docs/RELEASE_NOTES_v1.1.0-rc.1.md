@@ -4,6 +4,10 @@ This release candidate adds deterministic enforcement to the existing seven-skil
 
 ## Included
 
+### Multi-platform distribution
+
+The RC produces deterministic bundles for Agent Skills, Codex, Claude Code, GitHub Copilot, Cursor, Kimi Code, Gemini CLI, OpenCode, Factory Droid, Amp, Devin, Pi, Hermes, Antigravity and Gemini Enterprise. Each bundle carries a SHA-256 inventory of the canonical skills and the platform registry digest. Distribution compatibility is not live activation or bounded-execution evidence.
+
 - Stable diagnostic codes with text, JSON, and SARIF output.
 - Actual Git-diff validation through `ExecutionResult`.
 - Versioned policy profiles and cross-contract project audit.
