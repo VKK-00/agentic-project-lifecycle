@@ -1,0 +1,17 @@
+schema_version: "1.0"
+platforms:
+  agent-skills: {status: not-run, evidence_tier: not-live-tested}
+  codex: {status: not-run, evidence_tier: not-live-tested}
+  claude-code: {status: not-run, evidence_tier: not-live-tested}
+  github-copilot: {status: not-run, evidence_tier: not-live-tested}
+  cursor: {status: not-run, evidence_tier: not-live-tested}
+  kimi-code: {status: not-run, evidence_tier: not-live-tested}
+  gemini-cli: {status: not-run, evidence_tier: not-live-tested}
+  opencode: {status: not-run, evidence_tier: not-live-tested}
+  factory-droid: {status: not-run, evidence_tier: not-live-tested}
+  amp: {status: not-run, evidence_tier: not-live-tested}
+  devin: {status: not-run, evidence_tier: not-live-tested}
+  pi: {status: not-run, evidence_tier: not-live-tested}
+  hermes: {status: not-run, evidence_tier: not-live-tested}
+  antigravity: {status: not-run, evidence_tier: not-live-tested}
+  gemini-enterprise: {status: not-run, evidence_tier: not-live-tested}

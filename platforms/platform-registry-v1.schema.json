@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "platforms"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "platforms": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "aliases", "tier", "project_path", "user_path"], "additionalProperties": false, "properties": {"id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}, "aliases": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}}, "tier": {"const": "distribution-supported"}, "project_path": {"type": "string", "minLength": 1}, "user_path": {"type": "string", "minLength": 1}, "native_manifest": {"type": "string", "minLength": 1}}}}
+  }
+}

@@ -1,5 +1,7 @@
 # Version 1.1.0-rc.1 Validation
 
+Platform portability is gated by `tests/test_platform_support.py`. It verifies registry uniqueness, canonical inventory hashing, deterministic bundles, transactional rollback, tamper detection and activation-evidence minimums. A release build emits one platform bundle for each registry record; all assets are in `SHA256SUMS`.
+
 ## Decision
 
 **RELEASE CANDIDATE — NOT YET PROMOTED TO STABLE 1.1.0.**

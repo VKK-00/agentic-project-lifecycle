@@ -186,6 +186,27 @@ def check_skills(errors: list[str]) -> None:
             errors.append(f"skill author must be VKK-00: {name}")
 
 
+def check_platform_distribution(errors: list[str]) -> None:
+    scripts = ROOT / "scripts"
+    if str(scripts) not in sys.path:
+        sys.path.insert(0, str(scripts))
+    try:
+        from platform_support import canonical_inventory, load_registry, validate_activation_record
+
+        registry = load_registry()
+        if len(registry["platforms"]) != 15:
+            errors.append("platform registry must contain exactly 15 platforms")
+        canonical_inventory()
+        matrix = yaml.safe_load((ROOT / "platforms" / "activation-matrix.yaml").read_text(encoding="utf-8"))
+        if set(matrix.get("platforms", {})) != {item["id"] for item in registry["platforms"]}:
+            errors.append("activation matrix platform set does not match registry")
+        records = sorted((ROOT / "platforms" / "activation-records").glob("*.json")) if (ROOT / "platforms" / "activation-records").is_dir() else []
+        for record in records:
+            errors.extend(f"{record.relative_to(ROOT)}: {message}" for message in validate_activation_record(record))
+    except Exception as exc:
+        errors.append(f"platform distribution validation failed: {exc}")
+
+
 def check_submission_materials(errors: list[str]) -> None:
     path = ROOT / "submission" / "test-cases.json"
     data = load_json(path, errors)
@@ -277,6 +298,7 @@ def main() -> int:
     manifest = check_manifest(errors)
     check_marketplace(errors)
     check_skills(errors)
+    check_platform_distribution(errors)
     check_submission_materials(errors)
     check_public_files(errors)
     check_repository_hygiene(errors)
