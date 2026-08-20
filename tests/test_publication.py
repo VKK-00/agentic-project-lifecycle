@@ -99,6 +99,12 @@ def test_release_archives_are_reproducible_and_safe(tmp_path: Path) -> None:
         "validation-report.md",
         "SHA256SUMS",
     }
+    platform_ids = [
+        "agent-skills", "codex", "claude-code", "github-copilot", "cursor", "kimi-code",
+        "gemini-cli", "opencode", "factory-droid", "amp", "devin", "pi", "hermes",
+        "antigravity", "gemini-enterprise",
+    ]
+    expected.update(f"agentic-project-lifecycle-1.1.0-rc.1-{identifier}.zip" for identifier in platform_ids)
     assert {path.name for path in outputs[0].iterdir()} == expected
     assert {name: file_hash(outputs[0] / name) for name in expected} == {
         name: file_hash(outputs[1] / name) for name in expected
