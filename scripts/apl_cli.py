@@ -24,15 +24,16 @@ from governance.project_audit import build_project_audit  # noqa: E402
 from governance.run_manifest import verify_event_log  # noqa: E402
 from governance.runner import BoundedRunnerError, run_bounded_task  # noqa: E402
 from governance.codex_backend import CodexBackend  # noqa: E402
-from scripts.platform_support import (  # noqa: E402
-    PlatformError,
-    build_bundle,
-    install_platform,
-    load_registry,
-    resolve_platform,
-    validate_activation_record,
-    verify_installation,
-)
+try:  # Support both `python apl` and direct `python scripts/apl_cli.py` execution.
+    from scripts.platform_support import (  # noqa: E402
+        PlatformError, build_bundle, install_platform, load_registry, resolve_platform,
+        validate_activation_record, verify_installation,
+    )
+except ModuleNotFoundError:  # pragma: no cover - exercised by subprocess CLI tests
+    from platform_support import (  # type: ignore[no-redef] # noqa: E402
+        PlatformError, build_bundle, install_platform, load_registry, resolve_platform,
+        validate_activation_record, verify_installation,
+    )
 from governance.schema_validation import SCHEMA_FILES, validate_schema_document  # noqa: E402
 from governance_contracts import (  # noqa: E402
     validate_evidence_record,
