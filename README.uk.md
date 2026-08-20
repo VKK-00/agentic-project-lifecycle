@@ -2,7 +2,7 @@
 
 Agentic Project Lifecycle — плагін Codex із набором навичок для керування великими програмними проєктами: від дослідження завдання та планування до випуску, експлуатації й аналізу інцидентів.
 
-Версія плагіна `1.1.0-rc.1` пакує стабільний набір навичок `1.0.0` у перевірюваний формат плагіна. Статус release candidate потрібен для перевірки публічного встановлення перед першим GA-релізом плагіна.
+`main` містить перевірену реалізацію `1.1.0-rc.1`. Тег і GitHub release для неї ще не опубліковані, тому до виходу релізу слід використовувати `--ref main`. Stable `1.1.0` залишається заблокованим до повторюваного authenticated live-agent evaluation.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -19,19 +19,35 @@ Agentic Project Lifecycle — плагін Codex із набором навич�
 ## Встановлення в Codex
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref main
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
 У Codex Desktop репозиторій можна додати через **Plugins > Marketplaces**, а потім встановити **Agentic Project Lifecycle**.
 
+## Поширення для платформ
+
+APL має один канонічний набір із семи навичок і створює детерміновані bundles для Agent Skills, Codex, Claude Code, GitHub Copilot, Cursor, Kimi Code, Gemini CLI, OpenCode, Factory Droid, Amp, Devin, Pi, Hermes, Antigravity та Gemini Enterprise.
+
+```bash
+python apl platform list
+python apl platform install codex --scope project --root /path/to/project
+python apl platform verify /path/to/project/.codex/skills/agentic-project-lifecycle
+```
+
+Інсталятор перевіряє staging-копію перед атомарною публікацією та відновлює попередню інсталяцію, якщо фінальна перевірка не пройшла. Для `--scope user` завжди потрібен явний `--root`.
+
+Distribution не є доказом того, що платформа активувала навички або що модель їх виконувала: activation evidence й bounded execution — окремі claims. У committed activation matrix усі платформи навмисно мають стан `not-live-tested`.
+
+## Встановлення у сумісний каталог
+
 Для встановлення лише навичок у каталог, сумісний з Agent Skills:
 
 ```bash
-python scripts/install_skills.py --target /path/to/project/.agents/skills
+python apl platform install agent-skills --scope project --root /path/to/project
 ```
 
-Без прапорця `--force` інсталятор не перезаписує наявні навички.
+Без прапорця `--force` інсталятор не перезаписує наявну інсталяцію.
 
 ## Перевірка вихідного коду
 

@@ -6,7 +6,7 @@
 
 Agentic Project Lifecycle is a Codex skills-only plugin for governing large software projects from discovery through production operations. It combines one lifecycle orchestrator with six focused specialist skills, executable project fixtures, held-out routing tests, and a measurable release-readiness gate.
 
-> Release status: `1.1.0-rc.1` packages the already release-candidate `1.1.0-rc.1` skill suite as a distributable Codex plugin. It is a release candidate so the public installation path can be validated before the first generally available plugin release.
+> Release status: `main` contains the verified `1.1.0-rc.1` implementation. A Git tag and release assets have not yet been published; use `--ref main` until that release is cut. Stable `1.1.0` remains blocked on authenticated repeated live-agent evaluation.
 
 [English](README.md) | [Русский](README.ru.md) | [Українська](README.uk.md)
 
@@ -36,19 +36,25 @@ Agentic Project Lifecycle is a Codex skills-only plugin for governing large soft
 Add this repository as a plugin marketplace, then install the plugin:
 
 ```text
-codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref v1.1.0-rc.1
+codex plugin marketplace add VKK-00/agentic-project-lifecycle --ref main
 codex plugin add agentic-project-lifecycle@vkk-00-agent-plugins
 ```
 
 In the Codex desktop app, the same marketplace can be added from **Plugins > Marketplaces**, after which **Agentic Project Lifecycle** appears in the plugin list.
 
-To install only the seven skills into another Agent Skills-compatible location:
+## Multi-platform distribution
+
+APL has one canonical seven-skill inventory and produces deterministic bundles for Agent Skills, Codex, Claude Code, GitHub Copilot, Cursor, Kimi Code, Gemini CLI, OpenCode, Factory Droid, Amp, Devin, Pi, Hermes, Antigravity, and Gemini Enterprise.
+
+To inspect supported targets and install into an explicit project or user root:
 
 ```bash
-python scripts/install_skills.py --target /path/to/project/.agents/skills
+python apl platform list
+python apl platform install codex --scope project --root /path/to/project
+python apl platform verify /path/to/project/.codex/skills/agentic-project-lifecycle
 ```
 
-The installer refuses to overwrite an existing skill unless `--force` is provided.
+The installer stages and verifies a full copy before atomically publishing it; `--force` restores the previous installation if post-publication verification fails. `--scope user` always requires an explicit `--root`; it never writes to a guessed home directory.
 
 ## Start using it
 
@@ -85,25 +91,13 @@ Build deterministic release archives:
 python scripts/build_release.py --version 1.1.0-rc.1 --output dist
 ```
 
-The build creates ZIP and `tar.gz` plugin archives, validation evidence, the promotion-gate result, and SHA-256 checksums.
+The build creates ZIP and `tar.gz` plugin archives, 15 platform bundles, validation evidence, the promotion-gate result, and SHA-256 checksums.
 
 ## Evidence and limitations
 
-## Multi-platform distribution
+Distribution support does not prove that a platform activated the skills or that a model followed them. Activation evidence and bounded execution are separate claims; the committed activation matrix intentionally records every platform as `not-live-tested`.
 
-APL maintains one canonical seven-skill inventory. Platform packages are distribution artifacts, not evidence that a model loaded or followed the skills. Activation evidence and bounded execution are separate claims; the committed activation matrix intentionally records every platform as `not-live-tested`.
-
-```bash
-python apl platform list
-python apl platform export codex --output codex.zip --epoch 1787211940
-python apl platform install codex --scope project --root /path/to/project
-python apl platform verify /path/to/project/.codex/skills/agentic-project-lifecycle
-python apl platform activation validate activation-record.json
-```
-
-The installer validates a staged copy, atomically publishes it, then restores the prior installation if published verification fails. `--link` is development-only and rejected on Windows. `--scope user` requires an explicit `--root`; APL never infers or writes a user home directory.
-
-The `1.0.0` skill suite passed its documented promotion gate. The repository includes held-out routing cases, executable fixture projects, pinned read-only public-repository trials, execution-trace analysis, and leave-one-rule-out instruction ablation. See [Validation](VALIDATION.md), [Stability report](STABILITY_REPORT.md), and [evaluation documentation](evals/README.md).
+The repository includes held-out routing cases, executable fixture projects, pinned read-only public-repository trials, execution-trace analysis, and leave-one-rule-out instruction ablation. See [Validation](VALIDATION.md), [Stability report](STABILITY_REPORT.md), and [evaluation documentation](evals/README.md).
 
 These evaluations test the suite's routing and artifact rules; they do not prove that every model run or project outcome will be correct. The public-repository trials do not certify the sampled projects. Users remain responsible for reviewing changes and approving consequential actions.
 
