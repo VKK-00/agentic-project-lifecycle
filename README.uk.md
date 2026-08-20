@@ -1,6 +1,6 @@
 # Agentic Project Lifecycle
 
-Agentic Project Lifecycle — плагін Codex із набором навичок для керування великими програмними проєктами: від дослідження завдання та планування до випуску, експлуатації й аналізу інцидентів.
+Agentic Project Lifecycle — кросплатформний набір навичок для керування великими програмними проєктами: від дослідження завдання та планування до випуску, експлуатації й аналізу інцидентів. Codex — один із підтримуваних native distribution targets, а не єдина платформа.
 
 [`v1.1.0-rc.1`](https://github.com/VKK-00/agentic-project-lifecycle/releases/tag/v1.1.0-rc.1) — опублікований prerelease із детермінованими assets, SHA-256 checksums і provenance/SBOM attestations. Stable `1.1.0` залишається заблокованим до повторюваного authenticated live-agent evaluation.
 
